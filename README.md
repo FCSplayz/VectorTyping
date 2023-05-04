@@ -11,7 +11,7 @@ This code library was developed for use with the Unity engine and makes use of i
 
 ## Use of Unity references
 
-The `VectorTyping` namespace uses references to namespaces provided by Unity, such as the `UnityEngine` namespace, for calculations and conversions between data types, in compliance with Unity's Reference-Only License. No modifications have been made to the engine's source code.
+The `VectorTyping` namespace uses references to namespaces provided by Unity, such as the `UnityEngine` namespace, for purposes including, but not limited to, calculations and conversions between data types, in compliance with Unity's Reference-Only License. No modifications have been made to the engine's source code.
 
 For more information about Unity's Reference-Only License, please see their website: [https://unity.com/legal/licenses/unity-reference-only-license](https://unity.com/legal/licenses/unity-reference-only-license).
 
