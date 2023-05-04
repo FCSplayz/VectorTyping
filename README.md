@@ -19,6 +19,7 @@ For more information about Unity's Reference-Only License, please see their webs
 ## Unity Project Installation
 
 To add this library to your Unity project, create a new folder in the `Assets` folder of your project and name it `VectorTyping`, then put the files found in this repository in the newly created `VectorTyping` folder.
+After following these steps, you should be able to use the `VectorTyping` namespace and its Vector types for your Unity project.
 
 
 ## Contribution Policy
