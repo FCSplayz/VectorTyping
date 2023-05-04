@@ -1,10 +1,17 @@
 # VectorTyping
-An external expansion project upon the `UnityEngine` namespace's Vector types.
+The VectorTyping code library contains Vector types based on those of the `UnityEngine` namespace, but with additional functionalities.
+
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
+
+This code library was developed for use with the Unity engine and makes use of the UnityEngine namespace, which is subject to the Unity Companion License. By using this software, you agree to be bound by the terms of the Unity Companion License, which can be found at: [https://unity.com/legal/licenses/unity-companion-license](https://unity.com/legal/licenses/unity-companion-license)
 
 
 ## Use of Unity references
 
-The `VectorTyping` namespace uses references to the `UnityEngine` namespace for calculations and conversions between data types, in compliance with Unity's Reference-Only License. No modifications have been made to the engine's source code.
+The `VectorTyping` namespace uses references to namespaces provided by Unity, such as the `UnityEngine` namespace, for calculations and conversions between data types, in compliance with Unity's Reference-Only License. No modifications have been made to the engine's source code.
 
 For more information about Unity's Reference-Only License, please see their website: [https://unity.com/legal/licenses/unity-reference-only-license](https://unity.com/legal/licenses/unity-reference-only-license).
 
@@ -21,6 +28,6 @@ We welcome contributions to this project from the community! If you're intereste
 
 - Please make sure your code is well-documented and adheres to the coding standards of the project.
 
-- By submitting a pull request, you agree to license your code under the [Unity Companion License](https://unity.com/legal/licenses/unity-companion-license).
+- By submitting a pull request, you agree to license your contribution under the terms of the MIT License and the [Unity Companion License](https://unity.com/legal/licenses/unity-companion-license).
 
 Thank you for contributing to this project!
