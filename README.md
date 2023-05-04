@@ -16,6 +16,11 @@ The `VectorTyping` namespace uses references to namespaces provided by Unity, su
 For more information about Unity's Reference-Only License, please see their website: [https://unity.com/legal/licenses/unity-reference-only-license](https://unity.com/legal/licenses/unity-reference-only-license).
 
 
+## Unity Project Installation
+
+To add this library to your Unity project, create a new folder in the `Assets` folder of your project and name it `VectorTyping`, then put the files found in this repository in the newly created `VectorTyping` folder.
+
+
 ## Contribution Policy
 
 We welcome contributions to this project from the community! If you're interested in contributing, please follow the guidelines below:
