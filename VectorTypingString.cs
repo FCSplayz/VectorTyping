@@ -1,3 +1,6 @@
+// This code is licensed under the MIT License.
+// Refer to the accompanying LICENSE.md file for more information.
+
 #region Assembly VectorTyping, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 #endregion
 
