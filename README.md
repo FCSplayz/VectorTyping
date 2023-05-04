@@ -1,7 +1,7 @@
 # VectorTyping
 An external expansion project upon the UnityEngine namespace's Vector types.
 
-## Use of Unity's Code
+## Use of Unity references
 
 This library uses references to the `UnityEngine` namespace for calculations and conversions between types, in compliance with Unity's Reference-Only License. No modifications have been made to the engine's source code.
 
