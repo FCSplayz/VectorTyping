@@ -42,7 +42,7 @@ We welcome contributions to this project from the community! If you're intereste
 
 - Once you've created an issue and discussed your proposed solution with the community, you're welcome to fork the repository and start working on your changes.
 
-- When you're ready to submit your changes, please open a pull request against the main branch of this repository.
+- When you're ready to submit your changes, please create a new branch for the commit and start a pull request against the <samp>main</samp> branch of this repository.
 
 - Please make sure your code is adequately documented and adheres to the coding standards of the project.
 
