@@ -1,5 +1,7 @@
-# VectorTyping
+# <ins>VectorTyping library</ins>
 The VectorTyping code library contains custom-built Vector types based on those of the `UnityEngine` namespace, but with additional functionalities.
+
+<hr>
 
 
 ## License
