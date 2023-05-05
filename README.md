@@ -24,10 +24,11 @@ To add this C# code library to your Unity project, follow the steps below:
 
 <blockquote>
   <b><i>1</i>.</b> Download the ZIP file containing this library's files.<br/>
-  <b><i>2</i>.</b> Create a new folder in the `Assets` folder of your project and name it `VectorTyping`.<br/>
-  <b><i>2b1</i>.</b> Optionally, you may also create a new folder in the `Assets` folder of your project to put custom assemblies into with a name to reflect that.<br/>
-  <b><i>2b2</i>.</b> If so, put the newly created `VectorTyping` folder into that custom assemblies folder instead.<br/>
-  <b><i>3</i>.</b> Then extract the ZIP file's contents to the directory of the newly created `VectorTyping` folder.<br/>
+  <b><i>2</i>.</b> Create a new folder in the <code>Assets</code> folder of your project and name it `VectorTyping`.<br/>
+  <b><i>2b1</i>.</b> Optionally, you may also create a new folder in the <code>Assets</code> folder of your project to put custom assemblies into with a name to reflect that.<br/>
+  <b><i>2b2</i>.</b> If so, put the newly created <code>VectorTyping</code> folder into that custom assemblies folder instead.<br/>
+  <b><i>3</i>.</b> Then extract the ZIP file's contents to the directory of the newly created <code>VectorTyping</code> folder.<br/>
+  <b><i>4</i>.</b> Lastly, open your project in Unity to reload the project's Script Assemblies.<br/>
 </blockquote>
 
 After following these steps, you should be able to use the `VectorTyping` namespace and its Vector types for your Unity project.
