@@ -21,7 +21,7 @@ For more information about Unity's Reference-Only License, please see their webs
 ## Unity Project Installation
 
 To add this C# code library to your Unity project, follow the steps below:
-- Download the ZIP file containing the library files
+- Download the ZIP file containing the library files.
 - Create a new folder in the `Assets` folder of your project and name it `VectorTyping`.
 - Then extract the ZIP file's contents to the directory of the newly created `VectorTyping` folder.
 
