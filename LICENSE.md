@@ -1,5 +1,4 @@
-<b>
-MIT License
+<b> MIT License
 
 Copyright (c) 2023 FCSplayz
 
@@ -10,9 +9,10 @@ in the Software with the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-This software includes code from the Unity engine, which is subject to the
-Unity Companion License. By using this software, you agree to be bound by
-the terms of the Unity Companion License, which can be found at:
+This code library was developed for use with the Unity engine and makes use of
+the `UnityEngine` namespace, and is therefore subject to the Unity Companion License.
+By using this software, you agree to be bound by the terms of the
+Unity Companion License, which can be found at:
 [https://unity.com/legal/licenses/unity-companion-license](https://unity.com/legal/licenses/unity-companion-license)
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -21,5 +21,4 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-</b>
+THE SOFTWARE. </b>
