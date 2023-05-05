@@ -3,7 +3,7 @@
 Copyright (c) 2023 FCSplayz
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this library and associated documentation files (the "Software"), to deal
+of this library and associated documentation files (the "Library"), to deal
 in the Library with the following conditions:
 
 The above copyright notice and this permission notice shall be included in
