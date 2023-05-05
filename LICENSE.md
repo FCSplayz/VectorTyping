@@ -9,8 +9,8 @@ in the Library with the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Library.
 
-This code library was developed for use with the Unity engine and makes use of
-the UnityEngine namespace, and is therefore subject to the Unity Companion License.
+This code library was developed for use with the Unity engine and makes use
+of its namespaces, and is therefore subject to the Unity Companion License.
 By using this library, you agree to be bound by the terms of the
 Unity Companion License, which can be found at:
 [https://unity.com/legal/licenses/unity-companion-license](https://unity.com/legal/licenses/unity-companion-license)
