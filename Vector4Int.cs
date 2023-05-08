@@ -281,7 +281,7 @@ namespace VectorTyping
 			this.m_W = w;
 		}
 		/// <summary>
-		///     Constructs a new Vector4Int from a Vector2Int with the given z component and sets w to 0.
+		///     Constructs a new Vector4Int from a Vector2Int with the given z component and sets w to zero.
 		/// </summary>
 		public Vector4Int(Vector2Int v, int z)
 		{
@@ -291,7 +291,7 @@ namespace VectorTyping
 			this.m_W = 0;
 		}
 		/// <summary>
-		///     Constructs a new Vector4Int from a Vector2Int and sets z, w to 0.
+		///     Constructs a new Vector4Int from a Vector2Int and sets z, w to zero.
 		/// </summary>
 		public Vector4Int(Vector2Int v)
 		{
