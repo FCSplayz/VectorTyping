@@ -261,6 +261,16 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Constructs a new Vector4Int from two Vector2Ints.
+		/// </summary>
+		public Vector4Int(Vector2Int a, Vector2Int b)
+		{
+			this.m_X = a.x;
+			this.m_Y = a.y;
+			this.m_Z = b.x;
+			this.m_W = b.y;
+		}
+		/// <summary>
 		///     Constructs a new Vector4Int from a Vector2Int with the given z, w components.
 		/// </summary>
 		public Vector4Int(Vector2Int v, int z, int w)
