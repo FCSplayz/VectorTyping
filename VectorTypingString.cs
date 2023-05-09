@@ -2,7 +2,7 @@
 //
 //   | MIT License
 //   | 
-//   | Copyright (c) 2023 FCSplayz
+//   | Copyright (c) 2023-2024 FCSplayz
 //   | 
 //   | Permission is hereby granted, free of charge, to any person obtaining a copy
 //   | of this library and associated documentation files (the "Library"), to deal
