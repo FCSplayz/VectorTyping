@@ -8,7 +8,7 @@ The VectorTyping code library contains custom-built Vector types based on those 
 
 This project is licensed under the VectorTyping library's MIT License. See the included [LICENSE.md](LICENSE.md) file for details.
 
-This C# code library was developed for licensed use with the Unity Engine and makes use of its namespaces, which are subject to the Unity Companion License. By using this library, you agree to be bound by the terms of the Unity Companion License, which can be found at: [https://unity.com/legal/licenses/unity-companion-license](https://unity.com/legal/licenses/unity-companion-license)
+This C# code library was developed for licensed use with the Unity Engine and makes use of its namespaces, which are subject to the Unity Companion License (the "UCL"). By using this library, you also agree to be bound by the terms of the UCL, which can be found at: [https://unity.com/legal/licenses/unity-companion-license](https://unity.com/legal/licenses/unity-companion-license)
 
 
 ## Use of Unity references
