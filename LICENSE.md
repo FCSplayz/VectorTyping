@@ -26,4 +26,5 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM,
 OUT OF, OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS IN
 THE LIBRARY.
 
-This License may be modified or updated; upon any such modification or update, you will comply with the terms of the updated License for any use of the Library under the updated License. </b>
+This License may be modified or updated; upon any such modification or update, you will comply
+with the terms of the updated License for any use of the Library under the updated License. </b>
