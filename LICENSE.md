@@ -13,9 +13,9 @@ The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Library.
 
 The Library was developed for licensed use with the Unity Engine and makes use
-of its namespaces, and is therefore subject to the Unity Companion License.
+of its namespaces, and is therefore subject to the Unity Companion License (the "UCL"). <br/>
 By using the Library, you also agree to be bound by the terms of the
-Unity Companion License, which can be found at:
+UCL, which can be found at:
 [https://unity.com/legal/licenses/unity-companion-license](https://unity.com/legal/licenses/unity-companion-license)
 
 THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
