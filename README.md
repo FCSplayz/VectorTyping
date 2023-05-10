@@ -51,4 +51,6 @@ We welcome contributions to this project from the community! If you're intereste
 
 - By submitting a pull request, you agree to license your contribution under the terms of the MIT License and the [Unity Companion License](https://unity.com/legal/licenses/unity-companion-license).
 
+- Do note that any contributions from users with inappropriate usernames or code, such as, but not limited to, item names of variables, classes, etcetera, and summaries, will be declined no matter what to keep the project clean.
+
 <ins>Thank you for contributing to this project!</ins>
