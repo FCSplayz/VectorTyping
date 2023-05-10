@@ -20,6 +20,8 @@ For more information about Unity's Reference-Only License, please see their webs
 
 ## Unity Project Installation
 
+Before using this library in any way,  first read the library's terms and conditions in the [VectorTyping Library License](LICENSE.md).
+
 To add this C# code library to your Unity project, follow the steps below:
 
 <blockquote>
