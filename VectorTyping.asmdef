@@ -1,4 +1,4 @@
-// This code is licensed under the MIT License.
+// This code is licensed under the VectorTyping Library License.
 //
 //   | MIT License
 //   | 
