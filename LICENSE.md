@@ -1,4 +1,5 @@
 <b> MIT License
+<br/><sup>Version 1.0.0 – Last Updated: <i>May 10th, 2023</i></sup>
 
 Copyright (c) 2023-2024 FCSplayz
 
