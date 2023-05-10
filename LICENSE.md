@@ -10,7 +10,7 @@ of this library and associated documentation files (the "Library"), to deal
 in the Library with the following conditions:
 
 The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Library.
+all copies and/or substantial portions of the Library.
 
 The Library was developed for licensed use with the Unity Engine and makes use
 of its namespaces, and is therefore subject to the Unity Companion License (the "UCL"). <br/>
