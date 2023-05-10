@@ -1,7 +1,7 @@
 <b> MIT License
 <br/><ins><sup>Version 1.0.0 – Last Updated: <i>May 10th, 2023</i></sup>&nbsp;</ins>
 
-Copyright (c) 2023-2024 FCSplayz
+Copyright (c) 2023-2024 FCSplayz and Unity Technologies
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this library and associated documentation files (the "Library"), to deal
