@@ -1,7 +1,7 @@
 <b><h2> VectorTyping Library License (the "VTLL") </h2>
 
 MIT License
-<br/><ins><sup>Version 1.0.0 – Last Updated: <i>May 10th, 2023</i></sup>&nbsp;</ins>
+<br/><ins><sup>Version 1.0.0 – Last Updated: <i>May 11th, 2023</i></sup>&nbsp;</ins>
 
 Copyright (c) 2023-2024 FCSplayz and Unity Technologies
   
