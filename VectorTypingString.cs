@@ -19,8 +19,14 @@ using System.Globalization;
 
 namespace VectorTyping
 {
+	/// <summary>
+	///     Internal sealed class for VectorTyping strings.
+	/// </summary>
 	internal sealed class VectorTypingString
 	{
+		/// <summary>
+		///     Static method for formatting VectorTyping strings using the format of 'fmt' and the arguments in the 'args' array.
+		/// </summary>
 		public static string Format(string fmt, params object[] args)
 		{
 			return string.Format(CultureInfo.InvariantCulture.NumberFormat, fmt, args);
