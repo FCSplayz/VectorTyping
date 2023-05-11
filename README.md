@@ -64,7 +64,7 @@ We welcome contributions to this project from the community! If you're intereste
   [VTLL](LICENSE.md) and the [UCL](https://unity.com/legal/licenses/unity-companion-license).
 
 - By contributing to the library, including, but not limited to, providing code changes, bug fixes,
-  or other modifications, you agree that your contributions fall under the same copyrights and open-source
+  or any other modifications, you agree that your contributions fall under the same copyrights and open-source
   nature of the library. You grant the maintainers and other contributors the right to use, modify, and
   distribute your contributed code under the terms of the [VTLL](LICENSE.md).
 
