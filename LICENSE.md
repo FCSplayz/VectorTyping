@@ -1,4 +1,4 @@
-<b><h2> VectorTyping Library License </h2>
+<b><h2> VectorTyping Library License ("License") </h2>
 
 MIT License
 <br/><ins><sup>Version 1.0.0 – Last Updated: <i>May 10th, 2023</i></sup>&nbsp;</ins>
