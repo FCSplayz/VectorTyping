@@ -1,3 +1,4 @@
+#region #info || License Information || #endinfo
 // This code is licensed under the VectorTyping Library License.
 ///
 ///  | MIT License
@@ -9,6 +10,7 @@
 ///  | in the Library or any derivative works thereof with the following conditions
 ///
 // Refer to the accompanying 'LICENSE.md' file for more information.
+#endregion
 
 #region Assembly VectorTyping, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 #endregion
