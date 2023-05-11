@@ -47,6 +47,6 @@ After following these steps, you should be able to properly use the `VectorTypin
 
 ## Contribution Policy
 
-Whenever contributing to this library, please refer to the guidelines of the VectorTyping Contribution Policy (the "VTCP") which is found within the included [CONTRIB‑POLICY.md](CONTRIB-POLICY.md) file.
+Whenever contributing to this library, please refer to the guidelines of the VectorTyping Contribution Policy (the "VTCP") which are found within the included [CONTRIB‑POLICY.md](CONTRIB-POLICY.md) file.
 
 <ins>Thank you for following the <a href="CONTRIB-POLICY.md">VTCP</a> guidelines and contributing to this project!</ins>
