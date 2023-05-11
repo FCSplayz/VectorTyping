@@ -25,7 +25,7 @@ namespace VectorTyping
 	internal sealed class VectorTypingString
 	{
 		/// <summary>
-		///     Static method for formatting VectorTyping strings using the format of 'fmt' and the arguments in the 'args' array.
+		///     Static method for formatting VectorTyping strings using the format of 'fmt' and the arguments of 'args'.
 		/// </summary>
 		public static string Format(string fmt, params object[] args)
 		{
