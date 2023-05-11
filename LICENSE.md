@@ -13,7 +13,7 @@ The above copyright notice and this permission notice shall be included in
 all copies and/or substantial portions of the Library or any derivative works thereof.
 
 In the VTLL, “derivative works” means derivatives of the Library itself--works derived
-only from the Library by you under this License (for example, modifying the code of the
+only from the Library by you under the VTLL (for example, modifying the code of the
 Library itself to improve its efficacy); “derivative works” of the Library does not
 include any content, such as any games or applications, that you create with the Library.
 You keep all right, title, and interest in your own content.
