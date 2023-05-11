@@ -1,26 +1,30 @@
 # <ins>VectorTyping library</ins>
-The VectorTyping code library contains custom-built Vector types based on those of the `UnityEngine` namespace, but with additional functionalities.
+The VectorTyping code library contains custom-built Vector types based on those of the `UnityEngine` namespace, but with additional functionalities and is cross-compatible with those in the `UnityEngine` namespace.
 
 <hr>
 
 
 ## License
 
-This project is licensed under the VectorTyping library's MIT License. See the included [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License of the VectorTyping Library License (the "VTLL"). See the included [LICENSE.md](LICENSE.md) file for details.
 
-This C# code library was developed for licensed use with the Unity Engine and makes use of its namespaces, which are subject to the Unity Companion License (the "UCL"). By using this library, you also agree to be bound by the terms of the UCL, which can be found at: [https://unity.com/legal/licenses/unity-companion-license](https://unity.com/legal/licenses/unity-companion-license)
+This C# code library was developed for licensed use with the Unity Engine and makes use of its namespaces, which are subject to the Unity Companion License (the "UCL").
+By using this library, you also agree to be bound by the terms of the UCL, which can be found at: [https://unity.com/legal/licenses/unity-companion-license](https://unity.com/legal/licenses/unity-companion-license).
 
 
 ## Use of Unity references
 
-The `VectorTyping` namespace uses references to namespaces provided by Unity, such as the `UnityEngine` namespace, for purposes including, but not limited to, calculations and conversions between data types, in compliance with Unity's Reference-Only License. No modifications have been made to the engine's source code.
+The `VectorTyping` namespace uses references to namespaces provided by the Unity Engine, such as the `UnityEngine` namespace, for purposes
+including, but not limited to, calculations and conversions between custom VectorTyping and built-in Unity data types, in compliance with
+the Unity Reference-Only License (the "UROL"). <br/>
+No modifications have been made to the engine's source code.
 
-For more information about Unity's Reference-Only License, please see their website at: [https://unity.com/legal/licenses/unity-reference-only-license](https://unity.com/legal/licenses/unity-reference-only-license).
+For more information about the UROL, please see their website at: [https://unity.com/legal/licenses/unity-reference-only-license](https://unity.com/legal/licenses/unity-reference-only-license).
 
 
 ## Unity Project Installation
 
-Before using this library in any way,  first read the library's terms and conditions in the [VectorTyping Library License](LICENSE.md).
+Before using this library in any way, first read the library's terms and conditions in the [VTLL](LICENSE.md).
 
 To add this C# code library to your Unity project, follow the steps below:
 
@@ -41,9 +45,12 @@ After following these steps, you should be able to use the `VectorTyping` namesp
 
 ## Contribution Policy
 
+Before contributing to this library in any way, first read the library's terms and conditions in the [VTLL](LICENSE.md).
+
 We welcome contributions to this project from the community! If you're interested in contributing, please follow the guidelines below:
 
-- Before you start working on a feature or bug fix, please create an issue describing the problem or feature you intend to tackle. This way, we can discuss the best approach before you start coding.
+- Before you start working on a feature or bug fix, please create an issue describing the problem or
+  feature you intend to tackle. This way, we can discuss the best approach before you start coding.
 
 - Once you've created an issue and discussed your proposed solution with the community, you're welcome to fork the repository and start working on your changes.
 
@@ -51,8 +58,10 @@ We welcome contributions to this project from the community! If you're intereste
 
 - Please make sure your code is adequately documented and adheres to the coding standards of the project.
 
-- By submitting a pull request, you agree to license your contribution under the terms and conditions of both the [VectorTyping Library License](LICENSE.md) and the [Unity Companion License](https://unity.com/legal/licenses/unity-companion-license).
+- By submitting a pull request, you agree to license your contribution under the terms and conditions of both the
+  [VTLL](LICENSE.md) and the [UCL](https://unity.com/legal/licenses/unity-companion-license).
 
-- Do note that any contributions from users with inappropriate usernames or code, such as, but not limited to, item names of variables, classes, etcetera, and summaries, will be declined no matter what to keep the project clean.
+- Do note that any contributions from users with inappropriate usernames or code, such as, but not limited to,
+  item names of variables, classes, etcetera, and summaries, will be declined no matter what to keep the project clean.
 
 <ins>Thank you for contributing to this project!</ins>
