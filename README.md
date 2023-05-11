@@ -49,4 +49,4 @@ After following these steps, you should be able to use the `VectorTyping` namesp
 
 Whenever contributing to this library, please refer to the guidelines of the VectorTyping Contribution Policy (the "VTCP") found within the [CONTRIB‑POLICY.md](CONTRIB-POLICY.md) file that is included within this library.
 
-<ins>Thank you for following the VTCP guidelines and contributing to this project!</ins>
+<ins>Thank you for following the <a href="CONTRIB-POLICY.md">VTCP</a> guidelines and contributing to this project!</ins>
