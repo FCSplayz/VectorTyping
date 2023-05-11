@@ -63,6 +63,11 @@ We welcome contributions to this project from the community! If you're intereste
 - By submitting a pull request, you agree to license your contribution under the terms and conditions of both the
   [VTLL](LICENSE.md) and the [UCL](https://unity.com/legal/licenses/unity-companion-license).
 
+- By contributing to the VectorTyping Library, including, but not limited to, providing code changes, bug fixes,
+  or other modifications, you agree that your contributions fall under the same copyrights and open-source nature
+  of the library. You grant the maintainers and other contributors the right to use, modify, and distribute
+  your contributed code under the terms of the VectorTyping Library License.
+
 - Do note that any contributions from users with inappropriate usernames or code, such as, but not limited to,
   item names of variables, classes, etcetera, and summaries, will be declined, no matter what, to keep the project clean.
 
