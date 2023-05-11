@@ -5,7 +5,8 @@ Before first contributing to the VectorTyping Library (the "Library) in any way,
 We welcome contributions to this project from the community! <br/>
 If you're interested in contributing, please follow the guidelines below after having first read the [VTLL](LICENSE.md):
 
-##
+<hr>
+
 - Before you start working on a feature or bug fix, please create an issue describing the problem or
   feature you intend to tackle. This way, we can discuss the best approach before you start coding.
 
@@ -26,7 +27,8 @@ If you're interested in contributing, please follow the guidelines below after h
 
 - These guidelines may be modified or updated; upon any such modification or update, you will comply with the guidelines
   of the updated VTCP when contributing to the Library under the updated VTCP guidelines.
-##
+
+<hr>
 <br/>
 
 If your contribution follows all the aforementioned guidelines in the VTCP, you may feel free to submit your changes. <br/>
