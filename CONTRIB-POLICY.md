@@ -28,8 +28,7 @@ If you're interested in contributing, please follow the guidelines below after h
 - These guidelines may be modified or updated; upon any such modification or update, you will comply with the guidelines
   of the updated VTCP when contributing to the Library under the updated VTCP guidelines.
 
-<hr>
-<br/>
+<hr><br/>
 
 If your contribution follows all the aforementioned guidelines in the VTCP, you may feel free to submit your changes. <br/>
 When you're ready to send the submission, please create a new branch for the commit and start a pull
