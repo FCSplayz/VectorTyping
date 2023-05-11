@@ -8,7 +8,7 @@
 ///  | of this library and associated documentation files (the "Library"), to deal
 ///  | in the Library or any derivative works thereof with the following conditions
 //
-// Refer to the accompanying LICENSE.md file for more information.
+// Refer to the accompanying 'LICENSE.md' file for more information.
 
 #region Assembly VectorTyping, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 #endregion
