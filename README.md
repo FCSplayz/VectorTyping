@@ -42,11 +42,11 @@ To add this C# code library to your Unity project, follow the steps below:
   <b><i>5</i>.</b> Lastly, make sure whatever IDE you're using recognizes it as within its own separate assembly and not with anything unrelated to the library in any way, as otherwise you risk the IDE mixing up your assemblies which could then lead to situations where you're not meant to access some code but can, all due to those assembly mix-ups.<br/>
 </blockquote>
 
-After following these steps, you should be able to properly use the `VectorTyping` namespace and its Vector types for your Unity project as intended.
+After following these steps, you should be able to properly use the `VectorTyping` namespace and its Vector types for your Unity project as is intended.
 
 
 ## Contribution Policy
 
-Whenever contributing to this library, please refer to the guidelines of the VectorTyping Contribution Policy (the "VTCP") found within the [CONTRIB‑POLICY.md](CONTRIB-POLICY.md) file that is included within this library.
+Whenever contributing to this library, please refer to the guidelines of the VectorTyping Contribution Policy (the "VTCP") which can be found within the included [CONTRIB‑POLICY.md](CONTRIB-POLICY.md) file.
 
 <ins>Thank you for following the <a href="CONTRIB-POLICY.md">VTCP</a> guidelines and contributing to this project!</ins>
