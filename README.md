@@ -42,7 +42,7 @@ To add this C# code library to your Unity project, follow the steps below:
   <b><i>5</i>.</b> Lastly, make sure whatever IDE you're using recognizes it as within its own separate assembly and not with anything unrelated to the library in any way, as otherwise you risk the IDE mixing up your assemblies which could then lead to situations where you're not meant to access some code but can, all due to those assembly mix-ups.<br/>
 </blockquote>
 
-After following these steps, you should be able to use the `VectorTyping` namespace and its Vector types for your Unity project.
+After following these steps, you should be able to properly use the `VectorTyping` namespace and its Vector types for your Unity project as intended.
 
 
 ## Contribution Policy
