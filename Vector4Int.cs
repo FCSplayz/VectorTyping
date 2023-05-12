@@ -1018,7 +1018,7 @@ namespace VectorTyping
 
 		/// <summary>
 		///     Returns the logarithm of the given vector in the specified base.
-		///     <br>If using the bases of e, pi, phi, or 10, it is recommended to use their specialized log methods instead.</br>
+		///     <br>If using the bases of e, pi, phi, 10, or 2, it is recommended to use their specialized log methods instead.</br>
 		/// </summary>
 		public static Vector4Int Log(Vector4Int v, int baseValue)
 		{
@@ -1031,7 +1031,7 @@ namespace VectorTyping
 		}
 		/// <summary>
 		///     Sets every component in this vector to its logarithm in the specified base.
-		///     <br>If using the bases of e, pi, phi, or 10, it is recommended to use their specialized log methods instead.</br>
+		///     <br>If using the bases of e, pi, phi, 10, or 2, it is recommended to use their specialized log methods instead.</br>
 		/// </summary>
 		public Vector4Int Log(int baseValue)
 		{
@@ -1141,16 +1141,43 @@ namespace VectorTyping
 				(int)Math.Log10(v.w)
 			);
 		}
-
 		/// <summary>
 		///     Sets every component in this vector to its 10-base logarithm.
 		/// </summary>
 		public Vector4Int Log10()
 		{
-			int ltx = (int)Math.Log10(x);
-			int lty = (int)Math.Log10(y);
-			int ltz = (int)Math.Log10(z);
-			int ltw = (int)Math.Log10(w);
+			int ltnx = (int)Math.Log10(x);
+			int ltny = (int)Math.Log10(y);
+			int ltnz = (int)Math.Log10(z);
+			int ltnw = (int)Math.Log10(w);
+			x = ltnx;
+			y = ltny;
+			z = ltnz;
+			w = ltnw;
+			return new Vector4Int(ltnx, ltny, ltnz, ltnw);
+		}
+
+		/// <summary>
+		///     Returns the 2-base logarithm of the given vector.
+		/// </summary>
+		public static Vector4Int Log2(Vector4Int v)
+		{
+			return new Vector4Int(
+				(int)Math.Log(v.x, 2),
+				(int)Math.Log(v.y, 2),
+				(int)Math.Log(v.z, 2),
+				(int)Math.Log(v.w, 2)
+			);
+		}
+		/// <summary>
+		///     Sets every component in this vector to its 10-base logarithm.
+		/// </summary>
+		public Vector4Int Log2()
+		{
+			int ltx = (int)Math.Log(x, 2);
+			int lty = (int)Math.Log(y, 2);
+			int ltz = (int)Math.Log(z, 2);
+			int ltw = (int)Math.Log(w, 2);
 			x = ltx;
 			y = lty;
 			z = ltz;
@@ -1294,6 +1321,19 @@ namespace VectorTyping
 				a.x * b.y + a.y * b.x + a.z * b.w + a.w * b.z,
 				a.x * b.z + a.y * b.w + a.z * b.x + a.w * b.y,
 				a.x * b.w + a.y * b.z + a.z * b.y + a.w * b.x
+			);
+		}
+
+		/// <summary>
+		///    Returns the Difference Product of vectors a and b.
+		/// </summary>
+		public static Vector4Int Difference(Vector4Int a, Vector4Int b)
+		{
+			return new Vector4Int(
+				a.x * b.x - a.y * b.y - a.z * b.z - a.w * b.w,
+				a.x * b.y - a.y * b.x - a.z * b.w - a.w * b.z,
+				a.x * b.z - a.y * b.w - a.z * b.x - a.w * b.y,
+				a.x * b.w - a.y * b.z - a.z * b.y - a.w * b.x
 			);
 		}
 
