@@ -642,7 +642,7 @@ namespace VectorTyping
 			return new Vector4Int(v.x == 0 ? 1 : 0, v.y == 0 ? 1 : 0, v.z == 0 ? 1 : 0, v.w == 0 ? 1 : 0);
 		}
 
-		// Additional operators
+		// Additional methods
 		/// <summary>
 		///     Sets the x, y, z and w components of this vector.
 		/// </summary>
@@ -2032,7 +2032,7 @@ namespace VectorTyping
 			return (a * Math.Cos(theta)) + (relativeVec * Math.Sin(theta));
 		}
 
-		// Interface operators
+		// Interface methods
 		/// <summary>
 		///     Returns a formatted string for this vector.
 		/// </summary>
