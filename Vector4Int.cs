@@ -1299,6 +1299,14 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Returns the Antidot Product of vectors a and b.
+		/// </summary>
+		public static int Antidot(Vector4Int a, Vector4Int b)
+		{
+			return a.x * b.x - a.y * b.y - a.z * b.z - a.w * b.w;
+		}
+
+		/// <summary>
 		///    Returns the Cross Product of vectors a and b.
 		/// </summary>
 		public static Vector4Int Cross(Vector4Int a, Vector4Int b)
@@ -1310,6 +1318,20 @@ namespace VectorTyping
 				a.x * b.y - a.y * b.x
 			);
 		}
+
+		/// <summary>
+		///    Returns the Anticross Product of vectors a and b.
+		/// </summary>
+		public static Vector4Int Anticross(Vector4Int a, Vector4Int b)
+		{
+			return new Vector4Int(
+				a.y * b.z + a.z * b.y,
+				a.z * b.w + a.w * b.z,
+				a.w * b.x + a.x * b.w,
+				a.x * b.y + a.y * b.x
+			);
+		}
+
 
 		/// <summary>
 		///    Returns the Sum Product of vectors a and b.
@@ -1334,6 +1356,31 @@ namespace VectorTyping
 				a.x * b.y - a.y * b.x - a.z * b.w - a.w * b.z,
 				a.x * b.z - a.y * b.w - a.z * b.x - a.w * b.y,
 				a.x * b.w - a.y * b.z - a.z * b.y - a.w * b.x
+			);
+		}
+
+		/// <summary>
+		///    Returns the Product Product of vectors a and b.
+		/// </summary>
+		public static Vector4Int Product(Vector4Int a, Vector4Int b)
+		{
+			return new Vector4Int(
+				(a.x * b.x) * (a.y * b.y) * (a.z * b.z) * (a.w * b.w),
+				(a.x * b.y) * (a.y * b.x) * (a.z * b.w) * (a.w * b.z),
+				(a.x * b.z) * (a.y * b.w) * (a.z * b.x) * (a.w * b.y),
+				(a.x * b.w) * (a.y * b.z) * (a.z * b.y) * (a.w * b.x)
+			);
+		}
+		/// <summary>
+		///    Returns the Quotient Product of vectors a and b.
+		/// </summary>
+		public static Vector4Int Quotient(Vector4Int a, Vector4Int b)
+		{
+			return new Vector4Int(
+				(a.x * b.x) / (a.y * b.y) / (a.z * b.z) / (a.w * b.w),
+				(a.x * b.y) / (a.y * b.x) / (a.z * b.w) / (a.w * b.z),
+				(a.x * b.z) / (a.y * b.w) / (a.z * b.x) / (a.w * b.y),
+				(a.x * b.w) / (a.y * b.z) / (a.z * b.y) / (a.w * b.x)
 			);
 		}
 
@@ -1985,6 +2032,7 @@ namespace VectorTyping
 			return (a * Math.Cos(theta)) + (relativeVec * Math.Sin(theta));
 		}
 
+		// Interface operators
 		/// <summary>
 		///     Returns a formatted string for this vector.
 		/// </summary>
