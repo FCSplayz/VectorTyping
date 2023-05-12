@@ -26,6 +26,7 @@ namespace VectorTyping
 	/// </summary>
 	public struct Vector4Int : IEquatable<Vector4Int>, IFormattable
 	{
+		// Private properties
 		private int m_X;
 
 		private int m_Y;
@@ -56,6 +57,7 @@ namespace VectorTyping
 
 		private static readonly Vector4Int s_Inward = new Vector4Int(0, 0, 0, 1);
 
+		// Properties
 		/// <summary>
 		///    X component of the vector.
 		/// </summary>
