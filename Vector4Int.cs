@@ -1531,10 +1531,10 @@ namespace VectorTyping
 		{
 			return Math.Pow(Math.Sqrt(x * x + y * y + z * z + w * w), 3);
 		}
+
 		/// <summary>
 		///     Returns the magnitude raised to the given integer of 'power' of the given vector.
 		/// </summary>
-
 		public static double PowMagnitude(Vector4Int v, int power)
 		{
 			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), power);
@@ -1673,7 +1673,7 @@ namespace VectorTyping
 			int nz = v.z;
 			int nw = v.w;
 			double mag = Magnitude(v);
-			if (mag > 0f)
+			if (mag > 0.0)
 			{
 				double invMag = 1.0 / mag;
 				nx = Mathf.RoundToInt((float)(v.x * invMag));
@@ -1689,7 +1689,7 @@ namespace VectorTyping
 		public void Normalize()
 		{
 			double mag = Magnitude(this);
-			if (mag > 0f)
+			if (mag > 0.0)
 			{
 				double invMag = 1.0 / mag;
 				x = Mathf.RoundToInt((float)(x * invMag));
