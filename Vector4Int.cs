@@ -18,7 +18,6 @@
 using System;
 using System.Globalization;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace VectorTyping
 {
