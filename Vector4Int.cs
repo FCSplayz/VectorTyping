@@ -1612,7 +1612,7 @@ namespace VectorTyping
 		/// </summary>
 		public static float RadAngle(Vector4Int from, Vector4Int to)
 		{
-			float dotProduct = Dot(from.normalized, to.normalized);
+			float dotProduct = Dot(Normalize(from), Normalize(to));
 			return Mathf.Acos(Mathf.Clamp(dotProduct, -1f, 1f));
 		}
 		/// <summary>
@@ -1710,6 +1710,36 @@ namespace VectorTyping
 		public double NatMagnitude()
 		{
 			return Math.Pow(Math.Sqrt(x * x + y * y + z * z + w * w), Math.E);
+		}
+
+		/// <summary>
+		///     Returns the magnitude raised to the power of pi of the given vector.
+		/// </summary>
+		public static double PiMagnitude(Vector4Int v)
+		{
+			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), Math.PI);
+		}
+		/// <summary>
+		///     Returns the magnitude raised to the power of pi of this vector.
+		/// </summary>
+		public double PiMagnitude()
+		{
+			return Math.Pow(Math.Sqrt(x * x + y * y + z * z + w * w), Math.PI);
+		}
+
+		/// <summary>
+		///     Returns the magnitude raised to the power of phi of the given vector.
+		/// </summary>
+		public static double PhiMagnitude(Vector4Int v)
+		{
+			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), (1 + Math.Sqrt(5)) / 2);
+		}
+		/// <summary>
+		///     Returns the magnitude raised to the power of phi of this vector.
+		/// </summary>
+		public double PhiMagnitude()
+		{
+			return Math.Pow(Math.Sqrt(x * x + y * y + z * z + w * w), (1 + Math.Sqrt(5)) / 2);
 		}
 
 		/// <summary>
@@ -1816,6 +1846,36 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Returns the exponentiated magnitude raised to the power of pi of the given vector.
+		/// </summary>
+		public static double ExpPiMagnitude(Vector4Int v)
+		{
+			return (double)Math.Pow(PiMagnitude(v), PiMagnitude(v));
+		}
+		/// <summary>
+		///     Returns the exponentiated magnitude raised to the power of pi of this vector.
+		/// </summary>
+		public double ExpPiMagnitude()
+		{
+			return (double)Math.Pow(PiMagnitude(this), PiMagnitude(this));
+		}
+
+		/// <summary>
+		///     Returns the exponentiated magnitude raised to the power of phi of the given vector.
+		/// </summary>
+		public static double ExpPhiMagnitude(Vector4Int v)
+		{
+			return (double)Math.Pow(PhiMagnitude(v), PhiMagnitude(v));
+		}
+		/// <summary>
+		///     Returns the exponentiated magnitude raised to the power of phi of this vector.
+		/// </summary>
+		public double ExpPhiMagnitude()
+		{
+			return (double)Math.Pow(PhiMagnitude(this), PhiMagnitude(this));
+		}
+
+		/// <summary>
 		///     Returns the exponentiated magnitude raised to the given integer of 'power' of the given vector.
 		/// </summary>
 		public static double ExpPowMagnitude(Vector4Int v, int power)
@@ -1867,6 +1927,7 @@ namespace VectorTyping
 			int ny = v.y;
 			int nz = v.z;
 			int nw = v.w;
+
 			double mag = Magnitude(v);
 			if (mag > 0f)
 			{
@@ -1892,6 +1953,47 @@ namespace VectorTyping
 				z = Mathf.RoundToInt((float)(z * invMag));
 				w = Mathf.RoundToInt((float)(w * invMag));
 			}
+		}
+
+		/// <summary>
+		///     Orthogonalizes and normalizes a copy of each of the given normal and tangent vectors.
+		///     <br>Returns the respective ortho-normalized value based on the value of 'returnSwitch'.</br>
+		///     <para>Return paths of 'returnSwitch':
+		///     <br>- Returns the ortho-normalized vector of 'normal' if false</br>
+		///     <br>- Returns the ortho-normalized vector of 'tangent' if true</br></para>
+		/// </summary>
+		public static Vector4Int OrthoNormalize(Vector4Int normal, Vector4Int tangent, bool returnSwitch)
+		{
+			Vector4Int normalizedNormal = Normalize(normal);
+			Vector4Int projectedTangent = tangent - Dot(normalizedNormal, tangent) * normalizedNormal;
+			Vector4Int normalizedTangent = Normalize(projectedTangent);
+
+			return returnSwitch ? normalizedTangent : normalizedNormal;
+		}
+		/// <summary>
+		///     Orthogonalizes and normalizes a copy of each of the given normal, tangent and binormal vectors.
+		///     <br>Returns the respective ortho-normalized value based on the value of 'returnSwitch'.</br>
+		///     <para>Return paths of 'returnSwitch':
+		///     <br>- Returns the ortho-normalized vector of 'normal' if false</br>
+		///     <br>- Returns the ortho-normalized vector of 'tangent' if true</br>
+		///     <br>- Returns the ortho-normalized vector of 'binormal' if null</br></para>
+		/// </summary>
+		public static Vector4Int OrthoNormalize(Vector4Int normal, Vector4Int tangent, Vector4Int binormal, bool? returnSwitch)
+		{
+			Vector4Int normalizedNormal = Normalize(normal);
+			Vector4Int projectedTangent = tangent - Dot(normalizedNormal, tangent) * normalizedNormal;
+			Vector4Int normalizedTangent = Normalize(projectedTangent);
+
+			Vector4Int projectedBinormal = binormal - Dot(normalizedNormal, binormal) * normalizedNormal
+											  - Dot(normalizedTangent, binormal) * normalizedTangent;
+			Vector4Int normalizedBinormal = Normalize(projectedBinormal);
+
+			if (returnSwitch == true)
+				return normalizedTangent;
+			else if (returnSwitch == false)
+				return normalizedNormal;
+			else
+				return normalizedBinormal;
 		}
 
 		/// <summary>
@@ -2096,7 +2198,8 @@ namespace VectorTyping
 			int hashCode = y.GetHashCode();
 			int hashCode2 = z.GetHashCode();
 			int hashCode3 = w.GetHashCode();
-			return x.GetHashCode() ^ (hashCode << 2) ^ (hashCode >> 30) ^ (hashCode2 << 4) ^ (hashCode2 >> 28) ^ (hashCode3 << 6) ^ (hashCode3 >> 26);
+			return x.GetHashCode() ^ (hashCode << 2) ^ (hashCode >> 30) ^ (hashCode2 << 4)
+								 ^ (hashCode2 >> 28) ^ (hashCode3 << 6) ^ (hashCode3 >> 26);
 		}
 	}
 }
