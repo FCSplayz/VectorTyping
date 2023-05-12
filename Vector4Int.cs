@@ -34,7 +34,7 @@ namespace VectorTyping
 
 		private int m_W;
 
-		private static Vector4Int s_Origin;
+		private (int x, int y, int z, int w) m_Origin;
 
 		private static readonly Vector4Int s_Zero = new Vector4Int(0, 0, 0, 0);
 
@@ -154,7 +154,7 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns a copy of this vector's origin point (Read Only).
 		/// </summary>
-		public Vector4Int origin => s_Origin;
+		public Vector4Int origin => new Vector4Int(m_Origin.x, m_Origin.y, m_Origin.z, m_Origin.w);
 
 		/// <summary>
 		///     Returns a copy of this vector with a magnitude of 1 (Read Only).
@@ -172,9 +172,14 @@ namespace VectorTyping
 		public double sqrMagnitude => SqrMagnitude(this);
 
 		/// <summary>
-		///     Returns the cube magnitude of this vector (Read Only).
+		///     Returns the cubic magnitude of this vector (Read Only).
 		/// </summary>
-		public double cbMagnitude => CbMagnitude(this);
+		public double cbcMagnitude => CbcMagnitude(this);
+
+		/// <summary>
+		///     Returns the natural magnitude of this vector (Read Only).
+		/// </summary>
+		public double natMagnitude => NatMagnitude(this);
 
 		/// <summary>
 		///     Returns the exponentiated magnitude of this vector (Read Only).
@@ -187,9 +192,14 @@ namespace VectorTyping
 		public double expSqrMagnitude => ExpSqrMagnitude(this);
 
 		/// <summary>
-		///     Returns the exponentiated cube magnitude of this vector (Read Only).
+		///     Returns the exponentiated cubic magnitude of this vector (Read Only).
 		/// </summary>
-		public double expCbMagnitude => ExpCbMagnitude(this);
+		public double expCbcMagnitude => ExpCbcMagnitude(this);
+
+		/// <summary>
+		///     Returns the exponentiated natural magnitude of this vector (Read Only).
+		/// </summary>
+		public double expNatMagnitude => ExpNatMagnitude(this);
 
 		/// <summary>
 		///     Shorthand for writing Vector4Int(0, 0, 0, 0).
@@ -247,44 +257,44 @@ namespace VectorTyping
 		/// </summary>
 		public Vector4Int(int x, int y, int z, int w)
 		{
-			this.m_X = x;
-			this.m_Y = y;
-			this.m_Z = z;
-			this.m_W = w;
-			s_Origin = this;
+			m_X = x;
+			m_Y = y;
+			m_Z = z;
+			m_W = w;
+			m_Origin = (m_X, m_Y, m_Z, m_W);
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int and sets w to zero.
 		/// </summary>
 		public Vector4Int(int x, int y, int z)
 		{
-			this.m_X = x;
-			this.m_Y = y;
-			this.m_Z = z;
-			this.m_W = 0;
-			s_Origin = this;
+			m_X = x;
+			m_Y = y;
+			m_Z = z;
+			m_W = 0;
+			m_Origin = (m_X, m_Y, m_Z, m_W);
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int and sets z, w to zero.
 		/// </summary>
 		public Vector4Int(int x, int y)
 		{
-			this.m_X = x;
-			this.m_Y = y;
-			this.m_Z = 0;
-			this.m_W = 0;
-			s_Origin = this;
+			m_X = x;
+			m_Y = y;
+			m_Z = 0;
+			m_W = 0;
+			m_Origin = (m_X, m_Y, m_Z, m_W);
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int and sets y, z and w to zero.
 		/// </summary>
 		public Vector4Int(int x)
 		{
-			this.m_X = x;
-			this.m_Y = 0;
-			this.m_Z = 0;
-			this.m_W = 0;
-			s_Origin = this;
+			m_X = x;
+			m_Y = 0;
+			m_Z = 0;
+			m_W = 0;
+			m_Origin = (m_X, m_Y, m_Z, m_W);
 		}
 
 		/// <summary>
@@ -292,22 +302,22 @@ namespace VectorTyping
 		/// </summary>
 		public Vector4Int(Vector3Int v, int w)
 		{
-			this.m_X = v.x;
-			this.m_Y = v.y;
-			this.m_Z = v.z;
-			this.m_W = w;
-			s_Origin = this;
+			m_X = v.x;
+			m_Y = v.y;
+			m_Z = v.z;
+			m_W = w;
+			m_Origin = (m_X, m_Y, m_Z, m_W);
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector3Int and sets w to zero.
 		/// </summary>
 		public Vector4Int(Vector3Int v)
 		{
-			this.m_X = v.x;
-			this.m_Y = v.y;
-			this.m_Z = v.z;
-			this.m_W = 0;
-			s_Origin = this;
+			m_X = v.x;
+			m_Y = v.y;
+			m_Z = v.z;
+			m_W = 0;
+			m_Origin = (m_X, m_Y, m_Z, m_W);
 		}
 
 		/// <summary>
@@ -315,44 +325,44 @@ namespace VectorTyping
 		/// </summary>
 		public Vector4Int(Vector2Int a, Vector2Int b)
 		{
-			this.m_X = a.x;
-			this.m_Y = a.y;
-			this.m_Z = b.x;
-			this.m_W = b.y;
-			s_Origin = this;
+			m_X = a.x;
+			m_Y = a.y;
+			m_Z = b.x;
+			m_W = b.y;
+			m_Origin = (m_X, m_Y, m_Z, m_W);
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector2Int with the given z, w components.
 		/// </summary>
 		public Vector4Int(Vector2Int v, int z, int w)
 		{
-			this.m_X = v.x;
-			this.m_Y = v.y;
-			this.m_Z = z;
-			this.m_W = w;
-			s_Origin = this;
+			m_X = v.x;
+			m_Y = v.y;
+			m_Z = z;
+			m_W = w;
+			m_Origin = (m_X, m_Y, m_Z, m_W);
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector2Int with the given z component and sets w to zero.
 		/// </summary>
 		public Vector4Int(Vector2Int v, int z)
 		{
-			this.m_X = v.x;
-			this.m_Y = v.y;
-			this.m_Z = z;
-			this.m_W = 0;
-			s_Origin = this;
+			m_X = v.x;
+			m_Y = v.y;
+			m_Z = z;
+			m_W = 0;
+			m_Origin = (m_X, m_Y, m_Z, m_W);
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector2Int and sets z, w to zero.
 		/// </summary>
 		public Vector4Int(Vector2Int v)
 		{
-			this.m_X = v.x;
-			this.m_Y = v.y;
-			this.m_Z = 0;
-			this.m_W = 0;
-			s_Origin = this;
+			m_X = v.x;
+			m_Y = v.y;
+			m_Z = 0;
+			m_W = 0;
+			m_Origin = (m_X, m_Y, m_Z, m_W);
 		}
 
 		// Conversion operators
@@ -660,8 +670,11 @@ namespace VectorTyping
 		/// </summary>
 		public Vector4Int Reset()
 		{
-			this = s_Origin;
-			return s_Origin;
+			m_X = m_Origin.x;
+			m_Y = m_Origin.y;
+			m_Z = m_Origin.z;
+			m_W = m_Origin.w;
+			return new Vector4Int(m_X, m_Y, m_Z, m_W);
 		}
 
 		/// <summary>
@@ -669,20 +682,17 @@ namespace VectorTyping
 		/// </summary>
 		public Vector4Int SetOriginHere()
 		{
-			s_Origin = this;
-			return s_Origin;
+			m_Origin = (m_X, m_Y, m_Z, m_W);
+			return new Vector4Int(m_Origin.x, m_Origin.y, m_Origin.z, m_Origin.w);
 		}
 
 		/// <summary>
-		///     Sets the origin point of this vector.
+		///     Sets the origin point of this vector to the specified position.
 		/// </summary>
 		public Vector4Int SetOriginAt(int x, int y, int z, int w)
 		{
-			s_Origin.m_X = x;
-			s_Origin.m_Y = y;
-			s_Origin.m_Z = z;
-			s_Origin.m_W = w;
-			return s_Origin;
+			m_Origin = (x, y, z, w);
+			return new Vector4Int(m_Origin.x, m_Origin.y, m_Origin.z, m_Origin.w);
 		}
 
 		/// <summary>
@@ -1000,6 +1010,7 @@ namespace VectorTyping
 
 		/// <summary>
 		///     Returns the logarithm of the given vector in the specified base.
+		///     <br>If using the bases of e, pi, phi, or 10, it is recommended to use their specialized log methods instead.</br>
 		/// </summary>
 		public static Vector4Int Log(Vector4Int v, int baseValue)
 		{
@@ -1012,6 +1023,7 @@ namespace VectorTyping
 		}
 		/// <summary>
 		///     Sets every component in this vector to its logarithm in the specified base.
+		///     <br>If using the bases of e, pi, phi, or 10, it is recommended to use their specialized log methods instead.</br>
 		/// </summary>
 		public Vector4Int Log(int baseValue)
 		{
@@ -1053,6 +1065,61 @@ namespace VectorTyping
 			w = lnw;
 			return new Vector4Int(lnx, lny, lnz, lnw);
 		}
+		
+		/// <summary>
+		///     Returns the pi-base logarithm of the given vector.
+		/// </summary>
+		public static Vector4Int LogPi(Vector4Int v)
+		{
+			return new Vector4Int(
+				(int)Math.Log(v.x, Math.PI),
+				(int)Math.Log(v.y, Math.PI),
+				(int)Math.Log(v.z, Math.PI),
+				(int)Math.Log(v.w, Math.PI)
+			);
+		}
+		/// <summary>
+		///     Sets every component in this vector to its pi-base logarithm.
+		/// </summary>
+		public Vector4Int LogPi()
+		{
+			int lpx = (int)Math.Log(x, Math.PI);
+			int lpy = (int)Math.Log(y, Math.PI);
+			int lpz = (int)Math.Log(z, Math.PI);
+			int lpw = (int)Math.Log(w, Math.PI);
+			x = lpx;
+			y = lpy;
+			z = lpz;
+			w = lpw;
+			return new Vector4Int(lpx, lpy, lpz, lpw);
+		}
+		/// <summary>
+		///     Returns the phi-base logarithm of the given vector.
+		/// </summary>
+		public static Vector4Int LogPhi(Vector4Int v)
+		{
+			return new Vector4Int(
+				(int)Math.Log(v.x, (1 + Math.Sqrt(5)) / 2),
+				(int)Math.Log(v.y, (1 + Math.Sqrt(5)) / 2),
+				(int)Math.Log(v.z, (1 + Math.Sqrt(5)) / 2),
+				(int)Math.Log(v.w, (1 + Math.Sqrt(5)) / 2)
+			);
+		}
+		/// <summary>
+		///     Sets every component in this vector to its phi-base logarithm.
+		/// </summary>
+		public Vector4Int LogPhi()
+		{
+			int lphx = (int)Math.Log(x, (1 + Math.Sqrt(5)) / 2);
+			int lphy = (int)Math.Log(y, (1 + Math.Sqrt(5)) / 2);
+			int lphz = (int)Math.Log(z, (1 + Math.Sqrt(5)) / 2);
+			int lphw = (int)Math.Log(w, (1 + Math.Sqrt(5)) / 2);
+			x = lphx;
+			y = lphy;
+			z = lphz;
+			w = lphw;
+			return new Vector4Int(lphx, lphy, lphz, lphw);
+		}
 
 		/// <summary>
 		///     Returns the 10-base logarithm of the given vector.
@@ -1066,6 +1133,7 @@ namespace VectorTyping
 				(int)Math.Log10(v.w)
 			);
 		}
+
 		/// <summary>
 		///     Sets every component in this vector to its 10-base logarithm.
 		/// </summary>
@@ -1518,18 +1586,33 @@ namespace VectorTyping
 		}
 
 		/// <summary>
-		///     Returns the cube magnitude of the given vector.
+		///     Returns the cubic magnitude of the given vector.
 		/// </summary>
-		public static double CbMagnitude(Vector4Int v)
+		public static double CbcMagnitude(Vector4Int v)
 		{
 			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), 3);
 		}
 		/// <summary>
-		///     Returns the cube magnitude of this vector.
+		///     Returns the cubic magnitude of this vector.
 		/// </summary>
-		public double CbMagnitude()
+		public double CbcMagnitude()
 		{
 			return Math.Pow(Math.Sqrt(x * x + y * y + z * z + w * w), 3);
+		}
+
+		/// <summary>
+		///     Returns the natural magnitude of the given vector.
+		/// </summary>
+		public static double NatMagnitude(Vector4Int v)
+		{
+			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), Math.E);
+		}
+		/// <summary>
+		///     Returns the natural magnitude of this vector.
+		/// </summary>
+		public double NatMagnitude()
+		{
+			return Math.Pow(Math.Sqrt(x * x + y * y + z * z + w * w), Math.E);
 		}
 
 		/// <summary>
@@ -1606,18 +1689,33 @@ namespace VectorTyping
 		}
 
 		/// <summary>
-		///     Returns the exponentiated cube magnitude of the given vector.
+		///     Returns the exponentiated cubic magnitude of the given vector.
 		/// </summary>
-		public static double ExpCbMagnitude(Vector4Int v)
+		public static double ExpCbcMagnitude(Vector4Int v)
 		{
-			return (double)Math.Pow(CbMagnitude(v), CbMagnitude(v));
+			return (double)Math.Pow(CbcMagnitude(v), CbcMagnitude(v));
 		}
 		/// <summary>
-		///     Returns the exponentiated cube magnitude of this vector.
+		///     Returns the exponentiated cubic magnitude of this vector.
 		/// </summary>
-		public double ExpCbMagnitude()
+		public double ExpCbcMagnitude()
 		{
-			return (double)Math.Pow(CbMagnitude(this), CbMagnitude(this));
+			return (double)Math.Pow(CbcMagnitude(this), CbcMagnitude(this));
+		}
+
+		/// <summary>
+		///     Returns the exponentiated natural magnitude of the given vector.
+		/// </summary>
+		public static double ExpNatMagnitude(Vector4Int v)
+		{
+			return (double)Math.Pow(NatMagnitude(v), NatMagnitude(v));
+		}
+		/// <summary>
+		///     Returns the exponentiated natural magnitude of this vector.
+		/// </summary>
+		public double ExpNatMagnitude()
+		{
+			return (double)Math.Pow(NatMagnitude(this), NatMagnitude(this));
 		}
 
 		/// <summary>
@@ -1673,7 +1771,7 @@ namespace VectorTyping
 			int nz = v.z;
 			int nw = v.w;
 			double mag = Magnitude(v);
-			if (mag > 0.0)
+			if (mag > 0f)
 			{
 				double invMag = 1.0 / mag;
 				nx = Mathf.RoundToInt((float)(v.x * invMag));
@@ -1689,7 +1787,7 @@ namespace VectorTyping
 		public void Normalize()
 		{
 			double mag = Magnitude(this);
-			if (mag > 0.0)
+			if (mag > 0f)
 			{
 				double invMag = 1.0 / mag;
 				x = Mathf.RoundToInt((float)(x * invMag));
