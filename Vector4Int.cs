@@ -34,7 +34,7 @@ namespace VectorTyping
 
 		private int m_W;
 
-		private static Vector4Int m_Origin;
+		private static Vector4Int s_Origin;
 
 		private static readonly Vector4Int s_Zero = new Vector4Int(0, 0, 0, 0);
 
@@ -150,11 +150,11 @@ namespace VectorTyping
 				}
 			}
 		}
-		
+
 		/// <summary>
 		///     Returns a copy of this vector's origin point (Read Only).
 		/// </summary>
-		public Vector4Int origin => m_Origin;
+		public Vector4Int origin => s_Origin;
 
 		/// <summary>
 		///     Returns a copy of this vector with a magnitude of 1 (Read Only).
@@ -251,7 +251,7 @@ namespace VectorTyping
 			this.m_Y = y;
 			this.m_Z = z;
 			this.m_W = w;
-			m_Origin = this;
+			s_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int and sets w to zero.
@@ -262,7 +262,7 @@ namespace VectorTyping
 			this.m_Y = y;
 			this.m_Z = z;
 			this.m_W = 0;
-			m_Origin = this;
+			s_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int and sets z, w to zero.
@@ -273,7 +273,7 @@ namespace VectorTyping
 			this.m_Y = y;
 			this.m_Z = 0;
 			this.m_W = 0;
-			m_Origin = this;
+			s_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int and sets y, z and w to zero.
@@ -284,7 +284,7 @@ namespace VectorTyping
 			this.m_Y = 0;
 			this.m_Z = 0;
 			this.m_W = 0;
-			m_Origin = this;
+			s_Origin = this;
 		}
 
 		/// <summary>
@@ -296,7 +296,7 @@ namespace VectorTyping
 			this.m_Y = v.y;
 			this.m_Z = v.z;
 			this.m_W = w;
-			m_Origin = this;
+			s_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector3Int and sets w to zero.
@@ -307,7 +307,7 @@ namespace VectorTyping
 			this.m_Y = v.y;
 			this.m_Z = v.z;
 			this.m_W = 0;
-			m_Origin = this;
+			s_Origin = this;
 		}
 
 		/// <summary>
@@ -319,7 +319,7 @@ namespace VectorTyping
 			this.m_Y = a.y;
 			this.m_Z = b.x;
 			this.m_W = b.y;
-			m_Origin = this;
+			s_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector2Int with the given z, w components.
@@ -330,7 +330,7 @@ namespace VectorTyping
 			this.m_Y = v.y;
 			this.m_Z = z;
 			this.m_W = w;
-			m_Origin = this;
+			s_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector2Int with the given z component and sets w to zero.
@@ -341,7 +341,7 @@ namespace VectorTyping
 			this.m_Y = v.y;
 			this.m_Z = z;
 			this.m_W = 0;
-			m_Origin = this;
+			s_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector2Int and sets z, w to zero.
@@ -352,7 +352,7 @@ namespace VectorTyping
 			this.m_Y = v.y;
 			this.m_Z = 0;
 			this.m_W = 0;
-			m_Origin = this;
+			s_Origin = this;
 		}
 
 		// Conversion operators
@@ -660,8 +660,8 @@ namespace VectorTyping
 		/// </summary>
 		public Vector4Int Reset()
 		{
-			this = m_Origin;
-			return m_Origin;
+			this = s_Origin;
+			return s_Origin;
 		}
 
 		/// <summary>
@@ -669,8 +669,8 @@ namespace VectorTyping
 		/// </summary>
 		public Vector4Int SetOriginHere()
 		{
-			m_Origin = this;
-			return m_Origin;
+			s_Origin = this;
+			return s_Origin;
 		}
 
 		/// <summary>
@@ -678,11 +678,11 @@ namespace VectorTyping
 		/// </summary>
 		public Vector4Int SetOriginAt(int x, int y, int z, int w)
 		{
-			m_Origin.m_X = x;
-			m_Origin.m_Y = y;
-			m_Origin.m_Z = z;
-			m_Origin.m_W = w;
-			return m_Origin;
+			s_Origin.m_X = x;
+			s_Origin.m_Y = y;
+			s_Origin.m_Z = z;
+			s_Origin.m_W = w;
+			return s_Origin;
 		}
 
 		/// <summary>
