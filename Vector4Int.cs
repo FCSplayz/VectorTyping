@@ -18,6 +18,7 @@
 using System;
 using System.Globalization;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace VectorTyping
 {
@@ -33,6 +34,8 @@ namespace VectorTyping
 		private int m_Z;
 
 		private int m_W;
+
+		private static Vector4Int m_Origin;
 
 		private static readonly Vector4Int s_Zero = new Vector4Int(0, 0, 0, 0);
 
@@ -150,6 +153,41 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Returns a copy of this vector with a magnitude of 1 (Read Only).
+		/// </summary>
+		public Vector4Int normalized => Normalize(this);
+
+		/// <summary>
+		///     Returns the magnitude of this vector (Read Only).
+		/// </summary>
+		public double magnitude => Magnitude(this);
+
+		/// <summary>
+		///     Returns the square magnitude of this vector (Read Only).
+		/// </summary>
+		public double sqrMagnitude => SqrMagnitude(this);
+
+		/// <summary>
+		///     Returns the cube magnitude of this vector (Read Only).
+		/// </summary>
+		public double cbMagnitude => CbMagnitude(this);
+
+		/// <summary>
+		///     Returns the exponentiated magnitude of this vector (Read Only).
+		/// </summary>
+		public double expMagnitude => ExpMagnitude(this);
+
+		/// <summary>
+		///     Returns the exponentiated sqaure magnitude of this vector (Read Only).
+		/// </summary>
+		public double expSqrMagnitude => ExpSqrMagnitude(this);
+
+		/// <summary>
+		///     Returns the exponentiated cube magnitude of this vector (Read Only).
+		/// </summary>
+		public double expCbMagnitude => ExpCbMagnitude(this);
+
+		/// <summary>
 		///     Shorthand for writing Vector4Int(0, 0, 0, 0).
 		/// </summary>
 		public static Vector4Int zero => s_Zero;
@@ -209,6 +247,7 @@ namespace VectorTyping
 			this.m_Y = y;
 			this.m_Z = z;
 			this.m_W = w;
+			m_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int and sets w to zero.
@@ -219,6 +258,7 @@ namespace VectorTyping
 			this.m_Y = y;
 			this.m_Z = z;
 			this.m_W = 0;
+			m_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int and sets z, w to zero.
@@ -229,6 +269,7 @@ namespace VectorTyping
 			this.m_Y = y;
 			this.m_Z = 0;
 			this.m_W = 0;
+			m_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int and sets y, z and w to zero.
@@ -239,6 +280,7 @@ namespace VectorTyping
 			this.m_Y = 0;
 			this.m_Z = 0;
 			this.m_W = 0;
+			m_Origin = this;
 		}
 
 		/// <summary>
@@ -250,6 +292,7 @@ namespace VectorTyping
 			this.m_Y = v.y;
 			this.m_Z = v.z;
 			this.m_W = w;
+			m_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector3Int and sets w to zero.
@@ -260,6 +303,7 @@ namespace VectorTyping
 			this.m_Y = v.y;
 			this.m_Z = v.z;
 			this.m_W = 0;
+			m_Origin = this;
 		}
 
 		/// <summary>
@@ -271,6 +315,7 @@ namespace VectorTyping
 			this.m_Y = a.y;
 			this.m_Z = b.x;
 			this.m_W = b.y;
+			m_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector2Int with the given z, w components.
@@ -281,6 +326,7 @@ namespace VectorTyping
 			this.m_Y = v.y;
 			this.m_Z = z;
 			this.m_W = w;
+			m_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector2Int with the given z component and sets w to zero.
@@ -291,6 +337,7 @@ namespace VectorTyping
 			this.m_Y = v.y;
 			this.m_Z = z;
 			this.m_W = 0;
+			m_Origin = this;
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector2Int and sets z, w to zero.
@@ -301,6 +348,7 @@ namespace VectorTyping
 			this.m_Y = v.y;
 			this.m_Z = 0;
 			this.m_W = 0;
+			m_Origin = this;
 		}
 
 		// Conversion operators
@@ -604,11 +652,33 @@ namespace VectorTyping
 		}
 
 		/// <summary>
-		///     Clears the x, y, z and w components of this vector.
+		///     Resets the x, y, z and w components of this vector back to their origin point.
 		/// </summary>
-		public void Clear()
+		public Vector4Int Reset()
 		{
-			this = new Vector4Int();
+			this = m_Origin;
+			return m_Origin;
+		}
+
+		/// <summary>
+		///     Sets the origin point of this vector.
+		/// </summary>
+		public Vector4Int SetOriginHere()
+		{
+			m_Origin = this;
+			return m_Origin;
+		}
+
+		/// <summary>
+		///     Sets the origin point of this vector.
+		/// </summary>
+		public Vector4Int SetOriginAt(int x, int y, int z, int w)
+		{
+			m_Origin.m_X = x;
+			m_Origin.m_Y = y;
+			m_Origin.m_Z = z;
+			m_Origin.m_W = w;
+			return m_Origin;
 		}
 
 		/// <summary>
@@ -817,10 +887,10 @@ namespace VectorTyping
 		/// </summary>
 		public static Vector4Int Cbrt(Vector4Int v)
 		{
-			int rx = (int)Math.Sign(v.x) * (int)Math.Pow(Math.Abs(v.x), 1.0 / 3.0);
-			int ry = (int)Math.Sign(v.y) * (int)Math.Pow(Math.Abs(v.y), 1.0 / 3.0);
-			int rz = (int)Math.Sign(v.z) * (int)Math.Pow(Math.Abs(v.z), 1.0 / 3.0);
-			int rw = (int)Math.Sign(v.w) * (int)Math.Pow(Math.Abs(v.w), 1.0 / 3.0);
+			int rx = Math.Sign(v.x) * (int)Math.Pow(Math.Abs(v.x), 1.0 / 3.0);
+			int ry = Math.Sign(v.y) * (int)Math.Pow(Math.Abs(v.y), 1.0 / 3.0);
+			int rz = Math.Sign(v.z) * (int)Math.Pow(Math.Abs(v.z), 1.0 / 3.0);
+			int rw = Math.Sign(v.w) * (int)Math.Pow(Math.Abs(v.w), 1.0 / 3.0);
 			return new Vector4Int(rx, ry, rz, rw);
 		}
 		/// <summary>
@@ -828,10 +898,10 @@ namespace VectorTyping
 		/// </summary>
 		public Vector4Int Cbrt()
 		{
-			int rx = (int)Math.Sign(x) * (int)Math.Pow(Math.Abs(x), 1.0 / 3.0);
-			int ry = (int)Math.Sign(y) * (int)Math.Pow(Math.Abs(y), 1.0 / 3.0);
-			int rz = (int)Math.Sign(z) * (int)Math.Pow(Math.Abs(z), 1.0 / 3.0);
-			int rw = (int)Math.Sign(w) * (int)Math.Pow(Math.Abs(w), 1.0 / 3.0);
+			int rx = Math.Sign(x) * (int)Math.Pow(Math.Abs(x), 1.0 / 3.0);
+			int ry = Math.Sign(y) * (int)Math.Pow(Math.Abs(y), 1.0 / 3.0);
+			int rz = Math.Sign(z) * (int)Math.Pow(Math.Abs(z), 1.0 / 3.0);
+			int rw = Math.Sign(w) * (int)Math.Pow(Math.Abs(w), 1.0 / 3.0);
 			x = rx;
 			y = ry;
 			z = rz;
@@ -1048,6 +1118,72 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Returns a vector that is in the center of each component of the given vector, rounded to the nearest integer.
+		/// </summary>
+		public static Vector4Int Center(Vector4Int v)
+		{
+			return new Vector4Int(
+				(int)Math.Round((double)(v.x / 4)),
+				(int)Math.Round((double)(v.y / 4)),
+				(int)Math.Round((double)(v.z / 4)),
+				(int)Math.Round((double)(v.w / 4))
+			);
+		}
+		/// <summary>
+		///     Centers this vector to the point that is in the center of each component, rounded to the nearest integer.
+		/// </summary>
+		public Vector4Int Center()
+		{
+			int mcx = (int)Math.Round((double)(x / 4));
+			int mcy = (int)Math.Round((double)(y / 4));
+			int mcz = (int)Math.Round((double)(z / 4));
+			int mcw = (int)Math.Round((double)(w / 4));
+			x = mcx;
+			y = mcy;
+			z = mcz;
+			w = mcw;
+			return new Vector4Int(mcx, mcy, mcz, mcw);
+		}
+
+		/// <summary>
+		///     Returns a vector that is in the center of each component of the given vector, mirrored along the specified axes, and rounded to the nearest integer.
+		///     <br>If you are not mirroring the center point along any of the axes, it is recommended to use Center(Vector4Int) instead.</br>
+		/// </summary>
+		public static Vector4Int MirrCenter(Vector4Int v, (bool x, bool y, bool z, bool w) mirroredAxes)
+		{
+			int mx = mirroredAxes.x ? -1 : 1;
+			int my = mirroredAxes.y ? -1 : 1;
+			int mz = mirroredAxes.z ? -1 : 1;
+			int mw = mirroredAxes.w ? -1 : 1;
+			return new Vector4Int(
+				mx * (int)Math.Round((double)(v.x / 4)),
+				my * (int)Math.Round((double)(v.y / 4)),
+				mz * (int)Math.Round((double)(v.z / 4)),
+				mw * (int)Math.Round((double)(v.w / 4))
+			);
+		}
+		/// <summary>
+		///     Centers this vector to the point that is in the center of each component, mirrored along the specified axes, and rounded to the nearest integer.
+		///     <br>If you are not mirroring the center point along any of the axes, it is recommended to use Vector4Int.Center instead.</br>
+		/// </summary>
+		public Vector4Int MirrCenter((bool x, bool y, bool z, bool w) mirroredAxes)
+		{
+			int mx = mirroredAxes.x ? -1 : 1;
+			int my = mirroredAxes.y ? -1 : 1;
+			int mz = mirroredAxes.z ? -1 : 1;
+			int mw = mirroredAxes.w ? -1 : 1;
+			int mcx = mx * (int)Math.Round((double)(x / 4));
+			int mcy = my * (int)Math.Round((double)(y / 4));
+			int mcz = mz * (int)Math.Round((double)(z / 4));
+			int mcw = mw * (int)Math.Round((double)(w / 4));
+			x = mcx;
+			y = mcy;
+			z = mcz;
+			w = mcw;
+			return new Vector4Int(mcx, mcy, mcz, mcw);
+		}
+
+		/// <summary>
 		///     Returns the Dot Product of vectors a and b.
 		/// </summary>
 		public static int Dot(Vector4Int a, Vector4Int b)
@@ -1159,6 +1295,172 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Reflects a vector off the plane defined by a normal.
+		/// </summary>
+		public static Vector4Int Reflect(Vector4Int inDirection, Vector4Int inNormal)
+		{
+			int num = -2 * Dot(inNormal, inDirection);
+			return new Vector4Int(
+				num * inNormal.x + inDirection.x,
+				num * inNormal.y + inDirection.y,
+				num * inNormal.z + inDirection.z,
+				num * inNormal.w + inDirection.w
+			);
+		}
+		/// <summary>
+		///     Reflects this vector off the plane defined by a normal.
+		/// </summary>
+		public Vector4Int Reflect(Vector4Int inNormal)
+		{
+			int num = -2 * Dot(inNormal, this);
+			int rfx = num * inNormal.x + x;
+			int rfy = num * inNormal.y + y;
+			int rfz = num * inNormal.z + z;
+			int rfw = num * inNormal.w + w;
+			x = rfx;
+			y = rfy;
+			z = rfz;
+			w = rfw;
+			return new Vector4Int(rfx, rfy, rfz, rfw);
+		}
+
+		/// <summary>
+		///     Projects a vector onto another vector.
+		/// </summary>
+		public static Vector4Int Project(Vector4Int v, Vector4Int onNormal)
+		{
+			int num = Dot(onNormal, onNormal);
+			if (num < 1)
+			{
+				return zero;
+			}
+
+			int num2 = Dot(v, onNormal);
+			return new Vector4Int(
+				onNormal.x * num2 / num,
+				onNormal.y * num2 / num,
+				onNormal.z * num2 / num,
+				onNormal.w * num2 / num
+			);
+		}
+		/// <summary>
+		///     Projects this vector onto another vector.
+		/// </summary>
+		public Vector4Int Project(Vector4Int onNormal)
+		{
+			int num = Dot(onNormal, onNormal);
+			if (num < 1)
+			{
+				this = zero;
+				return zero;
+			}
+
+			int num2 = Dot(this, onNormal);
+			int px = onNormal.x * num2 / num;
+			int py = onNormal.y * num2 / num;
+			int pz = onNormal.z * num2 / num;
+			int pw = onNormal.w * num2 / num;
+			x = px;
+			y = py;
+			z = pz;
+			w = pw;
+			return new Vector4Int(px, py, pz, pw);
+		}
+
+		/// <summary>
+		///     Projects a vector onto a plane defined by a normal orthogonal to the plane.
+		/// </summary>
+		public static Vector4Int ProjectOnPlane(Vector4Int v, Vector4Int planeNormal)
+		{
+			int num = Dot(planeNormal, planeNormal);
+			if (num < 1)
+			{
+				return zero;
+			}
+
+			int num2 = Dot(v, planeNormal);
+			return new Vector4Int(
+				v.x - planeNormal.x * num2 / num,
+				v.y - planeNormal.y * num2 / num,
+				v.z - planeNormal.z * num2 / num,
+				v.w - planeNormal.w * num2 / num
+			);
+		}
+		/// <summary>
+		///     Projects a vector onto a plane defined by a normal orthogonal to the plane.
+		/// </summary>
+		public Vector4Int ProjectOnPlane(Vector4Int planeNormal)
+		{
+			int num = Dot(planeNormal, planeNormal);
+			if (num < 1)
+			{
+				this = zero;
+				return zero;
+			}
+
+			int num2 = Dot(this, planeNormal);
+			int popx = x - planeNormal.x * num2 / num;
+			int popy = y - planeNormal.y * num2 / num;
+			int popz = z - planeNormal.z * num2 / num;
+			int popw = w - planeNormal.w * num2 / num;
+			x = popx;
+			y = popy;
+			z = popz;
+			w = popw;
+			return new Vector4Int(popx, popy, popz, popw);
+		}
+
+		/// <summary>
+		///     Calculates the angle between the vectors of 'from' and 'to'.
+		/// </summary>
+		public static float Angle(Vector4Int from, Vector4Int to)
+		{
+			float num = (float)Math.Sqrt(Dot(from, from) * Dot(to, to));
+			if (num < 1E-15f)
+			{
+				return 0f;
+			}
+
+			float num2 = Mathf.Clamp(Dot(from, to) / num, -1f, 1f);
+			return (float)(Math.Acos(num2) * 57.29578f);
+		}
+		/// <summary>
+		///     Calculates the signed angle between the vectors of 'from' and 'to' in relation to 'axis'.
+		/// </summary>
+		public static float SignedAngle(Vector4Int from, Vector4Int to, Vector4Int axis)
+		{
+			float num = Angle(from, to);
+			float num2 = from.y * to.z - from.z * to.y;
+			float num3 = from.z * to.w - from.w * to.z;
+			float num4 = from.w * to.x - from.x * to.w;
+			float num5 = from.x * to.y - from.y * to.x;
+			float num6 = Mathf.Sign(axis.x * num2 + axis.y * num3 + axis.z * num4 + axis.w * num5);
+			return num * num6;
+		}
+
+		/// <summary>
+		///     Calculates the angle between the vectors of 'from' and 'to' in radians.
+		/// </summary>
+		public static float RadAngle(Vector4Int from, Vector4Int to)
+		{
+			float dotProduct = Dot(from.normalized, to.normalized);
+			return Mathf.Acos(Mathf.Clamp(dotProduct, -1f, 1f));
+		}
+		/// <summary>
+		///     Calculates the signed angle between the vectors of 'from' and 'to' in relation to 'axis' in radians.
+		/// </summary>
+		public static float SignedRadAngle(Vector4Int from, Vector4Int to, Vector4Int axis)
+		{
+			float num = RadAngle(from, to);
+			float num2 = from.y * to.z - from.z * to.y;
+			float num3 = from.z * to.w - from.w * to.z;
+			float num4 = from.w * to.x - from.x * to.w;
+			float num5 = from.x * to.y - from.y * to.x;
+			float num6 = Mathf.Sign(axis.x * num2 + axis.y * num3 + axis.z * num4 + axis.w * num5);
+			return num * num6;
+		}
+
+		/// <summary>
 		///     Returns the distance between vectors a and b.
 		/// </summary>
 		public static double Distance(Vector4Int a, Vector4Int b)
@@ -1212,6 +1514,64 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Returns the cube magnitude of the given vector.
+		/// </summary>
+		public static double CbMagnitude(Vector4Int v)
+		{
+			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), 3);
+		}
+		/// <summary>
+		///     Returns the cube magnitude of this vector.
+		/// </summary>
+		public double CbMagnitude()
+		{
+			return Math.Pow(Math.Sqrt(x * x + y * y + z * z + w * w), 3);
+		}
+		/// <summary>
+		///     Returns the magnitude raised to the given integer of 'power' of the given vector.
+		/// </summary>
+
+		public static double PowMagnitude(Vector4Int v, int power)
+		{
+			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), power);
+		}
+		/// <summary>
+		///     Returns the magnitude raised to the given double of 'power' of this vector.
+		/// </summary>
+		public double PowMagnitude(int power)
+		{
+			return Math.Pow(Math.Sqrt(x * x + y * y + z * z + w * w), power);
+		}
+		/// <summary>
+		///     Returns the magnitude raised to the given floating-point of 'power' of the given vector.
+		/// </summary>
+		public static double PowMagnitude(Vector4Int v, float power)
+		{
+			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), power);
+		}
+		/// <summary>
+		///     Returns the magnitude raised to the given double of 'power' of this vector.
+		/// </summary>
+		public double PowMagnitude(float power)
+		{
+			return Math.Pow(Math.Sqrt(x * x + y * y + z * z + w * w), power);
+		}
+		/// <summary>
+		///     Returns the magnitude raised to the given double of 'power' of the given vector.
+		/// </summary>
+		public static double PowMagnitude(Vector4Int v, double power)
+		{
+			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), power);
+		}
+		/// <summary>
+		///     Returns the magnitude raised to the given double of 'power' of this vector.
+		/// </summary>
+		public double PowMagnitude(double power)
+		{
+			return Math.Pow(Math.Sqrt(x * x + y * y + z * z + w * w), power);
+		}
+
+		/// <summary>
 		///     Returns the exponentiated magnitude of the given vector.
 		/// </summary>
 		public static double ExpMagnitude(Vector4Int v)
@@ -1242,41 +1602,110 @@ namespace VectorTyping
 		}
 
 		/// <summary>
-		///     Makes the given vector have a magnitude of 1.
+		///     Returns the exponentiated cube magnitude of the given vector.
 		/// </summary>
-		public static void Normalize(Vector4Int v)
+		public static double ExpCbMagnitude(Vector4Int v)
 		{
+			return (double)Math.Pow(CbMagnitude(v), CbMagnitude(v));
+		}
+		/// <summary>
+		///     Returns the exponentiated cube magnitude of this vector.
+		/// </summary>
+		public double ExpCbMagnitude()
+		{
+			return (double)Math.Pow(CbMagnitude(this), CbMagnitude(this));
+		}
+
+		/// <summary>
+		///     Returns the exponentiated magnitude raised to the given integer of 'power' of the given vector.
+		/// </summary>
+		public static double ExpPowMagnitude(Vector4Int v, int power)
+		{
+			return (double)Math.Pow(PowMagnitude(v, power), PowMagnitude(v, power));
+		}
+		/// <summary>
+		///     Returns the exponentiated magnitude raised to the given integer of 'power' of this vector.
+		/// </summary>
+		public double ExpPowMagnitude(int power)
+		{
+			return (double)Math.Pow(PowMagnitude(this, power), PowMagnitude(this, power));
+		}
+		/// <summary>
+		///     Returns the exponentiated magnitude raised to the given floating-point of 'power' of the given vector.
+		/// </summary>
+		public static double ExpPowMagnitude(Vector4Int v, float power)
+		{
+			return (double)Math.Pow(PowMagnitude(v, power), PowMagnitude(v, power));
+		}
+		/// <summary>
+		///     Returns the exponentiated magnitude raised to the given floating-point of 'power' of this vector.
+		/// </summary>
+		public double ExpPowMagnitude(float power)
+		{
+			return (double)Math.Pow(PowMagnitude(this, power), PowMagnitude(this, power));
+		}
+		/// <summary>
+		///     Returns the exponentiated magnitude raised to the given double of 'power' of the given vector.
+		/// </summary>
+		public static double ExpPowMagnitude(Vector4Int v, double power)
+		{
+			return (double)Math.Pow(PowMagnitude(v, power), PowMagnitude(v, power));
+		}
+		/// <summary>
+		///     Returns the exponentiated magnitude raised to the given double of 'power' of this vector.
+		/// </summary>
+		public double ExpPowMagnitude(double power)
+		{
+			return (double)Math.Pow(PowMagnitude(this, power), PowMagnitude(this, power));
+		}
+
+		/// <summary>
+		///     Returns a copy of this vector which has a magnitude of 1.
+		/// </summary>
+		public static Vector4Int Normalize(Vector4Int v)
+		{
+			int nx = v.x;
+			int ny = v.y;
+			int nz = v.z;
+			int nw = v.w;
 			double mag = Magnitude(v);
 			if (mag > 0f)
 			{
 				double invMag = 1.0 / mag;
-				v.x = Mathf.RoundToInt((float)(v.x * invMag));
-				v.y = Mathf.RoundToInt((float)(v.y * invMag));
-				v.z = Mathf.RoundToInt((float)(v.z * invMag));
-				v.w = Mathf.RoundToInt((float)(v.w * invMag));
+				nx = Mathf.RoundToInt((float)(v.x * invMag));
+				ny = Mathf.RoundToInt((float)(v.y * invMag));
+				nz = Mathf.RoundToInt((float)(v.z * invMag));
+				nw = Mathf.RoundToInt((float)(v.w * invMag));
 			}
+			return new Vector4Int(nx, ny, nz, nw);
 		}
 		/// <summary>
-		///     Returns a copy of this vector which has a magnitude of 1.
+		///     Makes the given vector have a magnitude of 1.
 		/// </summary>
-		public Vector4Int Normalize()
+		public void Normalize()
 		{
-			int nx = x;
-			int ny = y;
-			int nz = z;
-			int nw = w;
 			double mag = Magnitude(this);
 			if (mag > 0f)
 			{
 				double invMag = 1.0 / mag;
-				nx = Mathf.RoundToInt((float)(x * invMag));
-				ny = Mathf.RoundToInt((float)(y * invMag));
-				nz = Mathf.RoundToInt((float)(z * invMag));
-				nw = Mathf.RoundToInt((float)(w * invMag));
+				x = Mathf.RoundToInt((float)(x * invMag));
+				y = Mathf.RoundToInt((float)(y * invMag));
+				z = Mathf.RoundToInt((float)(z * invMag));
+				w = Mathf.RoundToInt((float)(w * invMag));
 			}
-			return new Vector4Int(nx, ny, nz, nw);
 		}
 
+		/// <summary>
+		///     Returns a copy of the given vector with every component clamped to the components of min and max.
+		/// </summary>
+		public static Vector4Int Clamp(Vector4Int v, Vector4Int min, Vector4Int max)
+		{
+			int cx = Mathf.Clamp(v.x, min.x, max.x);
+			int cy = Mathf.Clamp(v.y, min.y, max.y);
+			int cz = Mathf.Clamp(v.z, min.z, max.z);
+			int cw = Mathf.Clamp(v.w, min.w, max.w);
+			return new Vector4Int(cx, cy, cz, cw);
+		}
 		/// <summary>
 		///     Clamps every component of this vector to the components of min and max.
 		/// </summary>
@@ -1286,6 +1715,70 @@ namespace VectorTyping
 			y = Mathf.Clamp(y, min.y, max.y);
 			z = Mathf.Clamp(z, min.z, max.z);
 			w = Mathf.Clamp(w, min.w, max.w);
+		}
+		/// <summary>
+		///     Returns a copy of the given vector with every component clamped to the integers of min and max.
+		/// </summary>
+		public static Vector4Int Clamp(Vector4Int v, int min, int max)
+		{
+			int cx = Mathf.Clamp(v.x, min, max);
+			int cy = Mathf.Clamp(v.y, min, max);
+			int cz = Mathf.Clamp(v.z, min, max);
+			int cw = Mathf.Clamp(v.w, min, max);
+			return new Vector4Int(cx, cy, cz, cw);
+		}
+		/// <summary>
+		///     Clamps every component of this vector to the integers of min and max.
+		/// </summary>
+		public void Clamp(int min, int max)
+		{
+			x = Mathf.Clamp(x, min, max);
+			y = Mathf.Clamp(y, min, max);
+			z = Mathf.Clamp(z, min, max);
+			w = Mathf.Clamp(w, min, max);
+		}
+
+		/// <summary>
+		///     Returns a copy of the given vector with its magnitude clamped to 'maxLength'.
+		/// </summary>
+		public static Vector4Int ClampMagnitude(Vector4Int v, int maxLength)
+		{
+			int sqrMagnitude = v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w;
+			if (sqrMagnitude > maxLength * maxLength)
+			{
+				double magnitude = Mathf.Sqrt(sqrMagnitude);
+				double normalizedX = v.x / magnitude;
+				double normalizedY = v.y / magnitude;
+				double normalizedZ = v.z / magnitude;
+				double normalizedW = v.w / magnitude;
+				return new Vector4Int(
+					Mathf.RoundToInt((float)(normalizedX * maxLength)),
+					Mathf.RoundToInt((float)(normalizedY * maxLength)),
+					Mathf.RoundToInt((float)(normalizedZ * maxLength)),
+					Mathf.RoundToInt((float)(normalizedW * maxLength))
+				);
+			}
+
+			return v;
+		}
+		/// <summary>
+		///     Clamps the magnitude of this vector to 'maxLength'.
+		/// </summary>
+		public void ClampMagnitude(int maxLength)
+		{
+			int sqrMagnitude = x * x + y * y + z * z + w * w;
+			if (sqrMagnitude > maxLength * maxLength)
+			{
+				double magnitude = Mathf.Sqrt(sqrMagnitude);
+				double normalizedX = x / magnitude;
+				double normalizedY = y / magnitude;
+				double normalizedZ = z / magnitude;
+				double normalizedW = w / magnitude;
+				x = Mathf.RoundToInt((float)(normalizedX * maxLength));
+				y = Mathf.RoundToInt((float)(normalizedY * maxLength));
+				z = Mathf.RoundToInt((float)(normalizedZ * maxLength));
+				w = Mathf.RoundToInt((float)(normalizedW * maxLength));
+			}
 		}
 
 		/// <summary>
@@ -1322,7 +1815,7 @@ namespace VectorTyping
 			dot = Mathf.Clamp(dot, -1f, 1f);
 			double theta = Math.Acos(dot) * t;
 			Vector4Int relativeVec = b - a * dot;
-			Normalize(relativeVec);
+			relativeVec.Normalize();
 
 			// Use the formula for the great circle between two vectors on a hypersphere.
 			return (a * Math.Cos(theta)) + (relativeVec * Math.Sin(theta));
@@ -1336,7 +1829,7 @@ namespace VectorTyping
 			dot = Mathf.Clamp(dot, -1f, 1f);
 			double theta = Math.Acos(dot) * t;
 			Vector4Int relativeVec = b - a * dot;
-			Normalize(relativeVec);
+			relativeVec.Normalize();
 
 			// Use the formula for the great circle between two vectors on a hypersphere.
 			return (a * Math.Cos(theta)) + (relativeVec * Math.Sin(theta));
@@ -1361,6 +1854,11 @@ namespace VectorTyping
 		/// </summary>
 		public string ToString(string format, IFormatProvider formatProvider)
 		{
+			if (string.IsNullOrEmpty(format))
+			{
+				format = "F0";
+			}
+
 			if (formatProvider == null)
 			{
 				formatProvider = CultureInfo.InvariantCulture.NumberFormat;
