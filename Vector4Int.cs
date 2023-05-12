@@ -154,7 +154,7 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns a copy of this vector's origin point (Read Only).
 		/// </summary>
-		public static Vector4Int origin => m_Origin;
+		public Vector4Int origin => m_Origin;
 
 		/// <summary>
 		///     Returns a copy of this vector with a magnitude of 1 (Read Only).
