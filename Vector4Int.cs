@@ -689,9 +689,17 @@ namespace VectorTyping
 		/// <summary>
 		///     Sets the origin point of this vector to the specified position.
 		/// </summary>
-		public Vector4Int SetOriginAt(int x, int y, int z, int w)
+		public Vector4Int SetOriginTo(int x, int y, int z, int w)
 		{
 			m_Origin = (x, y, z, w);
+			return new Vector4Int(m_Origin.x, m_Origin.y, m_Origin.z, m_Origin.w);
+		}
+		/// <summary>
+		///     Sets the origin point of this vector to the specified position using an existing vector.
+		/// </summary>
+		public Vector4Int SetOriginTo(Vector4Int v)
+		{
+			m_Origin = (v.x, v.y, v.z, v.w);
 			return new Vector4Int(m_Origin.x, m_Origin.y, m_Origin.z, m_Origin.w);
 		}
 
