@@ -1957,7 +1957,7 @@ namespace VectorTyping
 
 		/// <summary>
 		///     Orthogonalizes and normalizes a copy of each of the given normal and tangent vectors.
-		///     <br>Returns the respective ortho-normalized value based on the value of 'returnSwitch'.</br>
+		///     <br>Returns the respective ortho-normalized vector based on the value of 'returnSwitch'.</br>
 		///     <para>Return paths of 'returnSwitch':
 		///     <br>- Returns the ortho-normalized vector of 'normal' if false</br>
 		///     <br>- Returns the ortho-normalized vector of 'tangent' if true</br></para>
@@ -1972,7 +1972,19 @@ namespace VectorTyping
 		}
 		/// <summary>
 		///     Orthogonalizes and normalizes a copy of each of the given normal, tangent and binormal vectors.
-		///     <br>Returns the respective ortho-normalized value based on the value of 'returnSwitch'.</br>
+		///     <br>Returns both ortho-normalized vectors in one tuple.</br>
+		/// </summary>
+		public static (Vector4Int orthonormalizedNormal, Vector4Int orthonormalizedTangent) OrthoNormalize(Vector4Int normal, Vector4Int tangent)
+		{
+			Vector4Int normalizedNormal = Normalize(normal);
+			Vector4Int projectedTangent = tangent - Dot(normalizedNormal, tangent) * normalizedNormal;
+			Vector4Int normalizedTangent = Normalize(projectedTangent);
+
+			return (normalizedNormal, normalizedTangent);
+		}
+		/// <summary>
+		///     Orthogonalizes and normalizes a copy of each of the given normal, tangent and binormal vectors.
+		///     <br>Returns the respective ortho-normalized vector based on the value of 'returnSwitch'.</br>
 		///     <para>Return paths of 'returnSwitch':
 		///     <br>- Returns the ortho-normalized vector of 'normal' if false</br>
 		///     <br>- Returns the ortho-normalized vector of 'tangent' if true</br>
@@ -1994,6 +2006,22 @@ namespace VectorTyping
 				return normalizedNormal;
 			else
 				return normalizedBinormal;
+		}
+		/// <summary>
+		///     Orthogonalizes and normalizes a copy of each of the given normal, tangent and binormal vectors.
+		///     <br>Returns all the ortho-normalized vectors in one tuple.</br>
+		/// </summary>
+		public static (Vector4Int orthonormalizedNormal, Vector4Int orthonormalizedTangent, Vector4Int orthonormalizedBinormal) OrthoNormalize(Vector4Int normal, Vector4Int tangent, Vector4Int binormal)
+		{
+			Vector4Int normalizedNormal = Normalize(normal);
+			Vector4Int projectedTangent = tangent - Dot(normalizedNormal, tangent) * normalizedNormal;
+			Vector4Int normalizedTangent = Normalize(projectedTangent);
+
+			Vector4Int projectedBinormal = binormal - Dot(normalizedNormal, binormal) * normalizedNormal
+											  - Dot(normalizedTangent, binormal) * normalizedTangent;
+			Vector4Int normalizedBinormal = Normalize(projectedBinormal);
+
+			return (normalizedNormal, normalizedTangent, normalizedBinormal);
 		}
 
 		/// <summary>
@@ -2198,8 +2226,7 @@ namespace VectorTyping
 			int hashCode = y.GetHashCode();
 			int hashCode2 = z.GetHashCode();
 			int hashCode3 = w.GetHashCode();
-			return x.GetHashCode() ^ (hashCode << 2) ^ (hashCode >> 30) ^ (hashCode2 << 4)
-								 ^ (hashCode2 >> 28) ^ (hashCode3 << 6) ^ (hashCode3 >> 26);
+			return x.GetHashCode() ^ (hashCode << 2) ^ (hashCode >> 30) ^ (hashCode2 << 4) ^ (hashCode2 >> 28) ^ (hashCode3 << 6) ^ (hashCode3 >> 26);
 		}
 	}
 }
