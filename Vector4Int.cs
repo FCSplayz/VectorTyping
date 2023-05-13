@@ -1075,7 +1075,7 @@ namespace VectorTyping
 			w = lnw;
 			return new Vector4Int(lnx, lny, lnz, lnw);
 		}
-		
+
 		/// <summary>
 		///     Returns the pi-base logarithm of the given vector.
 		/// </summary>
@@ -2112,8 +2112,8 @@ namespace VectorTyping
 		public static Vector4Int Hyperslerp(Vector4Int a, Vector4Int b, float t)
 		{
 			t = Mathf.Clamp01(t);
-			float dot = Dot(a, b);
-			dot = Mathf.Clamp(dot, -1f, 1f);
+			double dot = Dot(a, b);
+			dot = Mathf.Clamp((float)dot, -1f, 1f);
 			double theta = Math.Acos(dot) * t;
 			Vector4Int relativeVec = b - a * dot;
 			relativeVec.Normalize();
@@ -2126,8 +2126,8 @@ namespace VectorTyping
 		/// </summary>
 		public static Vector4Int HyperslerpUnclamped(Vector4Int a, Vector4Int b, float t)
 		{
-			float dot = Dot(a, b);
-			dot = Mathf.Clamp(dot, -1f, 1f);
+			double dot = Dot(a, b);
+			dot = Mathf.Clamp((float)dot, -1f, 1f);
 			double theta = Math.Acos(dot) * t;
 			Vector4Int relativeVec = b - a * dot;
 			relativeVec.Normalize();
