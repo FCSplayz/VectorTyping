@@ -26,15 +26,20 @@ namespace VectorTyping
 	/// <summary>
 	///     Representation of 4D vectors and points using integers.
 	/// </summary>
+	[Serializable]
 	public struct Vector4Int : IEquatable<Vector4Int>, IFormattable
 	{
 		// Private properties
+		[SerializeField]
 		private int m_X;
 
+		[SerializeField]
 		private int m_Y;
 
+		[SerializeField]
 		private int m_Z;
 
+		[SerializeField]
 		private int m_W;
 
 		private (int x, int y, int z, int w) m_Origin;
