@@ -14,7 +14,7 @@
 // Refer to the accompanying 'LICENSE.md' file for more information.
 #endregion
 
-#region Assembly VectorTyping.Drawers, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+#region Assembly VectorTyping, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 #endregion
 
 using UnityEditor;
@@ -23,7 +23,7 @@ using UnityEngine;
 namespace VectorTyping.Drawers
 {
 	/// <summary>
-	///		Allows Vector4Ints to be shown in the Inspector.
+	///     Allows Vector4Ints to be shown in the Inspector.
 	/// </summary>
 	[CustomPropertyDrawer(typeof(Vector4Int))]
 	internal class Vector4IntDrawer : PropertyDrawer
