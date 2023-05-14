@@ -13,7 +13,7 @@ If you're interested in contributing, please follow the guidelines below after h
 
 - Once you've created an issue and discussed your proposed solution with the community, you're welcome to fork the repository and start working on your changes.
 
-- Please make sure your code is adequately documented and adheres to the coding standards of the project.
+- Please make sure your code is adequately documented and adheres to the coding standards of the Library.
 
 - By submitting a pull request, you agree to license your contribution under the terms and conditions of both the
   [VTLL](LICENSE.md) and the [Unity Companion License](https://unity.com/legal/licenses/unity-companion-license) (the "UCL").
@@ -24,7 +24,7 @@ If you're interested in contributing, please follow the guidelines below after h
   distribute your contributed code under the terms and conditions of both the [VTLL](LICENSE.md) and the [UCL](https://unity.com/legal/licenses/unity-companion-license).
 
 - Do note that any contributions from users with inappropriate usernames or code, such as, but not limited to,
-  item names of variables, classes, etcetera, and summaries, will be declined, no matter what, to keep the project clean.
+  item names of variables, classes, etcetera, and summaries, will be declined, no matter what, to keep the Library clean.
 
 - These guidelines may be modified or updated; upon any such modification or update, you will comply with the guidelines
   of the updated VTCP when contributing to the Library under the updated VTCP guidelines.
