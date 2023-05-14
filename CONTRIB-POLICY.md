@@ -3,7 +3,7 @@
 
 Before first contributing to the VectorTyping Library (the "Library") in any way, you must read and accept the Library's terms and conditions in the [VectorTyping Library License](LICENSE.md) (the "VTLL").
 
-We welcome contributions to this project from the community! <br/>
+We welcome contributions to the Library from the community and others alike! <br/>
 If you're interested in contributing, please follow the guidelines below after having first read the [VTLL](LICENSE.md):
 
 <hr>
