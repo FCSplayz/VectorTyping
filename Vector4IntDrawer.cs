@@ -22,6 +22,9 @@ using UnityEngine;
 
 namespace VectorTyping.Drawers
 {
+	/// <summary>
+	///		Allows Vector4Ints to be shown in the Inspector.
+	/// </summary>
 	[CustomPropertyDrawer(typeof(Vector4Int))]
 	internal class Vector4IntDrawer : PropertyDrawer
 	{
