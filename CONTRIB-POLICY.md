@@ -13,7 +13,7 @@ If you're interested in contributing, please follow the guidelines below after h
 
 - Once you've created an issue and discussed your proposed solution with the community, you're welcome to fork the repository and start working on your changes.
 
-- Please make sure your code is adequately documented and adheres to the coding standards of the Library.
+- Please make sure your code is adequately documented and adheres to the coding standards of the Library. Any new methods you create must be adequately summarized (whereas new operators only require summarization if is deemed necessary due to reasons such as, but not limited to, being an unconvential operation for example).
 
 - By submitting a pull request, you agree to license your contribution under the terms and conditions of both the
   [VTLL](LICENSE.md) and the [Unity Companion License](https://unity.com/legal/licenses/unity-companion-license) (the "UCL").
