@@ -1,7 +1,7 @@
 ## VectorTyping Contribution Policy (the "VTCP")
-<b><ins><sup>Version 1.0.0 – Last Updated: <i>May 11th, 2023</i></sup>&nbsp;</ins></b><br/><br/>
+<b><ins><sup>Version 1.0.0 – Last Updated: <i>May 14th, 2023</i></sup>&nbsp;</ins></b><br/><br/>
 
-Before first contributing to the VectorTyping Library (the "Library") in any way, you must read and accept the Library's terms and conditions in the [VTLL](LICENSE.md).
+Before first contributing to the VectorTyping Library (the "Library") in any way, you must read and accept the Library's terms and conditions in the [VectorTyping Library License](LICENSE.md) (the "VTLL").
 
 We welcome contributions to this project from the community! <br/>
 If you're interested in contributing, please follow the guidelines below after having first read the [VTLL](LICENSE.md):
@@ -16,7 +16,7 @@ If you're interested in contributing, please follow the guidelines below after h
 - Please make sure your code is adequately documented and adheres to the coding standards of the project.
 
 - By submitting a pull request, you agree to license your contribution under the terms and conditions of both the
-  [VTLL](LICENSE.md) and the [UCL](https://unity.com/legal/licenses/unity-companion-license).
+  [VTLL](LICENSE.md) and the [Unity Companion License](https://unity.com/legal/licenses/unity-companion-license) (the "UCL").
 
 - By contributing to the Library, including, but not limited to, providing code changes, bug fixes,
   or any other modifications, you agree that your contributions fall under the same copyrights and open-source
