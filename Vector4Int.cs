@@ -415,6 +415,16 @@ namespace VectorTyping
 			return new Color32((byte)v.x, (byte)v.y, (byte)v.z, (byte)v.w);
 		}
 
+		public static explicit operator (int x, int y, int z, int w)(Vector4Int v)
+		{
+			return new (v.x, v.y, v.z, v.w);
+		}
+
+		public static explicit operator Vector4Int((int x, int y, int z, int w) t)
+		{
+			return new Vector4Int(t.x, t.y, t.z, t.w);
+		}
+
 		// Math operators
 		public static Vector4Int operator +(Vector4Int a, Vector4Int b)
 		{
