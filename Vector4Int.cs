@@ -2182,6 +2182,22 @@ namespace VectorTyping
 			return (a * Math.Cos(theta)) + (relativeVec * Math.Sin(theta));
 		}
 
+		/// <summary>
+		///     Returns true if this vector has the given integer value in any component, otherwise returns false.
+		/// </summary>
+		public bool Contains(int val)
+		{
+			return x == val || y == val || z == val || w == val;
+		}
+
+		/// <summary>
+		///     Returns true if this vector does not have the given integer value in any component, otherwise returns false.
+		/// </summary>
+		public bool DoesNotContain(int val)
+		{
+			return !(x == val || y == val || z == val || w == val);
+		}
+
 		// Interface methods
 		/// <summary>
 		///     Returns a formatted string for this vector.
