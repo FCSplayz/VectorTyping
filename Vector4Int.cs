@@ -46,6 +46,7 @@ namespace VectorTyping
 
 		private (int x, int y, int z, int w) m_Origin;
 
+		// Private static properties
 		private static readonly Vector4Int s_Zero = new Vector4Int(0, 0, 0, 0);
 
 		private static readonly Vector4Int s_One = new Vector4Int(1, 1, 1, 1);
@@ -212,6 +213,7 @@ namespace VectorTyping
 		/// </summary>
 		public double expNatMagnitude => ExpNatMagnitude(this);
 
+		// Static properties
 		/// <summary>
 		///     Shorthand for writing Vector4Int(0, 0, 0, 0).
 		/// </summary>
