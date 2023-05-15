@@ -15,6 +15,7 @@
 #endregion
 
 #region Assembly VectorTyping, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+// The VectorTyping library can be found at https://github.com/FCSplayz/VectorTyping.
 #endregion
 
 using System.Globalization;
