@@ -418,7 +418,7 @@ namespace VectorTyping
 
 		public static explicit operator (int x, int y, int z, int w)(Vector4Int v)
 		{
-			return new (v.x, v.y, v.z, v.w);
+			return (v.x, v.y, v.z, v.w);
 		}
 
 		public static explicit operator Vector4Int((int x, int y, int z, int w) t)
