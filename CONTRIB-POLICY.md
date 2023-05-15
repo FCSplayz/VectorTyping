@@ -1,4 +1,4 @@
-<b> <h2>VectorTyping Contribution Policy (the "VTCP")</h2>
+<b><h2> VectorTyping Contribution Policy (the "VTCP") </h2>
 <ins><sup>Version 1.0.0 – Last Updated: <i>May 14th, 2023</i></sup>&nbsp;</ins></b><br/><br/>
 
 Before first contributing to the VectorTyping Library (the "Library") in any way, you must read and accept the Library's terms and conditions in the [VectorTyping Library License](LICENSE.md) (the "VTLL").
