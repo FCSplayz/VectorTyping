@@ -27,7 +27,7 @@ namespace VectorTyping.Drawers
 	///     Allows Vector4Ints to be shown in the Inspector.
 	/// </summary>
 	[CustomPropertyDrawer(typeof(Vector4Int))]
-	internal class Vector4IntDrawer : PropertyDrawer
+	internal sealed class Vector4IntDrawer : PropertyDrawer
 	{
 		private const float Spacing = 20f;
 
