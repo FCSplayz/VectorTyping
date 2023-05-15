@@ -44,6 +44,7 @@ namespace VectorTyping.Drawers
 			float fieldWidth = (position.width - labelWidth + (Spacing * 1.45f)) / 4f;
 			float lineHeight = EditorGUIUtility.singleLineHeight;
 
+			// Create labels and fields.
 			Rect labelRect = new Rect(position.x, position.y, labelWidth, lineHeight);
 			Rect xRect = new Rect(labelRect.xMax - 105f, position.y + lineHeight, fieldWidth, lineHeight);
 			Rect yRect = new Rect(xRect.xMax + Spacing, position.y + lineHeight, fieldWidth, lineHeight);
