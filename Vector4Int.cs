@@ -2260,6 +2260,27 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Returns true if this vector has exactly one of the given integer values in any component, otherwise returns false.
+		/// </summary>
+		public bool ContainsXor(params int[] vals)
+		{
+			if (vals.Length < 2)
+			{
+				throw new ArgumentException("Vector4Int.ContainsXor requires at least two given values.");
+			}
+
+			int trueCount = 0;
+			foreach (int val in vals)
+			{
+				if (x == val || y == val || z == val || w == val)
+				{
+					trueCount++;
+				}
+			}
+			return trueCount == 1;
+		}
+
+		/// <summary>
 		///     Returns true if this vector has all of the given integer values in any component, otherwise returns false.
 		/// </summary>
 		public bool ContainsAnd(params int[] vals)
@@ -2321,6 +2342,71 @@ namespace VectorTyping
 		public bool DoesNotContain(int val)
 		{
 			return !(x == val || y == val || z == val || w == val);
+		}
+
+		/// <summary>
+		///     Returns true if this vector does not have any of the given integer values in any component, otherwise returns false.
+		/// </summary>
+		public bool DoesNotContainOr(params int[] vals)
+		{
+			if (vals.Length < 2)
+			{
+				throw new ArgumentException("Vector4Int.DoesNotContainOr requires at least two given values.");
+			}
+
+			foreach (int val in vals)
+			{
+				if (!(x == val || y == val || z == val || w == val))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		/// <summary>
+		///     Returns true if this vector does not have exactly one of the given integer values in any component, otherwise returns false.
+		/// </summary>
+		public bool DoesNotContainXor(params int[] vals)
+		{
+			if (vals.Length < 2)
+			{
+				throw new ArgumentException("Vector4Int.DoesNotContainXor requires at least two given values.");
+			}
+
+			int trueCount = 0;
+			foreach (int val in vals)
+			{
+				if (x == val || y == val || z == val || w == val)
+				{
+					trueCount++;
+				}
+			}
+			return trueCount != 1;
+		}
+
+		/// <summary>
+		///     Returns true if this vector does not have all of the given integer values in any component, otherwise returns false.
+		/// </summary>
+		public bool DoesNotContainAnd(params int[] vals)
+		{
+			if (vals.Length < 2)
+			{
+				throw new ArgumentException("Vector4Int.DoesNotContainAnd requires at least two given values.");
+			}
+			else if (vals.Length > 4)
+			{
+				throw new ArgumentException("Vector4Int.DoesNotContainAnd cannot have more than four given values.");
+			}
+
+			foreach (int val in vals)
+			{
+				if (x == val || y == val || z == val || w == val)
+				{
+					return false;
+				}
+			}
+			return true;
 		}
 
 		// Interface methods
