@@ -2389,7 +2389,7 @@ namespace VectorTyping
 		}
 
 		/// <summary>
-		///     Returns this vector as an enumerator.
+		///     Gets the enumerator of this vector.
 		/// </summary>
 		public IEnumerator GetEnumerator()
 		{
