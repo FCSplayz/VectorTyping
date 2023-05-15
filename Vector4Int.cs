@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using System.Collections;
 using System.Globalization;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ namespace VectorTyping
 	///     Representation of 4D vectors and points using integers.
 	/// </summary>
 	[Serializable]
-	public struct Vector4Int : IEquatable<Vector4Int>, IFormattable
+	public struct Vector4Int : IEquatable<Vector4Int>, IFormattable, IEnumerable
 	{
 		// Private properties
 		[SerializeField]
@@ -1206,6 +1207,54 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Returns the factorial of the given vector.
+		/// </summary>
+		public static Vector4Int Fact(Vector4Int v)
+		{
+			if (v.ContainsLessThanEqual(-1))
+				throw new InvalidOperationException("The given Vector4Int may not contain negative numbers.");
+			Vector4Int copyVec = v;
+			for (int comp = 0; comp < 4; comp++)
+			{
+				if (copyVec[comp] <= 1)
+					copyVec[comp] = 1;
+				else
+				{
+					int result = 1;
+					for (int i = 2; i <= copyVec[comp]; i++)
+					{
+						result = result * i;
+					}
+					copyVec[comp] = result;
+				}
+			}
+			return copyVec;
+		}
+		/// <summary>
+		///     Sets every component in this vector to its factorial.
+		/// </summary>
+		public Vector4Int Fact()
+		{
+			if (ContainsLessThanEqual(-1))
+				throw new InvalidOperationException("The given Vector4Int may not contain negative numbers.");
+			for (int comp = 0; comp < 4; comp++)
+			{
+				if (this[comp] <= 1)
+					this[comp] = 1;
+				else
+				{
+					int result = 1;
+					for (int i = 2; i <= this[comp]; i++)
+					{
+						result = result * i;
+					}
+					this[comp] = result;
+				}
+			}
+			return this;
+		}
+
+		/// <summary>
 		///     Returns a vector that is made from the smallest components of the two given vectors.
 		/// </summary>
 		public static Vector4Int Min(Vector4Int lhs, Vector4Int rhs)
@@ -2191,6 +2240,82 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Returns true if this vector has any of the given integer values in any component, otherwise returns false.
+		/// </summary>
+		public bool ContainsOr(params int[] vals)
+		{
+			if (vals.Length < 2)
+			{
+				throw new ArgumentException("Vector4Int.ContainsOr requires at least two given values.");
+			}
+
+			foreach (int val in vals)
+			{
+				if (x == val || y == val || z == val || w == val)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		/// <summary>
+		///     Returns true if this vector has all of the given integer values in any component, otherwise returns false.
+		/// </summary>
+		public bool ContainsAnd(params int[] vals)
+		{
+			if (vals.Length < 2)
+			{
+				throw new ArgumentException("Vector4Int.ContainsAnd requires at least two given values.");
+			}
+			else if (vals.Length > 4)
+			{
+				throw new ArgumentException("Vector4Int.ContainsAnd cannot have more than four given values.");
+			}
+
+			foreach (int val in vals)
+			{
+				if (!(x == val || y == val || z == val || w == val))
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		/// <summary>
+		///     Returns true if this vector has a value less than the given integer value in any component, otherwise returns false.
+		/// </summary>
+		public bool ContainsLessThan(int val)
+		{
+			return x < val || y < val || z < val || w < val;
+		}
+
+		/// <summary>
+		///     Returns true if this vector has a value greater than the given integer value in any component, otherwise returns false.
+		/// </summary>
+		public bool ContainsGreaterThan(int val)
+		{
+			return x > val || y > val || z > val || w > val;
+		}
+
+		/// <summary>
+		///     Returns true if this vector has a value less than or equal to the given integer value in any component, otherwise returns false.
+		/// </summary>
+		public bool ContainsLessThanEqual(int val)
+		{
+			return x <= val || y <= val || z <= val || w <= val;
+		}
+
+		/// <summary>
+		///     Returns true if this vector has a value greater than or equal to the given integer value in any component, otherwise returns false.
+		/// </summary>
+		public bool ContainsGreaterThanEqual(int val)
+		{
+			return x >= val || y >= val || z >= val || w >= val;
+		}
+
+		/// <summary>
 		///     Returns true if this vector does not have the given integer value in any component, otherwise returns false.
 		/// </summary>
 		public bool DoesNotContain(int val)
@@ -2261,6 +2386,17 @@ namespace VectorTyping
 			int hashCode2 = z.GetHashCode();
 			int hashCode3 = w.GetHashCode();
 			return x.GetHashCode() ^ (hashCode << 2) ^ (hashCode >> 30) ^ (hashCode2 << 4) ^ (hashCode2 >> 28) ^ (hashCode3 << 6) ^ (hashCode3 >> 26);
+		}
+
+		/// <summary>
+		///     Returns this vector as an enumerator.
+		/// </summary>
+		public IEnumerator GetEnumerator()
+		{
+			yield return x;
+			yield return y;
+			yield return z;
+			yield return w;
 		}
 	}
 }
