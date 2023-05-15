@@ -50,3 +50,8 @@ After following these steps, you should be able to properly use the `VectorTypin
 Whenever contributing to this library, please refer to the guidelines stated in the VectorTyping Contribution Policy (the "VTCP") which is found within the included [CONTRIB‑POLICY.md](CONTRIB-POLICY.md) file.
 
 <ins>Thank you for following the <a href="CONTRIB-POLICY.md">VTCP</a> guidelines and contributing to this project!</ins>
+
+
+## VTSWiki
+
+More information about the elements of the VectorTyping library can be found in this repository's VectorTyping Scripting Wiki at: [https://github.com/FCSplayz/VectorTyping/wiki](https://github.com/FCSplayz/VectorTyping/wiki).
