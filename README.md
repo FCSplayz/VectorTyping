@@ -14,7 +14,7 @@ By using this library, you also agree to be bound by the terms of the UCL, which
 
 ## Use of Unity references
 
-The `VectorTyping` namespace uses references to namespaces provided by the Unity Engine, such as the `UnityEngine` namespace, for purposes
+The `VectorTyping` namespace and any of its child namespaces use references to namespaces provided by the Unity Engine, such as the `UnityEngine` namespace, for purposes
 including, but not limited to, calculations and conversions between custom VectorTyping and built-in Unity data types, in compliance with
 the Unity Reference-Only License (the "UROL"). <br/>
 No modifications have been made to the engine's source code.
