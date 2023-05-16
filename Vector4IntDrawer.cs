@@ -59,7 +59,8 @@ namespace VectorTyping.Drawers
 			if (inspectorWidth <= 475f)
 				labelRect.width = inspectorWidth - Spacing * 1.125f + 1f;
 			else if (inspectorWidth > 475f)
-				labelRect.width = inspectorWidth - (xRect.width + yRect.width + zRect.width + wRect.width) * 1.3125f - Spacing / 3f + inspectorWidth / fieldWidth * 2 - 11f;
+				labelRect.width = inspectorWidth - (xRect.width + yRect.width + zRect.width + wRect.width)
+					* 1.3125f - Spacing / 3f + inspectorWidth / fieldWidth * 2 - 11f + (inspectorWidth - 475f) / 6f;
 			EditorGUI.LabelField(labelRect, label);
 			EditorGUI.LabelField(xRect, "X");
 			EditorGUI.LabelField(yRect, "Y");
