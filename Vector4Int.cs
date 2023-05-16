@@ -429,6 +429,22 @@ namespace VectorTyping
 			return new Vector4Int(t.x, t.y, t.z, t.w);
 		}
 
+		public static explicit operator int[](Vector4Int v)
+		{
+			return new int[4] { v.x, v.y, v.z, v.w };
+		}
+
+		/// <summary>
+		///     For the conversion to work, the length of the given integer array must be equal to 4.
+		/// </summary>
+		public static explicit operator Vector4Int(int[] a)
+		{
+			if (a.Length == 4)
+				return new Vector4Int(a[0], a[1], a[2], a[3]);
+			else
+				throw new ArgumentException("The length of the given integer array must be equal to 4 when converting to Vector4Int.");
+		}
+
 		// Math operators
 		public static Vector4Int operator +(Vector4Int a, Vector4Int b)
 		{
