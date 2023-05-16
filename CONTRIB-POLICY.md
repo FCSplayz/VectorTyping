@@ -1,5 +1,5 @@
 <b><h2> VectorTyping Contribution Policy (the "VTCP") </h2>
-<ins><sup>Version 1.0.0 – Last Updated: <i>May 14th, 2023</i></sup>&nbsp;</ins></b><br/><br/>
+<ins><sup>Version 1.0.0 – Last Updated: <i>May 16th, 2023</i></sup>&nbsp;</ins></b><br/><br/>
 
 Before first contributing to the VectorTyping Library (the "Library") in any way, you must read and accept the Library's terms and conditions in the [VectorTyping Library License](LICENSE.md) (the "VTLL").
 
@@ -33,4 +33,6 @@ If you're interested in contributing, please follow the guidelines below after h
 
 If your contribution follows all the aforementioned guidelines in the VTCP, you may feel free to submit your changes. <br/>
 When you're ready to send the submission, please create a new branch for the commit and start a pull
-request against the <samp>main</samp> branch of this repository.
+request against the <samp>main</samp> branch of this repository.<br/>
+<p> </p>
+Once created and started, please do be patient as it may take me some time to get around to reviewing your contributions to the Library.
