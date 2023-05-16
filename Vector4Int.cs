@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ namespace VectorTyping
 	///     Representation of 4D vectors and points using integers.
 	/// </summary>
 	[Serializable]
-	public struct Vector4Int : IEquatable<Vector4Int>, IFormattable, IEnumerable
+	public struct Vector4Int : IEquatable<Vector4Int>, IFormattable, IEnumerable<int>, IEnumerable
 	{
 		// Private properties
 		[SerializeField]
@@ -2493,14 +2494,21 @@ namespace VectorTyping
 		}
 
 		/// <summary>
-		///     Gets the enumerator for this vector.
+		///     Gets the integer enumerator for this vector.
 		/// </summary>
-		public IEnumerator GetEnumerator()
+		public IEnumerator<int> GetEnumerator()
 		{
 			yield return x;
 			yield return y;
 			yield return z;
 			yield return w;
+		}
+		/// <summary>
+		///     Gets the enumerator for this vector.
+		/// </summary>
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
 		}
 	}
 }
