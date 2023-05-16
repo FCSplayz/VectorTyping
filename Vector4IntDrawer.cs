@@ -40,17 +40,26 @@ namespace VectorTyping.Drawers
 			SerializedProperty zProp = property.FindPropertyRelative("m_Z");
 			SerializedProperty wProp = property.FindPropertyRelative("m_W");
 
-			float labelWidth = EditorGUIUtility.labelWidth;
-			float fieldWidth = (position.width - labelWidth + (Spacing * 1.45f)) / 4f;
+			float labelWidth = EditorGUIUtility.labelWidth - 1f;
+			float inspectorWidth = EditorGUIUtility.currentViewWidth;
+			float fieldWidth = (position.width - EditorGUIUtility.labelWidth + (Spacing * 1.45f)) / 4f;
 			float lineHeight = EditorGUIUtility.singleLineHeight;
+
+			float rectHeight = 0f;
+			if (inspectorWidth <= 475f)
+				rectHeight = EditorGUIUtility.singleLineHeight;
 
 			// Create labels and fields.
 			Rect labelRect = new Rect(position.x, position.y, labelWidth, lineHeight);
-			Rect xRect = new Rect(labelRect.xMax - 105f, position.y + lineHeight, fieldWidth, lineHeight);
-			Rect yRect = new Rect(xRect.xMax + Spacing, position.y + lineHeight, fieldWidth, lineHeight);
-			Rect zRect = new Rect(yRect.xMax + Spacing, position.y + lineHeight, fieldWidth, lineHeight);
-			Rect wRect = new Rect(zRect.xMax + Spacing, position.y + lineHeight, fieldWidth, lineHeight);
+			Rect xRect = new Rect(labelRect.xMax - 105f, position.y + rectHeight, fieldWidth, lineHeight);
+			Rect yRect = new Rect(xRect.xMax + Spacing, position.y + rectHeight, fieldWidth, lineHeight);
+			Rect zRect = new Rect(yRect.xMax + Spacing, position.y + rectHeight, fieldWidth, lineHeight);
+			Rect wRect = new Rect(zRect.xMax + Spacing, position.y + rectHeight, fieldWidth, lineHeight);
 
+			if (inspectorWidth <= 475f)
+				labelRect.width = inspectorWidth - Spacing * 1.125f + 1f;
+			else if (inspectorWidth > 475f)
+				labelRect.width = inspectorWidth - (xRect.width + yRect.width + zRect.width + wRect.width) * 1.3125f - Spacing / 3f + inspectorWidth / fieldWidth * 2 - 11f;
 			EditorGUI.LabelField(labelRect, label);
 			EditorGUI.LabelField(xRect, "X");
 			EditorGUI.LabelField(yRect, "Y");
@@ -67,8 +76,11 @@ namespace VectorTyping.Drawers
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
 		{
-			float lineHeight = EditorGUIUtility.singleLineHeight;
-			return base.GetPropertyHeight(property, label) + lineHeight;
+			float inspectorWidth = EditorGUIUtility.currentViewWidth;
+			float rectHeight = 0f;
+			if (inspectorWidth <= 475f)
+				rectHeight = EditorGUIUtility.singleLineHeight;
+			return base.GetPropertyHeight(property, label) + rectHeight;
 		}
 	}
 }
