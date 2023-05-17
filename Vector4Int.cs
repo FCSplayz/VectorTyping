@@ -30,7 +30,7 @@ namespace VectorTyping
 	///     Representation of 4D vectors and points using integers.
 	/// </summary>
 	[Serializable]
-	public struct Vector4Int : IEquatable<Vector4Int>, IFormattable, IEnumerable<(int, int)>, IEnumerable<int>, IEnumerable
+	public struct Vector4Int : IEquatable<Vector4Int>, IFormattable, IEnumerable<(int, IEquatable<int>)>, IEnumerable<int>, IEnumerable
 	{
 		// Private properties
 		[SerializeField]
@@ -2506,7 +2506,7 @@ namespace VectorTyping
 		/// <summary>
 		///     Gets the integer value-index enumerator for this vector.
 		/// </summary>
-		IEnumerator<(int, int)> IEnumerable<(int, int)>.GetEnumerator()
+		IEnumerator<(int, IEquatable<int>)> IEnumerable<(int, IEquatable<int>)>.GetEnumerator()
 		{
 			yield return (x, 0);
 			yield return (y, 1);
