@@ -30,7 +30,7 @@ namespace VectorTyping
 	///     Representation of 4D vectors and points using integers.
 	/// </summary>
 	[Serializable]
-	public struct Vector4Int : IEquatable<Vector4Int>, IFormattable, IEnumerable<(int, IEquatable<int>)>, IEnumerable<int>, IEnumerable
+	public struct Vector4Int : IEquatable<Vector4Int>, IFormattable, IEnumerable, IEnumerable<int>, IEnumerable<(int, IEquatable<int>)>, IEnumerable<string>, IEnumerable<(string, IEquatable<int>)>, IEnumerable<object>
 	{
 		// Private properties
 		[SerializeField]
@@ -2428,6 +2428,14 @@ namespace VectorTyping
 			return true;
 		}
 
+		/// <summary>
+		///     Copies this vector's components and returns them in the form of an integer array of length 4.
+		/// </summary>
+		public int[] ToArray()
+		{
+			return new int[4] { x, y, z, w };
+		}
+
 		// Interface methods
 		/// <summary>
 		///     Returns a formatted string for this vector.
@@ -2496,7 +2504,17 @@ namespace VectorTyping
 		/// <summary>
 		///     Gets the integer value enumerator for this vector.
 		/// </summary>
-		public IEnumerator<int> GetEnumerator()
+		public IEnumerator GetEnumerator()
+		{
+			yield return x;
+			yield return y;
+			yield return z;
+			yield return w;
+		}
+		/// <summary>
+		///     Gets the integer value enumerator for this vector.
+		/// </summary>
+		IEnumerator<int> IEnumerable<int>.GetEnumerator()
 		{
 			yield return x;
 			yield return y;
@@ -2514,9 +2532,29 @@ namespace VectorTyping
 			yield return (w, 3);
 		}
 		/// <summary>
-		///     Gets the value enumerator for this vector.
+		///     Gets the integer to string value enumerator for this vector.
 		/// </summary>
-		IEnumerator IEnumerable.GetEnumerator()
+		IEnumerator<string> IEnumerable<string>.GetEnumerator()
+		{
+			yield return x.ToString();
+			yield return y.ToString();
+			yield return z.ToString();
+			yield return w.ToString();
+		}
+		/// <summary>
+		///     Gets the integer to string value-index enumerator for this vector.
+		/// </summary>
+		IEnumerator<(string, IEquatable<int>)> IEnumerable<(string, IEquatable<int>)>.GetEnumerator()
+		{
+			yield return (x.ToString(), 0);
+			yield return (y.ToString(), 1);
+			yield return (z.ToString(), 2);
+			yield return (w.ToString(), 3);
+		}
+		/// <summary>
+		///     Gets the object enumerator for this vector.
+		/// </summary>
+		IEnumerator<object> IEnumerable<object>.GetEnumerator()
 		{
 			yield return this;
 		}
