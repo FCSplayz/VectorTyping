@@ -30,7 +30,7 @@ namespace VectorTyping
 	///     Representation of 4D vectors and points using integers.
 	/// </summary>
 	[Serializable]
-	public struct Vector4Int : IEquatable<Vector4Int>, IFormattable, IEnumerable, IEnumerable<int>, IEnumerable<(int, IEquatable<int>)>, IEnumerable<string>, IEnumerable<(string, IEquatable<int>)>, IEnumerable<object>
+	public struct Vector4Int : IEquatable<Vector4Int>, IEquatable<int>, IFormattable, IComparable, IComparable<Vector4Int>, IComparable<int>, IEnumerable, IEnumerable<int>, IEnumerable<(int, IEquatable<int>)>, IEnumerable<string>, IEnumerable<(string, IEquatable<int>)>
 	{
 		// Private properties
 		[SerializeField]
@@ -2471,23 +2471,33 @@ namespace VectorTyping
 		}
 
 		/// <summary>
-		///     Returns true if the objects are equal.
+		///     Returns true if this vector and the given object are equal.
 		/// </summary>
 		public override bool Equals(object other)
 		{
-			if (!(other is Vector4Int))
+			if (!(other is Vector4Int) && !(other is int))
 			{
 				return false;
 			}
 
-			return Equals((Vector4Int)other);
+			if (other is Vector4Int)
+				return Equals((Vector4Int)other);
+			else
+				return Equals((int)other);
 		}
 		/// <summary>
-		///     Returns true if the objects are equal.
+		///     Returns true if this vector and the given vector are equal.
 		/// </summary>
 		public bool Equals(Vector4Int other)
 		{
 			return this == other;
+		}
+		/// <summary>
+		///     Returns true if every component of this vector and the given integer are equal.
+		/// </summary>
+		public bool Equals(int other)
+		{
+			return x == other && y == other && z == other && w == other;
 		}
 
 		/// <summary>
@@ -2499,6 +2509,53 @@ namespace VectorTyping
 			int hashCode2 = z.GetHashCode();
 			int hashCode3 = w.GetHashCode();
 			return x.GetHashCode() ^ (hashCode << 2) ^ (hashCode >> 30) ^ (hashCode2 << 4) ^ (hashCode2 >> 28) ^ (hashCode3 << 6) ^ (hashCode3 >> 26);
+		}
+
+		/// <summary>
+		///     Compares the components of this vector to the given object and returns an indicator on the relative order of their values.
+		/// </summary>
+		public int CompareTo(object other)
+		{
+			// Check if the value of other is null and, if it is, return 1.
+			if (other == null)
+				return 1;
+
+			// Check if the value of other is of an accepted IComparable interface type.
+			if (other is Vector4Int vector)
+				return CompareTo(vector);
+			else if (other is int integer)
+				return CompareTo(integer);
+
+			// Throw an exception if it isn't of an accepted IComparable interface type.
+			throw new ArgumentException("The given object must be of type 'Vector4Int' or 'int'.");
+		}
+		/// <summary>
+		///     Compares the components of this vector to those of the given vector and returns an indicator on the relative order of their values.
+		/// </summary>
+		public int CompareTo(Vector4Int other)
+		{
+			// Compare the value of each component of this vector to the same vector component of 'other'.
+			int xComparison = x.CompareTo(other.x);
+			int yComparison = y.CompareTo(other.y);
+			int zComparison = z.CompareTo(other.z);
+			int wComparison = w.CompareTo(other.w);
+
+			// Return the combined result of the 4 comparisons.
+			return xComparison + yComparison + zComparison + wComparison;
+		}
+		/// <summary>
+		///     Compares the components of this vector to the given integer and returns an indicator on the relative order of their values.
+		/// </summary>
+		public int CompareTo(int other)
+		{
+			// Compare the value of each component of this vector to the integer value of 'other'.
+			int xComparison = x.CompareTo(other);
+			int yComparison = y.CompareTo(other);
+			int zComparison = z.CompareTo(other);
+			int wComparison = w.CompareTo(other);
+
+			// Return the combined result of the 4 comparisons.
+			return xComparison + yComparison + zComparison + wComparison;
 		}
 
 		/// <summary>
@@ -2550,13 +2607,6 @@ namespace VectorTyping
 			yield return (y.ToString(), 1);
 			yield return (z.ToString(), 2);
 			yield return (w.ToString(), 3);
-		}
-		/// <summary>
-		///     Gets the object enumerator for this vector.
-		/// </summary>
-		IEnumerator<object> IEnumerable<object>.GetEnumerator()
-		{
-			yield return this;
 		}
 	}
 }
