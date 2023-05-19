@@ -19,6 +19,8 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace VectorTyping.Extensions
 {
@@ -31,12 +33,50 @@ namespace VectorTyping.Extensions
 		///     Copies this integer array's values and returns them in the form of a Vector4Int.
 		///     <para>For the conversion to work, the length of this integer array must be equal to 4.</para>
 		/// </summary>
-		public static Vector4Int ToVector4Int(this int[] a)
+		public static Vector4Int ToVector4Int(this int[] arr)
 		{
-			if (a.Length == 4)
-				return new Vector4Int(a[0], a[1], a[2], a[3]);
+			if (arr.Length == 4)
+				return new Vector4Int(arr[0], arr[1], arr[2], arr[3]);
 			else
-				throw new ArgumentException("The length of this integer array must be equal to 4 when converting to Vector4Int.");
+				throw new ArgumentException("The length of this integer array must be equal to 4 when converting to Vector4Int.", nameof(arr));
+		}
+
+		/// <summary>
+		///     Copies this integer array's values and returns them in the form of a Vector4Int.
+		///     <para>For the conversion to work, the length of the integer list must be a multiple of 4.</para>
+		/// </summary>
+		public static Vector4Int[] ToVector4IntArray(this List<int> lst)
+		{
+			if (lst.Count % 4 != 0)
+				throw new ArgumentException("The item count of this integer list must be a multiple of 4.", nameof(lst));
+
+			int numVectors = lst.Count / 4;
+			Vector4Int[] vectorArray = new Vector4Int[numVectors];
+
+			for (int i = 0; i < numVectors; i++)
+			{
+				int startIndex = i * 4;
+				vectorArray[i] = new Vector4Int(lst[startIndex], lst[startIndex + 1], lst[startIndex + 2], lst[startIndex + 3]);
+			}
+
+			return vectorArray;
+		}
+
+		public static List<Vector4Int> ToVector4IntList(this int[] arr)
+		{
+			if (arr.Length % 4 != 0)
+				throw new ArgumentException("The length of this integer array must be a multiple of 4.", nameof(arr));
+
+			int numVectors = arr.Length / 4;
+			List<Vector4Int> vectorList = new List<Vector4Int>(numVectors);
+
+			for (int i = 0; i < numVectors; i++)
+			{
+				int startIndex = i * 4;
+				vectorList.Add(new Vector4Int(arr[startIndex], arr[startIndex + 1], arr[startIndex + 2], arr[startIndex + 3]));
+			}
+
+			return vectorList;
 		}
 	}
 }
