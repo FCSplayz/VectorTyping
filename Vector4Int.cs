@@ -2154,6 +2154,50 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Returns a copy of the given vector with every component clamped to [0,1].
+		/// </summary>
+		public static Vector4Int Clamp01(Vector4Int vec)
+		{
+			int cx = (int)Mathf.Clamp01(vec.x);
+			int cy = (int)Mathf.Clamp01(vec.y);
+			int cz = (int)Mathf.Clamp01(vec.z);
+			int cw = (int)Mathf.Clamp01(vec.w);
+			return new Vector4Int(cx, cy, cz, cw);
+		}
+		/// <summary>
+		///     Clamps every component of this vector to [0,1].
+		/// </summary>
+		public void Clamp01()
+		{
+			x = (int)Mathf.Clamp01(x);
+			y = (int)Mathf.Clamp01(y);
+			z = (int)Mathf.Clamp01(z);
+			w = (int)Mathf.Clamp01(w);
+		}
+
+		/// <summary>
+		///     Returns a copy of the given vector with every component clamped to [-1,1].
+		/// </summary>
+		public static Vector4Int ClampUnit(Vector4Int vec)
+		{
+			int cx = Mathf.Clamp(vec.x, -1, 1);
+			int cy = Mathf.Clamp(vec.y, -1, 1);
+			int cz = Mathf.Clamp(vec.z, -1, 1);
+			int cw = Mathf.Clamp(vec.w, -1, 1);
+			return new Vector4Int(cx, cy, cz, cw);
+		}
+		/// <summary>
+		///     Clamps every component of this vector to [-1,1].
+		/// </summary>
+		public void ClampUnit()
+		{
+			x = Mathf.Clamp(x, -1, 1);
+			y = Mathf.Clamp(y, -1, 1);
+			z = Mathf.Clamp(z, -1, 1);
+			w = Mathf.Clamp(w, -1, 1);
+		}
+
+		/// <summary>
 		///     Returns a copy of the given vector with its magnitude clamped to 'maxLength'.
 		/// </summary>
 		public static Vector4Int ClampMagnitude(Vector4Int vec, int maxLength)
@@ -2194,6 +2238,42 @@ namespace VectorTyping
 				z = Mathf.RoundToInt((float)(normalizedZ * maxLength));
 				w = Mathf.RoundToInt((float)(normalizedW * maxLength));
 			}
+		}
+
+		/// <summary>
+		///     Returns a copy of the given vector with the sign values of every component.
+		/// </summary>
+		public static Vector4Int Sign(Vector4Int vec)
+		{
+			int cx = Math.Sign(vec.x);
+			int cy = Math.Sign(vec.y);
+			int cz = Math.Sign(vec.z);
+			int cw = Math.Sign(vec.w);
+			return new Vector4Int(cx, cy, cz, cw);
+		}
+		/// <summary>
+		///     Turns every component of this vector into its sign value.
+		/// </summary>
+		public void Sign()
+		{
+			x = Math.Sign(x);
+			y = Math.Sign(y);
+			z = Math.Sign(z);
+			w = Math.Sign(w);
+		}
+
+		/// <summary>
+		///     Calculates the linear parameter t that produces the interpolant vector of 'vec' within the range [a,b].
+		/// </summary>
+		public static float InverseLerp(Vector4Int a, Vector4Int b, Vector4Int vec)
+		{
+			if (a != b)
+			{
+				Vector4Int delta = b - a;
+				float t = Mathf.Clamp01(Dot(vec - a, delta) / Dot(delta, delta));
+				return t;
+			}
+			else return 0f;
 		}
 
 		/// <summary>
