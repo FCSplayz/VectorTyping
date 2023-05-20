@@ -314,22 +314,22 @@ namespace VectorTyping
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector3Int with the given w component.
 		/// </summary>
-		public Vector4Int(Vector3Int v, int w)
+		public Vector4Int(Vector3Int vec, int w)
 		{
-			m_X = v.x;
-			m_Y = v.y;
-			m_Z = v.z;
+			m_X = vec.x;
+			m_Y = vec.y;
+			m_Z = vec.z;
 			m_W = w;
 			m_Origin = (m_X, m_Y, m_Z, m_W);
 		}
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector3Int and sets w to zero.
 		/// </summary>
-		public Vector4Int(Vector3Int v)
+		public Vector4Int(Vector3Int vec)
 		{
-			m_X = v.x;
-			m_Y = v.y;
-			m_Z = v.z;
+			m_X = vec.x;
+			m_Y = vec.y;
+			m_Z = vec.z;
 			m_W = 0;
 			m_Origin = (m_X, m_Y, m_Z, m_W);
 		}
@@ -348,10 +348,10 @@ namespace VectorTyping
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector2Int with the given z, w components.
 		/// </summary>
-		public Vector4Int(Vector2Int v, int z, int w)
+		public Vector4Int(Vector2Int vec, int z, int w)
 		{
-			m_X = v.x;
-			m_Y = v.y;
+			m_X = vec.x;
+			m_Y = vec.y;
 			m_Z = z;
 			m_W = w;
 			m_Origin = (m_X, m_Y, m_Z, m_W);
@@ -359,10 +359,10 @@ namespace VectorTyping
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector2Int with the given z component and sets w to zero.
 		/// </summary>
-		public Vector4Int(Vector2Int v, int z)
+		public Vector4Int(Vector2Int vec, int z)
 		{
-			m_X = v.x;
-			m_Y = v.y;
+			m_X = vec.x;
+			m_Y = vec.y;
 			m_Z = z;
 			m_W = 0;
 			m_Origin = (m_X, m_Y, m_Z, m_W);
@@ -370,44 +370,44 @@ namespace VectorTyping
 		/// <summary>
 		///     Constructs a new Vector4Int from a Vector2Int and sets z, w to zero.
 		/// </summary>
-		public Vector4Int(Vector2Int v)
+		public Vector4Int(Vector2Int vec)
 		{
-			m_X = v.x;
-			m_Y = v.y;
+			m_X = vec.x;
+			m_Y = vec.y;
 			m_Z = 0;
 			m_W = 0;
 			m_Origin = (m_X, m_Y, m_Z, m_W);
 		}
 
 		// Conversion operators
-		public static implicit operator Vector4Int(Vector4 v)
+		public static implicit operator Vector4Int(Vector4 vec)
 		{
-			return new Vector4Int((int)v.x, (int)v.y, (int)v.z, (int)v.w);
+			return new Vector4Int((int)vec.x, (int)vec.y, (int)vec.z, (int)vec.w);
 		}
 
-		public static implicit operator Vector4(Vector4Int v)
+		public static implicit operator Vector4(Vector4Int vec)
 		{
-			return new Vector4(v.x, v.y, v.z, v.w);
+			return new Vector4(vec.x, vec.y, vec.z, vec.w);
 		}
 
-		public static explicit operator Vector4Int(Vector3Int v)
+		public static explicit operator Vector4Int(Vector3Int vec)
 		{
-			return new Vector4Int(v.x, v.y, v.z, 0);
+			return new Vector4Int(vec.x, vec.y, vec.z, 0);
 		}
 
-		public static explicit operator Vector3Int(Vector4Int v)
+		public static explicit operator Vector3Int(Vector4Int vec)
 		{
-			return new Vector3Int(v.x, v.y, v.z);
+			return new Vector3Int(vec.x, vec.y, vec.z);
 		}
 
-		public static explicit operator Vector4Int(Vector2Int v)
+		public static explicit operator Vector4Int(Vector2Int vec)
 		{
-			return new Vector4Int(v.x, v.y, 0, 0);
+			return new Vector4Int(vec.x, vec.y, 0, 0);
 		}
 
-		public static explicit operator Vector2Int(Vector4Int v)
+		public static explicit operator Vector2Int(Vector4Int vec)
 		{
-			return new Vector2Int(v.x, v.y);
+			return new Vector2Int(vec.x, vec.y);
 		}
 
 		public static explicit operator Vector4Int(Color32 c)
@@ -415,14 +415,14 @@ namespace VectorTyping
 			return new Vector4Int(c.r, c.g, c.b, c.a);
 		}
 
-		public static explicit operator Color32(Vector4Int v)
+		public static explicit operator Color32(Vector4Int vec)
 		{
-			return new Color32((byte)v.x, (byte)v.y, (byte)v.z, (byte)v.w);
+			return new Color32((byte)vec.x, (byte)vec.y, (byte)vec.z, (byte)vec.w);
 		}
 
-		public static explicit operator (int x, int y, int z, int w)(Vector4Int v)
+		public static explicit operator (int x, int y, int z, int w)(Vector4Int vec)
 		{
-			return (v.x, v.y, v.z, v.w);
+			return (vec.x, vec.y, vec.z, vec.w);
 		}
 
 		public static explicit operator Vector4Int((int x, int y, int z, int w) t)
@@ -430,20 +430,20 @@ namespace VectorTyping
 			return new Vector4Int(t.x, t.y, t.z, t.w);
 		}
 
-		public static explicit operator int[](Vector4Int v)
+		public static explicit operator int[](Vector4Int vec)
 		{
-			return new int[4] { v.x, v.y, v.z, v.w };
+			return new int[4] { vec.x, vec.y, vec.z, vec.w };
 		}
 
 		/// <summary>
 		///     For the conversion to work, the length of the given integer array must be equal to 4.
 		/// </summary>
-		public static explicit operator Vector4Int(int[] a)
+		public static explicit operator Vector4Int(int[] arr)
 		{
-			if (a.Length == 4)
-				return new Vector4Int(a[0], a[1], a[2], a[3]);
+			if (arr.Length == 4)
+				return new Vector4Int(arr[0], arr[1], arr[2], arr[3]);
 			else
-				throw new ArgumentException("The length of the given integer array must be equal to 4 when converting to Vector4Int.");
+				throw new ArgumentException("The length of the given integer array must be equal to 4 when converting to Vector4Int.", nameof(arr));
 		}
 
 		// Math operators
@@ -456,18 +456,18 @@ namespace VectorTyping
 			return new Vector4Int(a.x + b, a.y + b, a.z + b, a.w + b);
 		}
 
-		public static Vector4Int operator +(Vector4Int v)
+		public static Vector4Int operator +(Vector4Int vec)
 		{
-			return new Vector4Int(+v.x, +v.y, +v.z, +v.w);
+			return new Vector4Int(+vec.x, +vec.y, +vec.z, +vec.w);
 		}
 
-		public static Vector4Int operator ++(Vector4Int v)
+		public static Vector4Int operator ++(Vector4Int vec)
 		{
-			v.x++;
-			v.y++;
-			v.z++;
-			v.w++;
-			return v;
+			vec.x++;
+			vec.y++;
+			vec.z++;
+			vec.w++;
+			return vec;
 		}
 
 		public static Vector4Int operator -(Vector4Int a, Vector4Int b)
@@ -479,18 +479,18 @@ namespace VectorTyping
 			return new Vector4Int(a.x - b, a.y - b, a.z - b, a.w - b);
 		}
 
-		public static Vector4Int operator -(Vector4Int v)
+		public static Vector4Int operator -(Vector4Int vec)
 		{
-			return new Vector4Int(-v.x, -v.y, -v.z, -v.w);
+			return new Vector4Int(-vec.x, -vec.y, -vec.z, -vec.w);
 		}
 
-		public static Vector4Int operator --(Vector4Int v)
+		public static Vector4Int operator --(Vector4Int vec)
 		{
-			v.x--;
-			v.y--;
-			v.z--;
-			v.w--;
-			return v;
+			vec.x--;
+			vec.y--;
+			vec.z--;
+			vec.w--;
+			return vec;
 		}
 
 		public static Vector4Int operator *(Vector4Int a, Vector4Int b)
@@ -659,27 +659,27 @@ namespace VectorTyping
 			return new Vector4Int(lhs.x ^ rhs.x, lhs.y ^ rhs.y, lhs.z ^ rhs.z, lhs.w ^ rhs.w);
 		}
 
-		public static Vector4Int operator ~(Vector4Int v)
+		public static Vector4Int operator ~(Vector4Int vec)
 		{
-			return new Vector4Int(~v.x, ~v.y, ~v.z, ~v.w);
+			return new Vector4Int(~vec.x, ~vec.y, ~vec.z, ~vec.w);
 		}
 
-		public static Vector4Int operator <<(Vector4Int v, int shiftl)
+		public static Vector4Int operator <<(Vector4Int vec, int shiftl)
 		{
-			return new Vector4Int(v.x << shiftl, v.y << shiftl, v.z << shiftl, v.w << shiftl);
+			return new Vector4Int(vec.x << shiftl, vec.y << shiftl, vec.z << shiftl, vec.w << shiftl);
 		}
 
-		public static Vector4Int operator >>(Vector4Int v, int shiftr)
+		public static Vector4Int operator >>(Vector4Int vec, int shiftr)
 		{
-			return new Vector4Int(v.x >> shiftr, v.y >> shiftr, v.z >> shiftr, v.w >> shiftr);
+			return new Vector4Int(vec.x >> shiftr, vec.y >> shiftr, vec.z >> shiftr, vec.w >> shiftr);
 		}
 
 		/// <summary>
-		///     Returns a vector containing 1s and 0s depending on if a component of 'v' was a zero or non-zero value.
+		///     Returns a vector containing 1s and 0s depending on if a component of 'vec' was a zero or non-zero value.
 		/// </summary>
-		public static Vector4Int operator !(Vector4Int v)
+		public static Vector4Int operator !(Vector4Int vec)
 		{
-			return new Vector4Int(v.x == 0 ? 1 : 0, v.y == 0 ? 1 : 0, v.z == 0 ? 1 : 0, v.w == 0 ? 1 : 0);
+			return new Vector4Int(vec.x == 0 ? 1 : 0, vec.y == 0 ? 1 : 0, vec.z == 0 ? 1 : 0, vec.w == 0 ? 1 : 0);
 		}
 
 		// Additional methods
@@ -696,13 +696,13 @@ namespace VectorTyping
 		/// <summary>
 		///     Copies the x, y, z and w components from an existing vector over to this vector.
 		/// </summary>
-		public Vector4Int Copy(Vector4Int v)
+		public Vector4Int Copy(Vector4Int vec)
 		{
-			m_X = v.x;
-			m_Y = v.y;
-			m_Z = v.z;
-			m_W = v.w;
-			return new Vector4Int(v.x, v.y, v.z, v.w);
+			m_X = vec.x;
+			m_Y = vec.y;
+			m_Z = vec.z;
+			m_W = vec.w;
+			return new Vector4Int(vec.x, vec.y, vec.z, vec.w);
 		}
 
 		/// <summary>
@@ -737,21 +737,21 @@ namespace VectorTyping
 		/// <summary>
 		///     Sets the origin point of this vector to the specified position using an existing vector.
 		/// </summary>
-		public Vector4Int SetOriginTo(Vector4Int v)
+		public Vector4Int SetOriginTo(Vector4Int vec)
 		{
-			m_Origin = (v.x, v.y, v.z, v.w);
+			m_Origin = (vec.x, vec.y, vec.z, vec.w);
 			return new Vector4Int(m_Origin.x, m_Origin.y, m_Origin.z, m_Origin.w);
 		}
 
 		/// <summary>
 		///     Returns the absolute vector of the given vector.
 		/// </summary>
-		public static Vector4Int Abs(Vector4Int v)
+		public static Vector4Int Abs(Vector4Int vec)
 		{
-			int ax = v.x < 0 ? -v.x : v.x;
-			int ay = v.y < 0 ? -v.y : v.y;
-			int az = v.z < 0 ? -v.z : v.z;
-			int aw = v.w < 0 ? -v.w : v.w;
+			int ax = vec.x < 0 ? -vec.x : vec.x;
+			int ay = vec.y < 0 ? -vec.y : vec.y;
+			int az = vec.z < 0 ? -vec.z : vec.z;
+			int aw = vec.w < 0 ? -vec.w : vec.w;
 			return new Vector4Int(ax, ay, az, aw);
 		}
 		/// <summary>
@@ -773,23 +773,23 @@ namespace VectorTyping
 		/// <summary>
 		///     Converts the given Vector4 to a Vector4Int by doing a Floor to each value.
 		/// </summary>
-		public static Vector4Int FloorToInt(Vector4 v)
+		public static Vector4Int FloorToInt(Vector4 vec)
 		{
-			return new Vector4Int(Mathf.FloorToInt(v.x), Mathf.FloorToInt(v.y), Mathf.FloorToInt(v.z), Mathf.FloorToInt(v.w));
+			return new Vector4Int(Mathf.FloorToInt(vec.x), Mathf.FloorToInt(vec.y), Mathf.FloorToInt(vec.z), Mathf.FloorToInt(vec.w));
 		}
 		/// <summary>
 		///     Converts the given Vector4 to a Vector4Int by doing a Ceil to each value.
 		/// </summary>
-		public static Vector4Int CeilToInt(Vector4 v)
+		public static Vector4Int CeilToInt(Vector4 vec)
 		{
-			return new Vector4Int(Mathf.CeilToInt(v.x), Mathf.CeilToInt(v.y), Mathf.CeilToInt(v.z), Mathf.CeilToInt(v.w));
+			return new Vector4Int(Mathf.CeilToInt(vec.x), Mathf.CeilToInt(vec.y), Mathf.CeilToInt(vec.z), Mathf.CeilToInt(vec.w));
 		}
 		/// <summary>
 		///     Converts the given Vector4 to a Vector4Int by doing a Round to each value.
 		/// </summary>
-		public static Vector4Int RoundToInt(Vector4 v)
+		public static Vector4Int RoundToInt(Vector4 vec)
 		{
-			return new Vector4Int(Mathf.RoundToInt(v.x), Mathf.RoundToInt(v.y), Mathf.RoundToInt(v.z), Mathf.RoundToInt(v.w));
+			return new Vector4Int(Mathf.RoundToInt(vec.x), Mathf.RoundToInt(vec.y), Mathf.RoundToInt(vec.z), Mathf.RoundToInt(vec.w));
 		}
 
 		/// <summary>
@@ -947,12 +947,12 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns a vector with the cube root of every component of the given vector.
 		/// </summary>
-		public static Vector4Int Cbrt(Vector4Int v)
+		public static Vector4Int Cbrt(Vector4Int vec)
 		{
-			int rx = Math.Sign(v.x) * (int)Math.Pow(Math.Abs(v.x), 1.0 / 3.0);
-			int ry = Math.Sign(v.y) * (int)Math.Pow(Math.Abs(v.y), 1.0 / 3.0);
-			int rz = Math.Sign(v.z) * (int)Math.Pow(Math.Abs(v.z), 1.0 / 3.0);
-			int rw = Math.Sign(v.w) * (int)Math.Pow(Math.Abs(v.w), 1.0 / 3.0);
+			int rx = Math.Sign(vec.x) * (int)Math.Pow(Math.Abs(vec.x), 1.0 / 3.0);
+			int ry = Math.Sign(vec.y) * (int)Math.Pow(Math.Abs(vec.y), 1.0 / 3.0);
+			int rz = Math.Sign(vec.z) * (int)Math.Pow(Math.Abs(vec.z), 1.0 / 3.0);
+			int rw = Math.Sign(vec.w) * (int)Math.Pow(Math.Abs(vec.w), 1.0 / 3.0);
 			return new Vector4Int(rx, ry, rz, rw);
 		}
 		/// <summary>
@@ -1060,13 +1060,13 @@ namespace VectorTyping
 		///     Returns the logarithm of the given vector in the specified base.
 		///     <br>If using the bases of e, pi, phi, 10, or 2, it is recommended to use their specialized log methods instead.</br>
 		/// </summary>
-		public static Vector4Int Log(Vector4Int v, int baseValue)
+		public static Vector4Int Log(Vector4Int vec, int baseValue)
 		{
 			return new Vector4Int(
-				(int)Math.Log(v.x, baseValue),
-				(int)Math.Log(v.y, baseValue),
-				(int)Math.Log(v.z, baseValue),
-				(int)Math.Log(v.w, baseValue)
+				(int)Math.Log(vec.x, baseValue),
+				(int)Math.Log(vec.y, baseValue),
+				(int)Math.Log(vec.z, baseValue),
+				(int)Math.Log(vec.w, baseValue)
 			);
 		}
 		/// <summary>
@@ -1089,13 +1089,13 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the natural logarithm of the given vector.
 		/// </summary>
-		public static Vector4Int LogN(Vector4Int v)
+		public static Vector4Int LogN(Vector4Int vec)
 		{
 			return new Vector4Int(
-				(int)Math.Log(v.x),
-				(int)Math.Log(v.y),
-				(int)Math.Log(v.z),
-				(int)Math.Log(v.w)
+				(int)Math.Log(vec.x),
+				(int)Math.Log(vec.y),
+				(int)Math.Log(vec.z),
+				(int)Math.Log(vec.w)
 			);
 		}
 		/// <summary>
@@ -1117,13 +1117,13 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the pi-base logarithm of the given vector.
 		/// </summary>
-		public static Vector4Int LogPi(Vector4Int v)
+		public static Vector4Int LogPi(Vector4Int vec)
 		{
 			return new Vector4Int(
-				(int)Math.Log(v.x, Math.PI),
-				(int)Math.Log(v.y, Math.PI),
-				(int)Math.Log(v.z, Math.PI),
-				(int)Math.Log(v.w, Math.PI)
+				(int)Math.Log(vec.x, Math.PI),
+				(int)Math.Log(vec.y, Math.PI),
+				(int)Math.Log(vec.z, Math.PI),
+				(int)Math.Log(vec.w, Math.PI)
 			);
 		}
 		/// <summary>
@@ -1144,13 +1144,13 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the phi-base logarithm of the given vector.
 		/// </summary>
-		public static Vector4Int LogPhi(Vector4Int v)
+		public static Vector4Int LogPhi(Vector4Int vec)
 		{
 			return new Vector4Int(
-				(int)Math.Log(v.x, (1 + Math.Sqrt(5)) / 2),
-				(int)Math.Log(v.y, (1 + Math.Sqrt(5)) / 2),
-				(int)Math.Log(v.z, (1 + Math.Sqrt(5)) / 2),
-				(int)Math.Log(v.w, (1 + Math.Sqrt(5)) / 2)
+				(int)Math.Log(vec.x, (1 + Math.Sqrt(5)) / 2),
+				(int)Math.Log(vec.y, (1 + Math.Sqrt(5)) / 2),
+				(int)Math.Log(vec.z, (1 + Math.Sqrt(5)) / 2),
+				(int)Math.Log(vec.w, (1 + Math.Sqrt(5)) / 2)
 			);
 		}
 		/// <summary>
@@ -1172,13 +1172,13 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the 10-base logarithm of the given vector.
 		/// </summary>
-		public static Vector4Int Log10(Vector4Int v)
+		public static Vector4Int Log10(Vector4Int vec)
 		{
 			return new Vector4Int(
-				(int)Math.Log10(v.x),
-				(int)Math.Log10(v.y),
-				(int)Math.Log10(v.z),
-				(int)Math.Log10(v.w)
+				(int)Math.Log10(vec.x),
+				(int)Math.Log10(vec.y),
+				(int)Math.Log10(vec.z),
+				(int)Math.Log10(vec.w)
 			);
 		}
 		/// <summary>
@@ -1200,13 +1200,13 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the 2-base logarithm of the given vector.
 		/// </summary>
-		public static Vector4Int Log2(Vector4Int v)
+		public static Vector4Int Log2(Vector4Int vec)
 		{
 			return new Vector4Int(
-				(int)Math.Log(v.x, 2),
-				(int)Math.Log(v.y, 2),
-				(int)Math.Log(v.z, 2),
-				(int)Math.Log(v.w, 2)
+				(int)Math.Log(vec.x, 2),
+				(int)Math.Log(vec.y, 2),
+				(int)Math.Log(vec.z, 2),
+				(int)Math.Log(vec.w, 2)
 			);
 		}
 		/// <summary>
@@ -1228,11 +1228,11 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the factorial of the given vector.
 		/// </summary>
-		public static Vector4Int Fact(Vector4Int v)
+		public static Vector4Int Fact(Vector4Int vec)
 		{
-			if (v.ContainsLessThanEqual(-1))
-				throw new InvalidOperationException("The given Vector4Int may not contain negative numbers.");
-			Vector4Int copyVec = v;
+			if (vec.ContainsLessThanEqual(-1))
+				throw new InvalidOperationException("The given vector may not contain negative numbers.");
+			Vector4Int copyVec = vec;
 			for (int comp = 0; comp < 4; comp++)
 			{
 				if (copyVec[comp] <= 1)
@@ -1255,7 +1255,7 @@ namespace VectorTyping
 		public Vector4Int Fact()
 		{
 			if (ContainsLessThanEqual(-1))
-				throw new InvalidOperationException("The given Vector4Int may not contain negative numbers.");
+				throw new InvalidOperationException("This vector may not contain negative numbers.");
 			for (int comp = 0; comp < 4; comp++)
 			{
 				if (this[comp] <= 1)
@@ -1315,13 +1315,13 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns a vector that is in the center of each component of the given vector, rounded to the nearest integer.
 		/// </summary>
-		public static Vector4Int Center(Vector4Int v)
+		public static Vector4Int Center(Vector4Int vec)
 		{
 			return new Vector4Int(
-				(int)Math.Round((double)(v.x / 4)),
-				(int)Math.Round((double)(v.y / 4)),
-				(int)Math.Round((double)(v.z / 4)),
-				(int)Math.Round((double)(v.w / 4))
+				(int)Math.Round((double)(vec.x / 4)),
+				(int)Math.Round((double)(vec.y / 4)),
+				(int)Math.Round((double)(vec.z / 4)),
+				(int)Math.Round((double)(vec.w / 4))
 			);
 		}
 		/// <summary>
@@ -1344,17 +1344,17 @@ namespace VectorTyping
 		///     Returns a vector that is in the center of each component of the given vector, mirrored along the specified axes, and rounded to the nearest integer.
 		///     <br>If you are not mirroring the center point along any of the axes, it is recommended to use Center(Vector4Int) instead.</br>
 		/// </summary>
-		public static Vector4Int MirrCenter(Vector4Int v, (bool x, bool y, bool z, bool w) mirroredAxes)
+		public static Vector4Int MirrCenter(Vector4Int vec, (bool x, bool y, bool z, bool w) mirroredAxes)
 		{
 			int mx = mirroredAxes.x ? -1 : 1;
 			int my = mirroredAxes.y ? -1 : 1;
 			int mz = mirroredAxes.z ? -1 : 1;
 			int mw = mirroredAxes.w ? -1 : 1;
 			return new Vector4Int(
-				mx * (int)Math.Round((double)(v.x / 4)),
-				my * (int)Math.Round((double)(v.y / 4)),
-				mz * (int)Math.Round((double)(v.z / 4)),
-				mw * (int)Math.Round((double)(v.w / 4))
+				mx * (int)Math.Round((double)(vec.x / 4)),
+				my * (int)Math.Round((double)(vec.y / 4)),
+				mz * (int)Math.Round((double)(vec.z / 4)),
+				mw * (int)Math.Round((double)(vec.w / 4))
 			);
 		}
 		/// <summary>
@@ -1530,12 +1530,12 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the slope between this vector and another vector.
 		/// </summary>
-		public double Slope(Vector4Int v)
+		public double Slope(Vector4Int vec)
 		{
-			double dx = v.x - x;
-			double dy = v.y - y;
-			double dz = v.z - z;
-			double dw = v.w - w;
+			double dx = vec.x - x;
+			double dy = vec.y - y;
+			double dz = vec.z - z;
+			double dw = vec.w - w;
 
 			if (dx == 0 && dy == 0 && dz == 0 && dw == 0)
 			{
@@ -1582,7 +1582,7 @@ namespace VectorTyping
 		/// <summary>
 		///     Projects a vector onto another vector.
 		/// </summary>
-		public static Vector4Int Project(Vector4Int v, Vector4Int onNormal)
+		public static Vector4Int Project(Vector4Int vec, Vector4Int onNormal)
 		{
 			int num = Dot(onNormal, onNormal);
 			if (num < 1)
@@ -1590,7 +1590,7 @@ namespace VectorTyping
 				return zero;
 			}
 
-			int num2 = Dot(v, onNormal);
+			int num2 = Dot(vec, onNormal);
 			return new Vector4Int(
 				onNormal.x * num2 / num,
 				onNormal.y * num2 / num,
@@ -1625,7 +1625,7 @@ namespace VectorTyping
 		/// <summary>
 		///     Projects a vector onto a plane defined by a normal orthogonal to the plane.
 		/// </summary>
-		public static Vector4Int ProjectOnPlane(Vector4Int v, Vector4Int planeNormal)
+		public static Vector4Int ProjectOnPlane(Vector4Int vec, Vector4Int planeNormal)
 		{
 			int num = Dot(planeNormal, planeNormal);
 			if (num < 1)
@@ -1633,12 +1633,12 @@ namespace VectorTyping
 				return zero;
 			}
 
-			int num2 = Dot(v, planeNormal);
+			int num2 = Dot(vec, planeNormal);
 			return new Vector4Int(
-				v.x - planeNormal.x * num2 / num,
-				v.y - planeNormal.y * num2 / num,
-				v.z - planeNormal.z * num2 / num,
-				v.w - planeNormal.w * num2 / num
+				vec.x - planeNormal.x * num2 / num,
+				vec.y - planeNormal.y * num2 / num,
+				vec.z - planeNormal.z * num2 / num,
+				vec.w - planeNormal.w * num2 / num
 			);
 		}
 		/// <summary>
@@ -1729,21 +1729,21 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the distance between this vector and another vector.
 		/// </summary>
-		public double Distance(Vector4Int v)
+		public double Distance(Vector4Int vec)
 		{
-			int dx = v.x - x;
-			int dy = v.y - y;
-			int dz = v.z - z;
-			int dw = v.w - w;
+			int dx = vec.x - x;
+			int dy = vec.y - y;
+			int dz = vec.z - z;
+			int dw = vec.w - w;
 			return (double)Math.Sqrt(dx * dx + dy * dy + dz * dz + dw * dw);
 		}
 
 		/// <summary>
 		///     Returns the magnitude of the given vector.
 		/// </summary>
-		public static double Magnitude(Vector4Int v)
+		public static double Magnitude(Vector4Int vec)
 		{
-			return (double)Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w);
+			return (double)Math.Sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w);
 		}
 		/// <summary>
 		///     Returns the magnitude of this vector.
@@ -1756,9 +1756,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the square magnitude of the given vector.
 		/// </summary>
-		public static double SqrMagnitude(Vector4Int v)
+		public static double SqrMagnitude(Vector4Int vec)
 		{
-			return v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w;
+			return vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w;
 		}
 		/// <summary>
 		///     Returns the square magnitude of this vector.
@@ -1771,9 +1771,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the cubic magnitude of the given vector.
 		/// </summary>
-		public static double CbcMagnitude(Vector4Int v)
+		public static double CbcMagnitude(Vector4Int vec)
 		{
-			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), 3);
+			return Math.Pow(Math.Sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w), 3);
 		}
 		/// <summary>
 		///     Returns the cubic magnitude of this vector.
@@ -1786,9 +1786,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the natural magnitude of the given vector.
 		/// </summary>
-		public static double NatMagnitude(Vector4Int v)
+		public static double NatMagnitude(Vector4Int vec)
 		{
-			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), Math.E);
+			return Math.Pow(Math.Sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w), Math.E);
 		}
 		/// <summary>
 		///     Returns the natural magnitude of this vector.
@@ -1801,9 +1801,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the magnitude raised to the power of pi of the given vector.
 		/// </summary>
-		public static double PiMagnitude(Vector4Int v)
+		public static double PiMagnitude(Vector4Int vec)
 		{
-			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), Math.PI);
+			return Math.Pow(Math.Sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w), Math.PI);
 		}
 		/// <summary>
 		///     Returns the magnitude raised to the power of pi of this vector.
@@ -1816,9 +1816,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the magnitude raised to the power of phi of the given vector.
 		/// </summary>
-		public static double PhiMagnitude(Vector4Int v)
+		public static double PhiMagnitude(Vector4Int vec)
 		{
-			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), (1 + Math.Sqrt(5)) / 2);
+			return Math.Pow(Math.Sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w), (1 + Math.Sqrt(5)) / 2);
 		}
 		/// <summary>
 		///     Returns the magnitude raised to the power of phi of this vector.
@@ -1831,9 +1831,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the magnitude raised to the given integer of 'power' of the given vector.
 		/// </summary>
-		public static double PowMagnitude(Vector4Int v, int power)
+		public static double PowMagnitude(Vector4Int vec, int power)
 		{
-			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), power);
+			return Math.Pow(Math.Sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w), power);
 		}
 		/// <summary>
 		///     Returns the magnitude raised to the given double of 'power' of this vector.
@@ -1845,9 +1845,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the magnitude raised to the given floating-point of 'power' of the given vector.
 		/// </summary>
-		public static double PowMagnitude(Vector4Int v, float power)
+		public static double PowMagnitude(Vector4Int vec, float power)
 		{
-			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), power);
+			return Math.Pow(Math.Sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w), power);
 		}
 		/// <summary>
 		///     Returns the magnitude raised to the given double of 'power' of this vector.
@@ -1859,9 +1859,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the magnitude raised to the given double of 'power' of the given vector.
 		/// </summary>
-		public static double PowMagnitude(Vector4Int v, double power)
+		public static double PowMagnitude(Vector4Int vec, double power)
 		{
-			return Math.Pow(Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w), power);
+			return Math.Pow(Math.Sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w), power);
 		}
 		/// <summary>
 		///     Returns the magnitude raised to the given double of 'power' of this vector.
@@ -1874,9 +1874,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the exponentiated magnitude of the given vector.
 		/// </summary>
-		public static double ExpMagnitude(Vector4Int v)
+		public static double ExpMagnitude(Vector4Int vec)
 		{
-			return (double)Math.Pow(Magnitude(v), Magnitude(v));
+			return (double)Math.Pow(Magnitude(vec), Magnitude(vec));
 		}
 		/// <summary>
 		///     Returns the exponentiated magnitude of this vector.
@@ -1889,9 +1889,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the exponentiated square magnitude of the given vector.
 		/// </summary>
-		public static double ExpSqrMagnitude(Vector4Int v)
+		public static double ExpSqrMagnitude(Vector4Int vec)
 		{
-			return (double)Math.Pow(SqrMagnitude(v), SqrMagnitude(v));
+			return (double)Math.Pow(SqrMagnitude(vec), SqrMagnitude(vec));
 		}
 		/// <summary>
 		///     Returns the exponentiated square magnitude of this vector.
@@ -1904,9 +1904,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the exponentiated cubic magnitude of the given vector.
 		/// </summary>
-		public static double ExpCbcMagnitude(Vector4Int v)
+		public static double ExpCbcMagnitude(Vector4Int vec)
 		{
-			return (double)Math.Pow(CbcMagnitude(v), CbcMagnitude(v));
+			return (double)Math.Pow(CbcMagnitude(vec), CbcMagnitude(vec));
 		}
 		/// <summary>
 		///     Returns the exponentiated cubic magnitude of this vector.
@@ -1919,9 +1919,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the exponentiated natural magnitude of the given vector.
 		/// </summary>
-		public static double ExpNatMagnitude(Vector4Int v)
+		public static double ExpNatMagnitude(Vector4Int vec)
 		{
-			return (double)Math.Pow(NatMagnitude(v), NatMagnitude(v));
+			return (double)Math.Pow(NatMagnitude(vec), NatMagnitude(vec));
 		}
 		/// <summary>
 		///     Returns the exponentiated natural magnitude of this vector.
@@ -1934,9 +1934,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the exponentiated magnitude raised to the power of pi of the given vector.
 		/// </summary>
-		public static double ExpPiMagnitude(Vector4Int v)
+		public static double ExpPiMagnitude(Vector4Int vec)
 		{
-			return (double)Math.Pow(PiMagnitude(v), PiMagnitude(v));
+			return (double)Math.Pow(PiMagnitude(vec), PiMagnitude(vec));
 		}
 		/// <summary>
 		///     Returns the exponentiated magnitude raised to the power of pi of this vector.
@@ -1949,9 +1949,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the exponentiated magnitude raised to the power of phi of the given vector.
 		/// </summary>
-		public static double ExpPhiMagnitude(Vector4Int v)
+		public static double ExpPhiMagnitude(Vector4Int vec)
 		{
-			return (double)Math.Pow(PhiMagnitude(v), PhiMagnitude(v));
+			return (double)Math.Pow(PhiMagnitude(vec), PhiMagnitude(vec));
 		}
 		/// <summary>
 		///     Returns the exponentiated magnitude raised to the power of phi of this vector.
@@ -1964,9 +1964,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the exponentiated magnitude raised to the given integer of 'power' of the given vector.
 		/// </summary>
-		public static double ExpPowMagnitude(Vector4Int v, int power)
+		public static double ExpPowMagnitude(Vector4Int vec, int power)
 		{
-			return (double)Math.Pow(PowMagnitude(v, power), PowMagnitude(v, power));
+			return (double)Math.Pow(PowMagnitude(vec, power), PowMagnitude(vec, power));
 		}
 		/// <summary>
 		///     Returns the exponentiated magnitude raised to the given integer of 'power' of this vector.
@@ -1978,9 +1978,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the exponentiated magnitude raised to the given floating-point of 'power' of the given vector.
 		/// </summary>
-		public static double ExpPowMagnitude(Vector4Int v, float power)
+		public static double ExpPowMagnitude(Vector4Int vec, float power)
 		{
-			return (double)Math.Pow(PowMagnitude(v, power), PowMagnitude(v, power));
+			return (double)Math.Pow(PowMagnitude(vec, power), PowMagnitude(vec, power));
 		}
 		/// <summary>
 		///     Returns the exponentiated magnitude raised to the given floating-point of 'power' of this vector.
@@ -1992,9 +1992,9 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns the exponentiated magnitude raised to the given double of 'power' of the given vector.
 		/// </summary>
-		public static double ExpPowMagnitude(Vector4Int v, double power)
+		public static double ExpPowMagnitude(Vector4Int vec, double power)
 		{
-			return (double)Math.Pow(PowMagnitude(v, power), PowMagnitude(v, power));
+			return (double)Math.Pow(PowMagnitude(vec, power), PowMagnitude(vec, power));
 		}
 		/// <summary>
 		///     Returns the exponentiated magnitude raised to the given double of 'power' of this vector.
@@ -2007,21 +2007,21 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns a copy of this vector which has a magnitude of 1.
 		/// </summary>
-		public static Vector4Int Normalize(Vector4Int v)
+		public static Vector4Int Normalize(Vector4Int vec)
 		{
-			int nx = v.x;
-			int ny = v.y;
-			int nz = v.z;
-			int nw = v.w;
+			int nx = vec.x;
+			int ny = vec.y;
+			int nz = vec.z;
+			int nw = vec.w;
 
-			double mag = Magnitude(v);
+			double mag = Magnitude(vec);
 			if (mag > 0f)
 			{
 				double invMag = 1.0 / mag;
-				nx = Mathf.RoundToInt((float)(v.x * invMag));
-				ny = Mathf.RoundToInt((float)(v.y * invMag));
-				nz = Mathf.RoundToInt((float)(v.z * invMag));
-				nw = Mathf.RoundToInt((float)(v.w * invMag));
+				nx = Mathf.RoundToInt((float)(vec.x * invMag));
+				ny = Mathf.RoundToInt((float)(vec.y * invMag));
+				nz = Mathf.RoundToInt((float)(vec.z * invMag));
+				nw = Mathf.RoundToInt((float)(vec.w * invMag));
 			}
 			return new Vector4Int(nx, ny, nz, nw);
 		}
@@ -2113,12 +2113,12 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns a copy of the given vector with every component clamped to the components of min and max.
 		/// </summary>
-		public static Vector4Int Clamp(Vector4Int v, Vector4Int min, Vector4Int max)
+		public static Vector4Int Clamp(Vector4Int vec, Vector4Int min, Vector4Int max)
 		{
-			int cx = Mathf.Clamp(v.x, min.x, max.x);
-			int cy = Mathf.Clamp(v.y, min.y, max.y);
-			int cz = Mathf.Clamp(v.z, min.z, max.z);
-			int cw = Mathf.Clamp(v.w, min.w, max.w);
+			int cx = Mathf.Clamp(vec.x, min.x, max.x);
+			int cy = Mathf.Clamp(vec.y, min.y, max.y);
+			int cz = Mathf.Clamp(vec.z, min.z, max.z);
+			int cw = Mathf.Clamp(vec.w, min.w, max.w);
 			return new Vector4Int(cx, cy, cz, cw);
 		}
 		/// <summary>
@@ -2134,12 +2134,12 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns a copy of the given vector with every component clamped to the integers of min and max.
 		/// </summary>
-		public static Vector4Int Clamp(Vector4Int v, int min, int max)
+		public static Vector4Int Clamp(Vector4Int vec, int min, int max)
 		{
-			int cx = Mathf.Clamp(v.x, min, max);
-			int cy = Mathf.Clamp(v.y, min, max);
-			int cz = Mathf.Clamp(v.z, min, max);
-			int cw = Mathf.Clamp(v.w, min, max);
+			int cx = Mathf.Clamp(vec.x, min, max);
+			int cy = Mathf.Clamp(vec.y, min, max);
+			int cz = Mathf.Clamp(vec.z, min, max);
+			int cw = Mathf.Clamp(vec.w, min, max);
 			return new Vector4Int(cx, cy, cz, cw);
 		}
 		/// <summary>
@@ -2156,16 +2156,16 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns a copy of the given vector with its magnitude clamped to 'maxLength'.
 		/// </summary>
-		public static Vector4Int ClampMagnitude(Vector4Int v, int maxLength)
+		public static Vector4Int ClampMagnitude(Vector4Int vec, int maxLength)
 		{
-			int sqrMagnitude = v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w;
+			int sqrMagnitude = vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w;
 			if (sqrMagnitude > maxLength * maxLength)
 			{
 				double magnitude = Mathf.Sqrt(sqrMagnitude);
-				double normalizedX = v.x / magnitude;
-				double normalizedY = v.y / magnitude;
-				double normalizedZ = v.z / magnitude;
-				double normalizedW = v.w / magnitude;
+				double normalizedX = vec.x / magnitude;
+				double normalizedY = vec.y / magnitude;
+				double normalizedZ = vec.z / magnitude;
+				double normalizedW = vec.w / magnitude;
 				return new Vector4Int(
 					Mathf.RoundToInt((float)(normalizedX * maxLength)),
 					Mathf.RoundToInt((float)(normalizedY * maxLength)),
@@ -2174,7 +2174,7 @@ namespace VectorTyping
 				);
 			}
 
-			return v;
+			return vec;
 		}
 		/// <summary>
 		///     Clamps the magnitude of this vector to 'maxLength'.
@@ -2265,7 +2265,7 @@ namespace VectorTyping
 		{
 			if (vals.Length < 2)
 			{
-				throw new ArgumentException("Vector4Int.ContainsOr requires at least two given values.");
+				throw new ArgumentException("Vector4Int.ContainsOr requires at least two given values.", nameof(vals));
 			}
 
 			foreach (int val in vals)
@@ -2285,7 +2285,7 @@ namespace VectorTyping
 		{
 			if (vals.Length < 2)
 			{
-				throw new ArgumentException("Vector4Int.ContainsXor requires at least two given values.");
+				throw new ArgumentException("Vector4Int.ContainsXor requires at least two given values.", nameof(vals));
 			}
 
 			int trueCount = 0;
@@ -2306,11 +2306,11 @@ namespace VectorTyping
 		{
 			if (vals.Length < 2)
 			{
-				throw new ArgumentException("Vector4Int.ContainsAnd requires at least two given values.");
+				throw new ArgumentException("Vector4Int.ContainsAnd requires at least two given values.", nameof(vals));
 			}
 			else if (vals.Length > 4)
 			{
-				throw new ArgumentException("Vector4Int.ContainsAnd cannot have more than four given values.");
+				throw new ArgumentException("Vector4Int.ContainsAnd cannot have more than four given values.", nameof(vals));
 			}
 
 			foreach (int val in vals)
@@ -2370,7 +2370,7 @@ namespace VectorTyping
 		{
 			if (vals.Length < 2)
 			{
-				throw new ArgumentException("Vector4Int.DoesNotContainOr requires at least two given values.");
+				throw new ArgumentException("Vector4Int.DoesNotContainOr requires at least two given values.", nameof(vals));
 			}
 
 			foreach (int val in vals)
@@ -2390,7 +2390,7 @@ namespace VectorTyping
 		{
 			if (vals.Length < 2)
 			{
-				throw new ArgumentException("Vector4Int.DoesNotContainXor requires at least two given values.");
+				throw new ArgumentException("Vector4Int.DoesNotContainXor requires at least two given values.", nameof(vals));
 			}
 
 			int trueCount = 0;
@@ -2411,11 +2411,11 @@ namespace VectorTyping
 		{
 			if (vals.Length < 2)
 			{
-				throw new ArgumentException("Vector4Int.DoesNotContainAnd requires at least two given values.");
+				throw new ArgumentException("Vector4Int.DoesNotContainAnd requires at least two given values.", nameof(vals));
 			}
 			else if (vals.Length > 4)
 			{
-				throw new ArgumentException("Vector4Int.DoesNotContainAnd cannot have more than four given values.");
+				throw new ArgumentException("Vector4Int.DoesNotContainAnd cannot have more than four given values.", nameof(vals));
 			}
 
 			foreach (int val in vals)
@@ -2431,9 +2431,35 @@ namespace VectorTyping
 		/// <summary>
 		///     Copies this vector's components and returns them in the form of an integer array of length 4.
 		/// </summary>
-		public int[] ToArray()
+		public int[] ToIntArray()
 		{
 			return new int[4] { x, y, z, w };
+		}
+
+		/// <summary>
+		///     Copies this vector's components and returns them in the form of an integer list.
+		/// </summary>
+		public List<int> ToIntList()
+		{
+			return new List<int>() { x, y, z, w };
+		}
+		/// <summary>
+		///     Copies this vector's components and returns them in the form of an integer list.
+		///     <br>If 'setCapacity' is set to true, the resulting integer list will have an automatically determined capacity.</br>
+		/// </summary>
+		public List<int> ToIntList(bool setCapacity)
+		{
+			if (setCapacity)
+				return new List<int>(4) { x, y, z, w };
+			else
+				return new List<int>() { x, y, z, w };
+		}
+		/// <summary>
+		///     Copies this vector's components and returns them in the form of an integer list with the given capacity.
+		/// </summary>
+		public List<int> ToIntList(int capacity)
+		{
+			return new List<int>(capacity) { x, y, z, w };
 		}
 
 		// Interface methods
@@ -2527,7 +2553,7 @@ namespace VectorTyping
 				return CompareTo(integer);
 
 			// Throw an exception if it isn't of an accepted IComparable interface type.
-			throw new ArgumentException("The given object must be of type 'Vector4Int' or 'int'.");
+			throw new ArgumentException("The given object must be of type 'Vector4Int' or 'int'.", nameof(other));
 		}
 		/// <summary>
 		///     Compares the components of this vector to those of the given vector and returns an indicator on the relative order of their values.
