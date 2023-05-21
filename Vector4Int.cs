@@ -214,6 +214,16 @@ namespace VectorTyping
 		/// </summary>
 		public double expNatMagnitude => ExpNatMagnitude(this);
 
+		/// <summary>
+		///     Returns a copy of this vector with every component clamped to [0,1] (Read Only).
+		/// </summary>
+		public Vector4Int zeroOneClamped => Clamp01(this);
+
+		/// <summary>
+		///     Returns a copy of this vector with every component clamped to [-1,1] (Read Only).
+		/// </summary>
+		public Vector4Int unitClamped => ClampUnit(this);
+
 		// Static properties
 		/// <summary>
 		///     Shorthand for writing Vector4Int(0, 0, 0, 0).
@@ -380,7 +390,7 @@ namespace VectorTyping
 		}
 
 		// Conversion operators
-		public static implicit operator Vector4Int(Vector4 vec)
+		public static explicit operator Vector4Int(Vector4 vec)
 		{
 			return new Vector4Int((int)vec.x, (int)vec.y, (int)vec.z, (int)vec.w);
 		}
@@ -2263,7 +2273,7 @@ namespace VectorTyping
 		}
 
 		/// <summary>
-		///     Calculates the linear parameter t that produces the interpolant vector of 'vec' within the range [a,b].
+		///     Calculates the linear parameter t that produces the given interpolant vector of 'vec' within the range [a,b].
 		/// </summary>
 		public static float InverseLerp(Vector4Int a, Vector4Int b, Vector4Int vec)
 		{
@@ -2271,6 +2281,26 @@ namespace VectorTyping
 			{
 				Vector4Int delta = b - a;
 				float t = Mathf.Clamp01(Dot(vec - a, delta) / Dot(delta, delta));
+
+				// Return t if the given interpolant vector of 'vec' actually falls on the line produced by the vectors 'a' and 'b', otherwise throw an ArgumentException.
+				if (LerpUnclamped(a, b, t) == vec)
+					return t;
+				else
+					throw new ArgumentException("The given interpolant vector of 'vec' does not fall on the line produced by the vectors 'a' and 'b'.", nameof(vec));
+			}
+			else return 0f;
+		}
+		/// <summary>
+		///     Calculates the linear parameter t that produces the given interpolant vector of 'vec' within the range [a,b].
+		///     <para>Returns the calculated value for t, even if the vector of 'vec' does not fall on the line produced by the vectors 'a' and 'b'.</para>
+		/// </summary>
+		public static float InverseLerpUnbounded(Vector4Int a, Vector4Int b, Vector4Int vec)
+		{
+			if (a != b)
+			{
+				Vector4Int delta = b - a;
+				float t = Mathf.Clamp01(Dot(vec - a, delta) / Dot(delta, delta));
+
 				return t;
 			}
 			else return 0f;
@@ -2567,10 +2597,8 @@ namespace VectorTyping
 				format = "F0";
 			}
 
-			if (formatProvider == null)
-			{
-				formatProvider = CultureInfo.InvariantCulture.NumberFormat;
-			}
+			// Assign 'formatProvider' if it is null.
+			formatProvider ??= CultureInfo.InvariantCulture.NumberFormat;
 
 			return VectorTypingString.Format("({0}, {1}, {2}, {3})", x.ToString(format, formatProvider),
 				y.ToString(format, formatProvider), z.ToString(format, formatProvider), w.ToString(format, formatProvider));
@@ -2581,13 +2609,13 @@ namespace VectorTyping
 		/// </summary>
 		public override bool Equals(object other)
 		{
-			if (other is not Vector4Int && other is not int)
+			if (other is not Vector4Int and not int)
 			{
 				return false;
 			}
 
-			if (other is Vector4Int)
-				return Equals((Vector4Int)other);
+			if (other is Vector4Int vector)
+				return Equals(vector);
 			else
 				return Equals((int)other);
 		}
