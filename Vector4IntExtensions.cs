@@ -72,7 +72,7 @@ namespace VectorTyping.Extensions
 				throw new ArgumentException("The length of this integer array must be a multiple of 4 when converting to a Vector4Int list.", nameof(arr));
 
 			int numVectors = arr.Length / 4;
-			List<Vector4Int> vectorList = new();
+			List<Vector4Int> vectorList = new List<Vector4Int>();
 
 			for (int i = 0; i < numVectors; i++)
 			{
@@ -95,9 +95,9 @@ namespace VectorTyping.Extensions
 			int numVectors = arr.Length / 4;
 			List<Vector4Int> vectorList;
 			if (setCapacity)
-				vectorList = new(numVectors);
+				vectorList = new List<Vector4Int>(numVectors);
 			else
-				vectorList = new();
+				vectorList = new List<Vector4Int>();
 
 			for (int i = 0; i < numVectors; i++)
 			{
@@ -119,7 +119,7 @@ namespace VectorTyping.Extensions
 				throw new ArgumentException("The list capacity must be greater than or equal to the length of this integer array.", nameof(capacity));
 
 			int numVectors = arr.Length / 4;
-			List<Vector4Int> vectorList = new(capacity);
+			List<Vector4Int> vectorList = new List<Vector4Int>(capacity);
 
 			for (int i = 0; i < numVectors; i++)
 			{
@@ -158,7 +158,7 @@ namespace VectorTyping.Extensions
 		public static List<int> ToIntList(this Vector4Int[] arr)
 		{
 			int count = arr.Length;
-			List<int> intList = new();
+			List<int> intList = new List<int>();
 
 			for (int i = 0; i < count; i++)
 			{
@@ -180,9 +180,9 @@ namespace VectorTyping.Extensions
 			int count = arr.Length;
 			List<int> intList;
 			if (setCapacity)
-				intList = new(count * 4);
+				intList = new List<int>(count * 4);
 			else
-				intList = new();
+				intList = new List<int>();
 
 			for (int i = 0; i < count; i++)
 			{
@@ -205,7 +205,7 @@ namespace VectorTyping.Extensions
 				throw new ArgumentException("The list capacity must be greater than or equal to the length of this Vector4Int array multiplied by 4.", nameof(capacity));
 
 			int count = arr.Length;
-			List<int> intList = new(capacity);
+			List<int> intList = new List<int>(capacity);
 
 			for (int i = 0; i < count; i++)
 			{
