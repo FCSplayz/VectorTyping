@@ -2609,7 +2609,7 @@ namespace VectorTyping
 		/// </summary>
 		public override bool Equals(object other)
 		{
-			if (other is not Vector4Int and not int)
+			if (!(other is Vector4Int) && !(other is int))
 			{
 				return false;
 			}
