@@ -35,6 +35,7 @@ namespace VectorTyping.Drawers
 		{
 			EditorGUI.BeginProperty(position, label, property);
 
+			// Define the necessary variables.
 			SerializedProperty xProp = property.FindPropertyRelative("m_X");
 			SerializedProperty yProp = property.FindPropertyRelative("m_Y");
 			SerializedProperty zProp = property.FindPropertyRelative("m_Z");
@@ -49,7 +50,7 @@ namespace VectorTyping.Drawers
 			if (inspectorWidth <= 475f)
 				rectHeight = EditorGUIUtility.singleLineHeight;
 
-			// Create labels and fields.
+			// Create the labels and fields in the Inspector.
 			Rect labelRect = new Rect(position.x, position.y, labelWidth, lineHeight);
 			Rect xRect = new Rect(labelRect.xMax - 105f, position.y + rectHeight, fieldWidth, lineHeight);
 			Rect yRect = new Rect(xRect.xMax + Spacing, position.y + rectHeight, fieldWidth, lineHeight);
