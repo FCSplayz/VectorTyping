@@ -4,13 +4,17 @@ MIT License
 <br/><ins><sup>Version 1.0.0 – Last Updated: <i>May 11th, 2023</i></sup>&nbsp;</ins>
 
 Copyright (c) 2023-2024 FCSplayz and Unity Technologies
-  
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this library and associated documentation files (the "Library"), to deal in
 the Library or any derivate works thereof with the following terms and conditions:
 
-The above copyright notice and this permission notice shall be included in
-all copies and/or substantial portions of the Library or any derivative works thereof.
+The above copyright notice and this permission notice shall be included in all copies
+and/or substantial portions of the Library or any derivative works thereof. <br/>
+The only exception to the above rule is for the 'VectorTyping.asmdef' file (the "Assembly Definition
+file") since it is in a JSON format and therefore does not support comments, as such the above notices
+cannot be included there. Despite this, the Assembly Definition file is still to be considered as
+licensed under the VTLL and shall also fall under the above copyrights per this statement.
 
 In the VTLL, “derivative works” means derivatives of the Library itself--works derived
 only from the Library by you under the VTLL (for example, modifying the code of the
