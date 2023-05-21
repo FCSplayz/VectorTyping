@@ -1252,7 +1252,7 @@ namespace VectorTyping
 					int result = 1;
 					for (int i = 2; i <= copyVec[comp]; i++)
 					{
-						result = result * i;
+						result *= i;
 					}
 					copyVec[comp] = result;
 				}
@@ -1275,7 +1275,7 @@ namespace VectorTyping
 					int result = 1;
 					for (int i = 2; i <= this[comp]; i++)
 					{
-						result = result * i;
+						result *= i;
 					}
 					this[comp] = result;
 				}
