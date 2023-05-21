@@ -11,7 +11,7 @@ the Library or any derivate works thereof with the following terms and condition
 
 The above copyright notice and this permission notice shall be included in all copies
 and/or substantial portions of the Library or any derivative works thereof. <br/>
-The only exception to the above rule is for the 'VectorTyping.asmdef' file (the "Assembly Definition
+The only exception to the above rule is for the '[VectorTyping.asmdef](VectorTyping.asmdef)' file (the "Assembly Definition
 file") since it is in a JSON format and therefore does not support comments, as such the above notices
 cannot be included there. Despite this, the Assembly Definition file is still to be considered as
 licensed under the VTLL and shall also fall under the above copyrights per this statement.
