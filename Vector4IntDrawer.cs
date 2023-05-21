@@ -24,11 +24,14 @@ using UnityEngine;
 namespace VectorTyping.Drawers
 {
 	/// <summary>
-	///     Allows Vector4Ints to be shown in the Inspector like normal Vector types.
+	///     Allows Vector4Ints to be shown in the Inspector.
 	/// </summary>
 	[CustomPropertyDrawer(typeof(Vector4Int))]
 	internal sealed class Vector4IntDrawer : PropertyDrawer
 	{
+		/// <summary>
+		///     A floating-point constant to quantify the amount of spacing that one space should take up.
+		/// </summary>
 		private const float Spacing = 20f;
 
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -82,6 +85,7 @@ namespace VectorTyping.Drawers
 			float rectHeight = 0f;
 			if (inspectorWidth <= 475f)
 				rectHeight = EditorGUIUtility.singleLineHeight;
+
 			return base.GetPropertyHeight(property, label) + rectHeight;
 		}
 	}
