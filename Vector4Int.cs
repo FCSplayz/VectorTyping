@@ -129,6 +129,9 @@ namespace VectorTyping
 			}
 		}
 
+		/// <summary>
+		///    Access the x, y, z or w components using [0], [1], [2] or [3] respectively.
+		/// </summary>
 		public int this[int index]
 		{
 			get
@@ -173,6 +176,11 @@ namespace VectorTyping
 		///     Returns a copy of this vector with a magnitude of 1 (Read Only).
 		/// </summary>
 		public Vector4Int normalized => Normalize(this);
+
+		/// <summary>
+		///     Returns the distance of this vector from Vector4Int(0, 0, 0, 0) (Read Only).
+		/// </summary>
+		public double distFromZero => DistanceFromZero(this);
 
 		/// <summary>
 		///     Returns the magnitude of this vector (Read Only).
@@ -223,6 +231,21 @@ namespace VectorTyping
 		///     Returns a copy of this vector with every component clamped to [-1,1] (Read Only).
 		/// </summary>
 		public Vector4Int unitClamped => ClampUnit(this);
+
+		/// <summary>
+		///     Returns a copy of this vector with the sign values of every component (Read Only).
+		/// </summary>
+		public Vector4Int sign => Sign(this);
+
+		/// <summary>
+		///     Returns a copy of this vector with the sign values of every component and any zeros returning 1 (Read Only).
+		/// </summary>
+		public Vector4Int signPos0 => SignPositiveZero(this);
+
+		/// <summary>
+		///     Returns a copy of this vector with the sign values of every component and any zeros returning -1 (Read Only).
+		/// </summary>
+		public Vector4Int signNeg0 => SignNegativeZero(this);
 
 		// Static properties
 		/// <summary>
@@ -1749,6 +1772,29 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Returns the distance between the given vector and Vector4Int(0, 0, 0, 0).
+		/// </summary>
+		public static double DistanceFromZero(Vector4Int vec)
+		{
+			int dx = -vec.x;
+			int dy = -vec.y;
+			int dz = -vec.z;
+			int dw = -vec.w;
+			return (double)Math.Sqrt(dx * dx + dy * dy + dz * dz + dw * dw);
+		}
+		/// <summary>
+		///     Returns the distance between this vector and Vector4Int(0, 0, 0, 0).
+		/// </summary>
+		public double DistanceFromZero()
+		{
+			int dx = -x;
+			int dy = -y;
+			int dz = -z;
+			int dw = -w;
+			return (double)Math.Sqrt(dx * dx + dy * dy + dz * dz + dw * dw);
+		}
+
+		/// <summary>
 		///     Returns the magnitude of the given vector.
 		/// </summary>
 		public static double Magnitude(Vector4Int vec)
@@ -2270,6 +2316,50 @@ namespace VectorTyping
 			y = Math.Sign(y);
 			z = Math.Sign(z);
 			w = Math.Sign(w);
+		}
+
+		/// <summary>
+		///     Returns a copy of the given vector with the sign values of every component and any zeros returning 1.
+		/// </summary>
+		public static Vector4Int SignPositiveZero(Vector4Int vec)
+		{
+			int cx = Math.Sign(vec.x) == 0 ? 1 : Math.Sign(vec.x);
+			int cy = Math.Sign(vec.y) == 0 ? 1 : Math.Sign(vec.y);
+			int cz = Math.Sign(vec.z) == 0 ? 1 : Math.Sign(vec.z);
+			int cw = Math.Sign(vec.w) == 0 ? 1 : Math.Sign(vec.w);
+			return new Vector4Int(cx, cy, cz, cw);
+		}
+		/// <summary>
+		///     Turns every component of this vector into its sign value with any zeros returning 1.
+		/// </summary>
+		public void SignPositiveZero()
+		{
+			x = Math.Sign(x) == 0 ? 1 : Math.Sign(x);
+			y = Math.Sign(y) == 0 ? 1 : Math.Sign(y);
+			z = Math.Sign(z) == 0 ? 1 : Math.Sign(z);
+			w = Math.Sign(w) == 0 ? 1 : Math.Sign(w);
+		}
+
+		/// <summary>
+		///     Returns a copy of the given vector with the sign values of every component and any zeros returning -1.
+		/// </summary>
+		public static Vector4Int SignNegativeZero(Vector4Int vec)
+		{
+			int cx = Math.Sign(vec.x) == 0 ? -1 : Math.Sign(vec.x);
+			int cy = Math.Sign(vec.y) == 0 ? -1 : Math.Sign(vec.y);
+			int cz = Math.Sign(vec.z) == 0 ? -1 : Math.Sign(vec.z);
+			int cw = Math.Sign(vec.w) == 0 ? -1 : Math.Sign(vec.w);
+			return new Vector4Int(cx, cy, cz, cw);
+		}
+		/// <summary>
+		///     Turns every component of this vector into its sign value with any zeros returning -1.
+		/// </summary>
+		public void SignNegativeZero()
+		{
+			x = Math.Sign(x) == 0 ? -1 : Math.Sign(x);
+			y = Math.Sign(y) == 0 ? -1 : Math.Sign(y);
+			z = Math.Sign(z) == 0 ? -1 : Math.Sign(z);
+			w = Math.Sign(w) == 0 ? -1 : Math.Sign(w);
 		}
 
 		/// <summary>
