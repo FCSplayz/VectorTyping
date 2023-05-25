@@ -777,6 +777,70 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Replaces any components in this vector or its origin point that match the value of 'oldNum' with the value of 'newNum'.
+		/// </summary>
+		public Vector4Int Replace(int oldNum, int newNum)
+		{
+			if (oldNum == newNum)
+				return this;
+
+			int prepx = x == oldNum ? newNum : x;
+			int prepy = y == oldNum ? newNum : y;
+			int prepz = z == oldNum ? newNum : z;
+			int prepw = w == oldNum ? newNum : w;
+
+			int orepx = m_Origin.x == oldNum ? newNum : m_Origin.x;
+			int orepy = m_Origin.y == oldNum ? newNum : m_Origin.y;
+			int orepz = m_Origin.z == oldNum ? newNum : m_Origin.z;
+			int orepw = m_Origin.w == oldNum ? newNum : m_Origin.w;
+
+			x = prepx;
+			y = prepy;
+			z = prepz;
+			w = prepw;
+			m_Origin = (orepx, orepy, orepz, orepw);
+			return this;
+		}
+
+		/// <summary>
+		///     Replaces any components in this vector that match the value of 'oldNum' with the value of 'newNum'.
+		/// </summary>
+		public Vector4Int ReplacePosition(int oldNum, int newNum)
+		{
+			if (oldNum == newNum)
+				return this;
+
+			int prepx = x == oldNum ? newNum : x;
+			int prepy = y == oldNum ? newNum : y;
+			int prepz = z == oldNum ? newNum : z;
+			int prepw = w == oldNum ? newNum : w;
+			x = prepx;
+			y = prepy;
+			z = prepz;
+			w = prepw;
+			return this;
+		}
+
+		/// <summary>
+		///     Replaces any components in this vector's origin point that match the value of 'oldNum' with the value of 'newNum'.
+		/// </summary>
+		public Vector4Int ReplaceOrigin(int oldNum, int newNum)
+		{
+			if (oldNum == newNum)
+				return this;
+
+			int orepx = m_Origin.x == oldNum ? newNum : m_Origin.x;
+			int orepy = m_Origin.y == oldNum ? newNum : m_Origin.y;
+			int orepz = m_Origin.z == oldNum ? newNum : m_Origin.z;
+			int orepw = m_Origin.w == oldNum ? newNum : m_Origin.w;
+			m_Origin.x = orepx;
+			m_Origin.y = orepy;
+			m_Origin.z = orepz;
+			m_Origin.w = orepw;
+			return this;
+		}
+
+		/// <summary>
 		///     Returns the absolute vector of the given vector.
 		/// </summary>
 		public static Vector4Int Abs(Vector4Int vec)
