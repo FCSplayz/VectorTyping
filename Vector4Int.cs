@@ -30,7 +30,7 @@ namespace VectorTyping
 	///     Representation of 4D vectors and points using integers.
 	/// </summary>
 	[Serializable]
-	public struct Vector4Int : IEquatable<Vector4Int>, IEquatable<int>, IFormattable, IComparable, IComparable<Vector4Int>, IComparable<int>, IEnumerable, IEnumerable<int>, IEnumerable<(int, IEquatable<int>)>, IEnumerable<string>, IEnumerable<(string, IEquatable<int>)>
+	public struct Vector4Int : IEquatable<Vector4Int>, IEquatable<int>, IFormattable, IComparable, IComparable<Vector4Int>, IComparable<int>, ICloneable, IEnumerable, IEnumerable<int>, IEnumerable<(int, IEquatable<int>)>, IEnumerable<string>, IEnumerable<(string, IEquatable<int>)>
 	{
 		// Private properties
 		[SerializeField]
@@ -2844,6 +2844,14 @@ namespace VectorTyping
 
 			// Return the combined result of the 4 comparisons.
 			return xComparison + yComparison + zComparison + wComparison;
+		}
+
+		/// <summary>
+		///     Creates a shallow copy of this vector.
+		/// </summary>
+		public object Clone()
+		{
+			return MemberwiseClone();
 		}
 
 		/// <summary>
