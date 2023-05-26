@@ -218,5 +218,18 @@ namespace VectorTyping.Extensions
 
 			return intList;
 		}
+
+		// For 'Vector4Int?'
+		/// <summary>
+		///     Nullifies this nullable vector.
+		/// </summary>
+		public static Vector4Int? Nullify(this Vector4Int? vec)
+		{
+			if (vec is null)
+				return vec;
+
+			vec = null;
+			return vec;
+		}
 	}
 }
