@@ -604,23 +604,31 @@ namespace VectorTyping
 			return Mathf.Approximately(lhs.x, rhs.x) && Mathf.Approximately(lhs.y, rhs.y)
 				&& Mathf.Approximately(lhs.z, rhs.z) && Mathf.Approximately(lhs.w, rhs.w);
 		}
+		public static bool operator ==(Vector4Int lhs, int rhs)
+		{
+			return lhs.x == rhs && lhs.y == rhs && lhs.z == rhs && lhs.w == rhs;
+		}
 		/// <summary>
 		///     Extended form of the !!Vector4Int operation which allows checking for any number instead of just 0.
 		///     <br>However, for readability, if checking for a value of 0, using the !!Vector4Int operation is recommended instead.</br>
 		///     <para>Returns a vector containing 1s and 0s based on if a component of 'lhs' had the value of 'rhs' or not.</para>
 		/// </summary>
-		public static Vector4Int operator ==(Vector4Int lhs, int rhs)
+		public static Vector4Int operator ==(Vector4Int lhs, int? rhs)
 		{
-			return new Vector4Int(lhs.x == rhs ? 1 : 0, lhs.y == rhs ? 1 : 0, lhs.z == rhs ? 1 : 0, lhs.w == rhs ? 1 : 0);
+			return new Vector4Int(lhs.x == rhs.Value ? 1 : 0, lhs.y == rhs.Value ? 1 : 0, lhs.z == rhs.Value ? 1 : 0, lhs.w == rhs.Value ? 1 : 0);
+		}
+		public static bool operator ==(Vector4Int lhs, (int x, int y, int z, int w) rhs)
+		{
+			return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.w == rhs.w;
 		}
 		/// <summary>
 		///     Extended form of the !!Vector4Int operation which allows checking for any number instead of just 0 for each individual component.
 		///     <br>However, for readability, if checking all for a value of 0, using the !!Vector4Int operation is recommended instead.</br>
 		///     <para>Returns a vector containing 1s and 0s based on if a component of 'lhs' had the value of 'rhs' for said component or not.</para>
 		/// </summary>
-		public static Vector4Int operator ==(Vector4Int lhs, (int x, int y, int z, int w) rhs)
+		public static Vector4Int operator ==(Vector4Int lhs, (int x, int y, int z, int w)? rhs)
 		{
-			return new Vector4Int(lhs.x == rhs.x ? 1 : 0, lhs.y == rhs.y ? 1 : 0, lhs.z == rhs.z ? 1 : 0, lhs.w == rhs.w ? 1 : 0);
+			return new Vector4Int(lhs.x == rhs.Value.x ? 1 : 0, lhs.y == rhs.Value.y ? 1 : 0, lhs.z == rhs.Value.z ? 1 : 0, lhs.w == rhs.Value.w ? 1 : 0);
 		}
 
 		public static bool operator !=(Vector4Int lhs, Vector4Int rhs)
@@ -637,23 +645,31 @@ namespace VectorTyping
 			return !Mathf.Approximately(lhs.x, rhs.x) && !Mathf.Approximately(lhs.y, rhs.y)
 				&& !Mathf.Approximately(lhs.z, rhs.z) && !Mathf.Approximately(lhs.w, rhs.w);
 		}
+		public static bool operator !=(Vector4Int lhs, int rhs)
+		{
+			return lhs.x != rhs && lhs.y != rhs && lhs.z != rhs && lhs.w != rhs;
+		}
 		/// <summary>
 		///     Extended form of the !Vector4Int operation which allows checking for any number instead of just 0.
 		///     <br>However, for readability, if checking for a value of 0, using the !Vector4Int operation is recommended instead.</br>
 		///     <para>Returns a vector containing 0s and 1s based on if a component of 'lhs' had the value of 'rhs' or not.</para>
 		/// </summary>
-		public static Vector4Int operator !=(Vector4Int lhs, int rhs)
+		public static Vector4Int operator !=(Vector4Int lhs, int? rhs)
 		{
-			return new Vector4Int(lhs.x != rhs ? 1 : 0, lhs.y != rhs ? 1 : 0, lhs.z != rhs ? 1 : 0, lhs.w != rhs ? 1 : 0);
+			return new Vector4Int(lhs.x != rhs.Value ? 1 : 0, lhs.y != rhs.Value ? 1 : 0, lhs.z != rhs.Value ? 1 : 0, lhs.w != rhs.Value ? 1 : 0);
+		}
+		public static bool operator !=(Vector4Int lhs, (int x, int y, int z, int w) rhs)
+		{
+			return lhs.x != rhs.x && lhs.y != rhs.y && lhs.z != rhs.z && lhs.w != rhs.w;
 		}
 		/// <summary>
 		///     Extended form of the !!Vector4Int operation which allows checking for any number instead of just 0 for each individual component.
 		///     <br>However, for readability, if checking all for a value of 0, using the !!Vector4Int operation is recommended instead.</br>
 		///     <para>Returns a vector containing 1s and 0s based on if a component of 'lhs' had the value of 'rhs' for said component or not.</para>
 		/// </summary>
-		public static Vector4Int operator !=(Vector4Int lhs, (int x, int y, int z, int w) rhs)
+		public static Vector4Int operator !=(Vector4Int lhs, (int x, int y, int z, int w)? rhs)
 		{
-			return new Vector4Int(lhs.x != rhs.x ? 1 : 0, lhs.y != rhs.y ? 1 : 0, lhs.z != rhs.z ? 1 : 0, lhs.w != rhs.w ? 1 : 0);
+			return new Vector4Int(lhs.x != rhs.Value.x ? 1 : 0, lhs.y != rhs.Value.y ? 1 : 0, lhs.z != rhs.Value.z ? 1 : 0, lhs.w != rhs.Value.w ? 1 : 0);
 		}
 
 		public static bool operator >(Vector4Int lhs, Vector4Int rhs)
