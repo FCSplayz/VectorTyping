@@ -663,8 +663,8 @@ namespace VectorTyping
 			return lhs.x != rhs.x && lhs.y != rhs.y && lhs.z != rhs.z && lhs.w != rhs.w;
 		}
 		/// <summary>
-		///     Extended form of the !!Vector4Int operation which allows checking for any number instead of just 0 for each individual component.
-		///     <br>However, for readability, if checking all for a value of 0, using the !!Vector4Int operation is recommended instead.</br>
+		///     Extended form of the !Vector4Int operation which allows checking for any number instead of just 0 for each individual component.
+		///     <br>However, for readability, if checking all for a value of 0, using the !Vector4Int operation is recommended instead.</br>
 		///     <para>Returns a vector containing 1s and 0s based on if a component of 'lhs' had the value of 'rhs' for said component or not.</para>
 		/// </summary>
 		public static Vector4Int operator !=(Vector4Int lhs, (int x, int y, int z, int w)? rhs)
