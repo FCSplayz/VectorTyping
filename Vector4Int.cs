@@ -488,6 +488,10 @@ namespace VectorTyping
 		{
 			return new Vector4Int(a.x + b, a.y + b, a.z + b, a.w + b);
 		}
+		public static Vector4Int operator +(int a, Vector4Int b)
+		{
+			return new Vector4Int(a + b.x, a + b.y, a + b.z, a + b.w);
+		}
 
 		public static Vector4Int operator +(Vector4Int vec)
 		{
@@ -510,6 +514,10 @@ namespace VectorTyping
 		public static Vector4Int operator -(Vector4Int a, int b)
 		{
 			return new Vector4Int(a.x - b, a.y - b, a.z - b, a.w - b);
+		}
+		public static Vector4Int operator -(int a, Vector4Int b)
+		{
+			return new Vector4Int(a - b.x, a - b.y, a - b.z, a - b.w);
 		}
 
 		public static Vector4Int operator -(Vector4Int vec)
@@ -580,13 +588,25 @@ namespace VectorTyping
 		{
 			return new Vector4Int(a.x % b, a.y % b, a.z % b, a.w % b);
 		}
+		public static Vector4Int operator %(int a, Vector4Int b)
+		{
+			return new Vector4Int(a % b.x, a % b.y, a % b.z, a % b.w);
+		}
 		public static Vector4Int operator %(Vector4Int a, float b)
 		{
 			return new Vector4Int((int)(a.x % b), (int)(a.y % b), (int)(a.z % b), (int)(a.w % b));
 		}
+		public static Vector4Int operator %(float a, Vector4Int b)
+		{
+			return new Vector4Int((int)(a % b.x), (int)(a % b.y), (int)(a % b.z), (int)(a % b.w));
+		}
 		public static Vector4Int operator %(Vector4Int a, double b)
 		{
 			return new Vector4Int((int)(a.x % b), (int)(a.y % b), (int)(a.z % b), (int)(a.w % b));
+		}
+		public static Vector4Int operator %(double a, Vector4Int b)
+		{
+			return new Vector4Int((int)(a % b.x), (int)(a % b.y), (int)(a % b.z), (int)(a % b.w));
 		}
 
 		// Conditional operators
@@ -676,20 +696,36 @@ namespace VectorTyping
 		{
 			return lhs.x > rhs.x && lhs.y > rhs.y && lhs.z > rhs.z && lhs.w > rhs.w;
 		}
+		public static bool operator >(Vector4Int lhs, int rhs)
+		{
+			return lhs.x > rhs && lhs.y > rhs && lhs.z > rhs && lhs.w > rhs;
+		}
 
 		public static bool operator <(Vector4Int lhs, Vector4Int rhs)
 		{
 			return lhs.x < rhs.x && lhs.y < rhs.y && lhs.z < rhs.z && lhs.w < rhs.w;
+		}
+		public static bool operator <(Vector4Int lhs, int rhs)
+		{
+			return lhs.x < rhs && lhs.y < rhs && lhs.z < rhs && lhs.w < rhs;
 		}
 
 		public static bool operator >=(Vector4Int lhs, Vector4Int rhs)
 		{
 			return lhs.x >= rhs.x && lhs.y >= rhs.y && lhs.z >= rhs.z && lhs.w >= rhs.w;
 		}
+		public static bool operator >=(Vector4Int lhs, int rhs)
+		{
+			return lhs.x >= rhs && lhs.y >= rhs && lhs.z >= rhs && lhs.w >= rhs;
+		} 
 
 		public static bool operator <=(Vector4Int lhs, Vector4Int rhs)
 		{
 			return lhs.x <= rhs.x && lhs.y <= rhs.y && lhs.z <= rhs.z && lhs.w <= rhs.w;
+		}
+		public static bool operator <=(Vector4Int lhs, int rhs)
+		{
+			return lhs.x <= rhs && lhs.y <= rhs && lhs.z <= rhs && lhs.w <= rhs;
 		}
 
 		// Logical operators
@@ -697,15 +733,39 @@ namespace VectorTyping
 		{
 			return new Vector4Int(lhs.x & rhs.x, lhs.y & rhs.y, lhs.z & rhs.z, lhs.w & rhs.w);
 		}
+		public static Vector4Int operator &(Vector4Int lhs, int rhs)
+		{
+			return new Vector4Int(lhs.x & rhs, lhs.y & rhs, lhs.z & rhs, lhs.w & rhs);
+		}
+		public static Vector4Int operator &(int lhs, Vector4Int rhs)
+		{
+			return new Vector4Int(lhs & rhs.x, lhs & rhs.y, lhs & rhs.z, lhs & rhs.w);
+		}
 
 		public static Vector4Int operator |(Vector4Int lhs, Vector4Int rhs)
 		{
 			return new Vector4Int(lhs.x | rhs.x, lhs.y | rhs.y, lhs.z | rhs.z, lhs.w | rhs.w);
 		}
+		public static Vector4Int operator |(Vector4Int lhs, int rhs)
+		{
+			return new Vector4Int(lhs.x | rhs, lhs.y | rhs, lhs.z | rhs, lhs.w | rhs);
+		}
+		public static Vector4Int operator |(int lhs, Vector4Int rhs)
+		{
+			return new Vector4Int(lhs | rhs.x, lhs | rhs.y, lhs | rhs.z, lhs | rhs.w);
+		}
 
 		public static Vector4Int operator ^(Vector4Int lhs, Vector4Int rhs)
 		{
 			return new Vector4Int(lhs.x ^ rhs.x, lhs.y ^ rhs.y, lhs.z ^ rhs.z, lhs.w ^ rhs.w);
+		}
+		public static Vector4Int operator ^(Vector4Int lhs, int rhs)
+		{
+			return new Vector4Int(lhs.x ^ rhs, lhs.y ^ rhs, lhs.z ^ rhs, lhs.w ^ rhs);
+		}
+		public static Vector4Int operator ^(int lhs, Vector4Int rhs)
+		{
+			return new Vector4Int(lhs ^ rhs.x, lhs ^ rhs.y, lhs ^ rhs.z, lhs ^ rhs.w);
 		}
 
 		public static Vector4Int operator ~(Vector4Int vec)
@@ -2506,28 +2566,244 @@ namespace VectorTyping
 		public static Vector4Int Hyperslerp(Vector4Int a, Vector4Int b, float t)
 		{
 			t = Mathf.Clamp01(t);
-			double dot = Dot(a, b);
-			dot = Mathf.Clamp((float)dot, -1f, 1f);
-			double theta = Math.Acos(dot) * t;
-			Vector4Int relativeVec = b - a * dot;
-			relativeVec.Normalize();
 
-			// Use the formula for the great circle between two vectors on a hypersphere.
-			return (a * Math.Cos(theta)) + (relativeVec * Math.Sin(theta));
+			double num = Math.Acos(0);
+			double num2 = 1.0 / Math.Sin(num);
+			double num3;
+			double num4;
+			Vector4Int result = default;
+
+			num3 = Math.Sin((1.0 - t) * num) * num2;
+			num4 = Math.Sin(t * num) * num2;
+
+			result.x = (int)Math.Round(num3 * a.x + num4 * b.x, 0);
+			result.y = (int)Math.Round(num3 * a.y + num4 * b.y, 0);
+			result.z = (int)Math.Round(num3 * a.z + num4 * b.z, 0);
+			result.w = (int)Math.Round(num3 * a.w + num4 * b.w, 0);
+
+			return result;
 		}
+		/// <summary>
+		///     Hyperspherically interpolates between two vectors where t is clamped to [0,1].
+		///     <br>If 'reverseDir' is set to true, the function will perform hyperspherical interpolation in the opposite direction.</br>
+		/// </summary>
+		public static Vector4Int Hyperslerp(Vector4Int a, Vector4Int b, bool reverseDir, float t)
+		{
+			t = Mathf.Clamp01(t);
+
+			double num = Math.Acos(0);
+			double num2 = 1.0 / Math.Sin(num);
+			double num3;
+			double num4;
+			Vector4Int result = default;
+
+			if (reverseDir)
+			{
+				num3 = Math.Sin((1.0 - 3.0 * t) * num) * num2;
+				num4 = Math.Sin(3.0 * t * num) * num2;
+
+				result.x = (int)Math.Round(num3 * a.x - num4 * b.x, 0);
+				result.y = (int)Math.Round(num3 * a.y - num4 * b.y, 0);
+				result.z = (int)Math.Round(num3 * a.z - num4 * b.z, 0);
+				result.w = (int)Math.Round(num3 * a.w - num4 * b.w, 0);
+			}
+			else
+			{
+				num3 = Math.Sin((1.0 - t) * num) * num2;
+				num4 = Math.Sin(t * num) * num2;
+
+				result.x = (int)Math.Round(num3 * a.x + num4 * b.x, 0);
+				result.y = (int)Math.Round(num3 * a.y + num4 * b.y, 0);
+				result.z = (int)Math.Round(num3 * a.z + num4 * b.z, 0);
+				result.w = (int)Math.Round(num3 * a.w + num4 * b.w, 0);
+			}
+
+			return result;
+		}
+
 		/// <summary>
 		///     Hyperspherically interpolates along two vectors.
 		/// </summary>
 		public static Vector4Int HyperslerpUnclamped(Vector4Int a, Vector4Int b, float t)
 		{
-			double dot = Dot(a, b);
-			dot = Mathf.Clamp((float)dot, -1f, 1f);
-			double theta = Math.Acos(dot) * t;
-			Vector4Int relativeVec = b - a * dot;
-			relativeVec.Normalize();
+			double num = Math.Acos(0);
+			double num2 = 1.0 / Math.Sin(num);
+			double num3;
+			double num4;
+			Vector4Int result = default;
 
-			// Use the formula for the great circle between two vectors on a hypersphere.
-			return (a * Math.Cos(theta)) + (relativeVec * Math.Sin(theta));
+			num3 = Math.Sin((1.0 - t) * num) * num2;
+			num4 = Math.Sin(t * num) * num2;
+
+			result.x = (int)Math.Round(num3 * a.x + num4 * b.x, 0);
+			result.y = (int)Math.Round(num3 * a.y + num4 * b.y, 0);
+			result.z = (int)Math.Round(num3 * a.z + num4 * b.z, 0);
+			result.w = (int)Math.Round(num3 * a.w + num4 * b.w, 0);
+
+			return result;
+		}
+		/// <summary>
+		///     Hyperspherically interpolates along two vectors.
+		///     <br>If 'reverseDir' is set to true, the function will perform hyperspherical interpolation in the opposite direction.</br>
+		/// </summary>
+		public static Vector4Int HyperslerpUnclamped(Vector4Int a, Vector4Int b, bool reverseDir, float t)
+		{
+			double num = Math.Acos(0);
+			double num2 = 1.0 / Math.Sin(num);
+			double num3;
+			double num4;
+			Vector4Int result = default;
+
+			if (reverseDir)
+			{
+				num3 = Math.Sin((1.0 - 3.0 * t) * num) * num2;
+				num4 = Math.Sin(3.0 * t * num) * num2;
+
+				result.x = (int)Math.Round(num3 * a.x - num4 * b.x, 0);
+				result.y = (int)Math.Round(num3 * a.y - num4 * b.y, 0);
+				result.z = (int)Math.Round(num3 * a.z - num4 * b.z, 0);
+				result.w = (int)Math.Round(num3 * a.w - num4 * b.w, 0);
+			}
+			else
+			{
+				num3 = Math.Sin((1.0 - t) * num) * num2;
+				num4 = Math.Sin(t * num) * num2;
+
+				result.x = (int)Math.Round(num3 * a.x + num4 * b.x, 0);
+				result.y = (int)Math.Round(num3 * a.y + num4 * b.y, 0);
+				result.z = (int)Math.Round(num3 * a.z + num4 * b.z, 0);
+				result.w = (int)Math.Round(num3 * a.w + num4 * b.w, 0);
+			}
+
+			return result;
+		}
+
+		/// <summary>
+		///     Hyperspherically interpolates around the vector 'c' between two vectors where t is clamped to [0,1].
+		/// </summary>
+		public static Vector4Int HyperslerpCenter(Vector4Int a, Vector4Int b, Vector4Int c, float t)
+		{
+			t = Mathf.Clamp01(t);
+			a -= c;
+			b -= c;
+
+			double num = Math.Acos(0);
+			double num2 = 1.0 / Math.Sin(num);
+			double num3;
+			double num4;
+			Vector4Int result = default;
+
+			num3 = Math.Sin((1.0 - t) * num) * num2;
+			num4 = Math.Sin(t * num) * num2;
+
+			result.x = (int)Math.Round(num3 * a.x + num4 * b.x, 0);
+			result.y = (int)Math.Round(num3 * a.y + num4 * b.y, 0);
+			result.z = (int)Math.Round(num3 * a.z + num4 * b.z, 0);
+			result.w = (int)Math.Round(num3 * a.w + num4 * b.w, 0);
+
+			return result + c;
+		}
+		/// <summary>
+		///     Hyperspherically interpolates around the vector 'c' between two vectors where t is clamped to [0,1].
+		///     <br>If 'reverseDir' is set to true, the function will perform hyperspherical interpolation in the opposite direction.</br>
+		/// </summary>
+		public static Vector4Int HyperslerpCenter(Vector4Int a, Vector4Int b, Vector4Int c, bool reverseDir, float t)
+		{
+			t = Mathf.Clamp01(t);
+			a -= c;
+			b -= c;
+
+			double num = Math.Acos(0);
+			double num2 = 1.0 / Math.Sin(num);
+			double num3;
+			double num4;
+			Vector4Int result = default;
+
+			if (reverseDir)
+			{
+				num3 = Math.Sin((1.0 - 3.0 * t) * num) * num2;
+				num4 = Math.Sin(3.0 * t * num) * num2;
+
+				result.x = (int)Math.Round(num3 * a.x - num4 * b.x, 0);
+				result.y = (int)Math.Round(num3 * a.y - num4 * b.y, 0);
+				result.z = (int)Math.Round(num3 * a.z - num4 * b.z, 0);
+				result.w = (int)Math.Round(num3 * a.w - num4 * b.w, 0);
+			}
+			else
+			{
+				num3 = Math.Sin((1.0 - t) * num) * num2;
+				num4 = Math.Sin(t * num) * num2;
+
+				result.x = (int)Math.Round(num3 * a.x + num4 * b.x, 0);
+				result.y = (int)Math.Round(num3 * a.y + num4 * b.y, 0);
+				result.z = (int)Math.Round(num3 * a.z + num4 * b.z, 0);
+				result.w = (int)Math.Round(num3 * a.w + num4 * b.w, 0);
+			}
+
+			return result + c;
+		}
+
+		/// <summary>
+		///     Hyperspherically interpolates around the vector 'c' along two vectors.
+		/// </summary>
+		public static Vector4Int HyperslerpCenterUnclamped(Vector4Int a, Vector4Int b, Vector4Int c, float t)
+		{
+			a -= c;
+			b -= c;
+
+			double num = Math.Acos(0);
+			double num2 = 1.0 / Math.Sin(num);
+			double num3;
+			double num4;
+			Vector4Int result = default;
+
+			num3 = Math.Sin((1.0 - t) * num) * num2;
+			num4 = Math.Sin(t * num) * num2;
+
+			result.x = (int)Math.Round(num3 * a.x + num4 * b.x, 0);
+			result.y = (int)Math.Round(num3 * a.y + num4 * b.y, 0);
+			result.z = (int)Math.Round(num3 * a.z + num4 * b.z, 0);
+			result.w = (int)Math.Round(num3 * a.w + num4 * b.w, 0);
+
+			return result + c;
+		}
+		/// <summary>
+		///     Hyperspherically interpolates around the vector 'c' along two vectors.
+		///     <br>If 'reverseDir' is set to true, the function will perform hyperspherical interpolation in the opposite direction.</br>
+		/// </summary>
+		public static Vector4Int HyperslerpCenterUnclamped(Vector4Int a, Vector4Int b, Vector4Int c, bool reverseDir, float t)
+		{
+			a -= c;
+			b -= c;
+
+			double num = Math.Acos(0);
+			double num2 = 1.0 / Math.Sin(num);
+			double num3;
+			double num4;
+			Vector4Int result = default;
+			
+			if (reverseDir)
+			{
+				num3 = Math.Sin((1.0 - 3.0 * t) * num) * num2;
+				num4 = Math.Sin(3.0 * t * num) * num2;
+
+				result.x = (int)Math.Round(num3 * a.x - num4 * b.x, 0);
+				result.y = (int)Math.Round(num3 * a.y - num4 * b.y, 0);
+				result.z = (int)Math.Round(num3 * a.z - num4 * b.z, 0);
+				result.w = (int)Math.Round(num3 * a.w - num4 * b.w, 0);
+			}
+			else
+			{
+				num3 = Math.Sin((1.0 - t) * num) * num2;
+				num4 = Math.Sin(t * num) * num2;
+
+				result.x = (int)Math.Round(num3 * a.x + num4 * b.x, 0);
+				result.y = (int)Math.Round(num3 * a.y + num4 * b.y, 0);
+				result.z = (int)Math.Round(num3 * a.z + num4 * b.z, 0);
+				result.w = (int)Math.Round(num3 * a.w + num4 * b.w, 0);
+			}
+
+			return result + c;
 		}
 
 		/// <summary>
