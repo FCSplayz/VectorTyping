@@ -450,7 +450,11 @@ namespace VectorTyping
 
 		public static explicit operator Color32(Vector4Int vec)
 		{
-			return new Color32((byte)vec.x, (byte)vec.y, (byte)vec.z, (byte)vec.w);
+			byte bx = (byte)Mathf.Clamp(vec.x, 0, 255);
+			byte by = (byte)Mathf.Clamp(vec.y, 0, 255);
+			byte bz = (byte)Mathf.Clamp(vec.z, 0, 255);
+			byte bw = (byte)Mathf.Clamp(vec.w, 0, 255);
+			return new Color32(bx, by, bz, bw);
 		}
 
 		public static explicit operator (int x, int y, int z, int w)(Vector4Int vec)
@@ -2587,7 +2591,7 @@ namespace VectorTyping
 		///     Hyperspherically interpolates between two vectors where t is clamped to [0,1].
 		///     <br>If 'reverseDir' is set to true, the function will perform hyperspherical interpolation in the opposite direction.</br>
 		/// </summary>
-		public static Vector4Int Hyperslerp(Vector4Int a, Vector4Int b, bool reverseDir, float t)
+		public static Vector4Int Hyperslerp(Vector4Int a, Vector4Int b, float t, bool reverseDir)
 		{
 			t = Mathf.Clamp01(t);
 
@@ -2646,7 +2650,7 @@ namespace VectorTyping
 		///     Hyperspherically interpolates along two vectors.
 		///     <br>If 'reverseDir' is set to true, the function will perform hyperspherical interpolation in the opposite direction.</br>
 		/// </summary>
-		public static Vector4Int HyperslerpUnclamped(Vector4Int a, Vector4Int b, bool reverseDir, float t)
+		public static Vector4Int HyperslerpUnclamped(Vector4Int a, Vector4Int b, float t, bool reverseDir)
 		{
 			double num = Math.Acos(0);
 			double num2 = 1.0 / Math.Sin(num);
@@ -2707,7 +2711,7 @@ namespace VectorTyping
 		///     Hyperspherically interpolates around the vector 'c' between two vectors where t is clamped to [0,1].
 		///     <br>If 'reverseDir' is set to true, the function will perform hyperspherical interpolation in the opposite direction.</br>
 		/// </summary>
-		public static Vector4Int HyperslerpCenter(Vector4Int a, Vector4Int b, Vector4Int c, bool reverseDir, float t)
+		public static Vector4Int HyperslerpCenter(Vector4Int a, Vector4Int b, Vector4Int c, float t, bool reverseDir)
 		{
 			t = Mathf.Clamp01(t);
 			a -= c;
@@ -2771,7 +2775,7 @@ namespace VectorTyping
 		///     Hyperspherically interpolates around the vector 'c' along two vectors.
 		///     <br>If 'reverseDir' is set to true, the function will perform hyperspherical interpolation in the opposite direction.</br>
 		/// </summary>
-		public static Vector4Int HyperslerpCenterUnclamped(Vector4Int a, Vector4Int b, Vector4Int c, bool reverseDir, float t)
+		public static Vector4Int HyperslerpCenterUnclamped(Vector4Int a, Vector4Int b, Vector4Int c, float t, bool reverseDir)
 		{
 			a -= c;
 			b -= c;
