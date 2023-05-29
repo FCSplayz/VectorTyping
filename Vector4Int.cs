@@ -22,7 +22,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using VectorTyping.Interfaces.Generic;
 
 namespace VectorTyping
 {
@@ -30,7 +34,7 @@ namespace VectorTyping
 	///     Representation of 4D vectors and points using integers.
 	/// </summary>
 	[Serializable]
-	public struct Vector4Int : IEquatable<Vector4Int>, IEquatable<int>, IFormattable, IComparable, IComparable<Vector4Int>, IComparable<int>, ICloneable, IEnumerable, IEnumerable<int>, IEnumerable<(int, IEquatable<int>)>, IEnumerable<string>, IEnumerable<(string, IEquatable<int>)>
+	public struct Vector4Int : IEquatable<Vector4Int>, IEquatable<int>, IFormattable, IComparable, IComparable<Vector4Int>, IComparable<int>, ICloneable, IEnumerable, IEnumerable<int>, IEnumerable<(int, IEquatable<int>)>, IEnumerable<string>, IEnumerable<(string, IEquatable<int>)>, ISerializable, IVector<int>, ISerializableVectorInt<Vector4Int>
 	{
 		// Private properties
 		[SerializeField]
@@ -3022,6 +3026,22 @@ namespace VectorTyping
 			return new List<int>(capacity) { x, y, z, w };
 		}
 
+		// Interface constructors
+		/// <summary>
+		///     Constructs a Vector4Int using serialization info.
+		/// </summary>
+		public Vector4Int(SerializationInfo info, StreamingContext context)
+		{
+			if (info == null)
+				throw new ArgumentNullException(nameof(info), "The given serialization info may not be null.");
+
+			m_X = (int)info.GetValue("x", typeof(int));
+			m_Y = (int)info.GetValue("y", typeof(int));
+			m_Z = (int)info.GetValue("z", typeof(int));
+			m_W = (int)info.GetValue("w", typeof(int));
+			m_Origin = (m_X, m_Y, m_Z, m_W);
+		}
+
 		// Interface methods
 		/// <summary>
 		///     Returns a formatted string for this vector.
@@ -3199,6 +3219,50 @@ namespace VectorTyping
 			yield return (y.ToString(), 1);
 			yield return (z.ToString(), 2);
 			yield return (w.ToString(), 3);
+		}
+
+		/// <summary>
+		///     Gets the object data for serialization.
+		/// </summary>
+		public void GetObjectData(SerializationInfo info, StreamingContext context)
+		{
+			if (info == null)
+				throw new ArgumentNullException(nameof(info), "The given serialization info may not be null.");
+
+			info.AddValue("x", x);
+			info.AddValue("y", y);
+			info.AddValue("z", z);
+			info.AddValue("w", w);
+		}
+
+		/// <summary>
+		///     Serializes this vector to a byte array.
+		/// </summary>
+		public byte[] Serialize()
+		{
+			using (MemoryStream memoryStream = new MemoryStream())
+			{
+				BinaryFormatter binaryFormatter = new BinaryFormatter();
+				binaryFormatter.Serialize(memoryStream, this);
+				return memoryStream.ToArray();
+			}
+		}
+
+		/// <summary>
+		///     Sets this vector by deserializing the given byte array.
+		/// </summary>
+		public Vector4Int Deserialize(byte[] data)
+		{
+			using (MemoryStream memoryStream = new MemoryStream(data))
+			{
+				BinaryFormatter binaryFormatter = new BinaryFormatter();
+				var deserializedObj = binaryFormatter.Deserialize(memoryStream);
+
+				if (deserializedObj is Vector4Int vector)
+					return vector;
+				else
+					throw new SerializationException("Cannot deserialize data as it is not of type 'Vector4Int'.");
+			}
 		}
 	}
 }
