@@ -29,7 +29,6 @@ namespace VectorTyping.Interfaces.Generic
     public interface IVector<T> where T : IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable
 	{
 		T x { get; }
-
 		T this[int index] { get; }
 	}
 }
