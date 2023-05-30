@@ -18,15 +18,19 @@
 // The VectorTyping library can be found at https://github.com/FCSplayz/VectorTyping.
 #endregion
 
+using System;
+using System.Runtime.Serialization;
+
 namespace VectorTyping.Interfaces.Generic
 {
-    /// <summary>
-    ///     Interface for serializable VectorInt types.
-    /// </summary>
-    /// <typeparam name="T">The associated VectorInt type.</typeparam>
-    public interface ISerializableVectorInt<T> where T : struct, IVector<int>
-    {
+	/// <summary>
+	///     Interface for serializable vector types.
+	/// </summary>
+	/// <typeparam name="T">The value type of the vector.</typeparam>
+	/// <typeparam name="V">The associated vector type.</typeparam>
+	public interface ISerializableVector<T, V> where T : IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable where V : struct, ISerializable, IVector<T>
+	{
         byte[] Serialize();
-        T Deserialize(byte[] data);
+        V Deserialize(byte[] data);
     }
 }
