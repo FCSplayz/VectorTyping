@@ -28,7 +28,7 @@ namespace VectorTyping.Interfaces.Generic
 	/// </summary>
 	/// <typeparam name="T">The value type of the vector.</typeparam>
 	/// <typeparam name="V">The associated vector type.</typeparam>
-	public interface ISerializableVector<T, V> where T : IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable where V : struct, ISerializable, IVector<T>
+	public interface ISerializableVector<in T, out V> where T : IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable where V : struct, ISerializable, IVector<T>
 	{
         byte[] Serialize();
         V Deserialize(byte[] data);
