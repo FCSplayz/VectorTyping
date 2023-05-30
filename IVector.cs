@@ -26,7 +26,7 @@ namespace VectorTyping.Interfaces.Generic
 	///		Interface for vectors.
 	/// </summary>
 	/// <typeparam name="T">The value type of the vector.</typeparam>
-    public interface IVector<T> where T : IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable
+    public interface IVector<out T> where T : IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable
 	{
 		T x { get; }
 		T this[int index] { get; }
