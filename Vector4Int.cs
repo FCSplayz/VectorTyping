@@ -34,7 +34,7 @@ namespace VectorTyping
 	///     Representation of 4D vectors and points using integers.
 	/// </summary>
 	[Serializable]
-	public struct Vector4Int : IEquatable<Vector4Int>, IEquatable<int>, IFormattable, IComparable, IComparable<Vector4Int>, IComparable<int>, ICloneable, IEnumerable, IEnumerable<int>, IEnumerable<(int, IEquatable<int>)>, IEnumerable<string>, IEnumerable<(string, IEquatable<int>)>, ISerializable, IVector<int>, ISerializableVectorInt<Vector4Int>
+	public struct Vector4Int : IEquatable<Vector4Int>, IEquatable<int>, IFormattable, IComparable, IComparable<Vector4Int>, IComparable<int>, ICloneable, IEnumerable, IEnumerable<int>, IEnumerable<(int, IEquatable<int>)>, IEnumerable<string>, IEnumerable<(string, IEquatable<int>)>, ISerializable, IVector<int>, ISerializableVector<int, Vector4Int>
 	{
 		// Private properties
 		[SerializeField]
