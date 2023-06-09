@@ -2660,6 +2660,7 @@ namespace VectorTyping
 			double num2 = 1.0 / Math.Sin(num);
 			double num3;
 			double num4;
+
 			Vector4Int result = default;
 
 			if (reverseDir)
@@ -2692,13 +2693,12 @@ namespace VectorTyping
 		public static Vector4Int HyperslerpCenter(Vector4Int a, Vector4Int b, Vector4Int c, float t)
 		{
 			t = Mathf.Clamp01(t);
-			a -= c;
-			b -= c;
 
 			double num = Math.Acos(0);
 			double num2 = 1.0 / Math.Sin(num);
 			double num3;
 			double num4;
+			
 			Vector4Int result = default;
 
 			num3 = Math.Sin((1.0 - t) * num) * num2;
@@ -2718,13 +2718,12 @@ namespace VectorTyping
 		public static Vector4Int HyperslerpCenter(Vector4Int a, Vector4Int b, Vector4Int c, float t, bool reverseDir)
 		{
 			t = Mathf.Clamp01(t);
-			a -= c;
-			b -= c;
 
 			double num = Math.Acos(0);
 			double num2 = 1.0 / Math.Sin(num);
 			double num3;
 			double num4;
+
 			Vector4Int result = default;
 
 			if (reverseDir)
@@ -2756,13 +2755,11 @@ namespace VectorTyping
 		/// </summary>
 		public static Vector4Int HyperslerpCenterUnclamped(Vector4Int a, Vector4Int b, Vector4Int c, float t)
 		{
-			a -= c;
-			b -= c;
-
 			double num = Math.Acos(0);
 			double num2 = 1.0 / Math.Sin(num);
 			double num3;
 			double num4;
+
 			Vector4Int result = default;
 
 			num3 = Math.Sin((1.0 - t) * num) * num2;
@@ -2781,13 +2778,11 @@ namespace VectorTyping
 		/// </summary>
 		public static Vector4Int HyperslerpCenterUnclamped(Vector4Int a, Vector4Int b, Vector4Int c, float t, bool reverseDir)
 		{
-			a -= c;
-			b -= c;
-
 			double num = Math.Acos(0);
 			double num2 = 1.0 / Math.Sin(num);
 			double num3;
 			double num4;
+
 			Vector4Int result = default;
 			
 			if (reverseDir)
