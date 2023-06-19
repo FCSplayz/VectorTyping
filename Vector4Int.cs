@@ -639,10 +639,15 @@ namespace VectorTyping
 		/// <summary>
 		///     Extended form of the !!Vector4Int operation which allows checking for any number instead of just 0.
 		///     <br>However, for readability, if checking for a value of 0, using the !!Vector4Int operation is recommended instead.</br>
+		///     <para>The parameter 'rhs' being nullable is to differentiate between this operator and the one with its non-nullable counterpart.
+		///     <br>Despite this, the value of 'rhs' may not be null, as it will throw an exception if it is.</br></para>
 		///     <para>Returns a vector containing 1s and 0s based on if a component of 'lhs' had the value of 'rhs' or not.</para>
 		/// </summary>
 		public static Vector4Int operator ==(Vector4Int lhs, int? rhs)
 		{
+			if (!rhs.HasValue)
+				throw new ArgumentNullException(nameof(rhs), "The given value of 'rhs' may not be null.");
+
 			return new Vector4Int(lhs.x == rhs.Value ? 1 : 0, lhs.y == rhs.Value ? 1 : 0, lhs.z == rhs.Value ? 1 : 0, lhs.w == rhs.Value ? 1 : 0);
 		}
 		public static bool operator ==(Vector4Int lhs, (int x, int y, int z, int w) rhs)
@@ -652,10 +657,15 @@ namespace VectorTyping
 		/// <summary>
 		///     Extended form of the !!Vector4Int operation which allows checking for any number instead of just 0 for each individual component.
 		///     <br>However, for readability, if checking all for a value of 0, using the !!Vector4Int operation is recommended instead.</br>
+		///     <para>The parameter 'rhs' being nullable is to differentiate between this operator and the one with its non-nullable counterpart.
+		///     <br>Despite this, the value tuple of 'rhs' may not be null, as it will throw an exception if it is.</br></para>
 		///     <para>Returns a vector containing 1s and 0s based on if a component of 'lhs' had the value of 'rhs' for said component or not.</para>
 		/// </summary>
 		public static Vector4Int operator ==(Vector4Int lhs, (int x, int y, int z, int w)? rhs)
 		{
+			if (!rhs.HasValue)
+				throw new ArgumentNullException(nameof(rhs), "The given value tuple of 'rhs' may not be null.");
+
 			return new Vector4Int(lhs.x == rhs.Value.x ? 1 : 0, lhs.y == rhs.Value.y ? 1 : 0, lhs.z == rhs.Value.z ? 1 : 0, lhs.w == rhs.Value.w ? 1 : 0);
 		}
 
@@ -680,10 +690,15 @@ namespace VectorTyping
 		/// <summary>
 		///     Extended form of the !Vector4Int operation which allows checking for any number instead of just 0.
 		///     <br>However, for readability, if checking for a value of 0, using the !Vector4Int operation is recommended instead.</br>
+		///     <para>The parameter 'rhs' being nullable is to differentiate between this operator and the one with its non-nullable counterpart.
+		///     <br>Despite this, the value of 'rhs' may not be null, as it will throw an exception if it is.</br></para>
 		///     <para>Returns a vector containing 0s and 1s based on if a component of 'lhs' had the value of 'rhs' or not.</para>
 		/// </summary>
 		public static Vector4Int operator !=(Vector4Int lhs, int? rhs)
 		{
+			if (!rhs.HasValue)
+				throw new ArgumentNullException(nameof(rhs), "The given value of 'rhs' may not be null.");
+
 			return new Vector4Int(lhs.x != rhs.Value ? 1 : 0, lhs.y != rhs.Value ? 1 : 0, lhs.z != rhs.Value ? 1 : 0, lhs.w != rhs.Value ? 1 : 0);
 		}
 		public static bool operator !=(Vector4Int lhs, (int x, int y, int z, int w) rhs)
@@ -693,10 +708,15 @@ namespace VectorTyping
 		/// <summary>
 		///     Extended form of the !Vector4Int operation which allows checking for any number instead of just 0 for each individual component.
 		///     <br>However, for readability, if checking all for a value of 0, using the !Vector4Int operation is recommended instead.</br>
+		///     <para>The parameter 'rhs' being nullable is to differentiate between this operator and the one with its non-nullable counterpart.
+		///     <br>Despite this, the value tuple of 'rhs' may not be null, as it will throw an exception if it is.</br></para>
 		///     <para>Returns a vector containing 0s and 1s based on if a component of 'lhs' had the value of 'rhs' for said component or not.</para>
 		/// </summary>
 		public static Vector4Int operator !=(Vector4Int lhs, (int x, int y, int z, int w)? rhs)
 		{
+			if (!rhs.HasValue)
+				throw new ArgumentNullException(nameof(rhs), "The given value tuple of 'rhs' may not be null.");
+
 			return new Vector4Int(lhs.x != rhs.Value.x ? 1 : 0, lhs.y != rhs.Value.y ? 1 : 0, lhs.z != rhs.Value.z ? 1 : 0, lhs.w != rhs.Value.w ? 1 : 0);
 		}
 
