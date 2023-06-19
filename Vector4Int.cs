@@ -244,12 +244,12 @@ namespace VectorTyping
 		/// <summary>
 		///     Returns a copy of this vector with the sign values of every component and any zeros returning 1 (Read Only).
 		/// </summary>
-		public Vector4Int signPos0 => SignPositiveZero(this);
+		public Vector4Int signPosZero => SignPositiveZero(this);
 
 		/// <summary>
 		///     Returns a copy of this vector with the sign values of every component and any zeros returning -1 (Read Only).
 		/// </summary>
-		public Vector4Int signNeg0 => SignNegativeZero(this);
+		public Vector4Int signNegZero => SignNegativeZero(this);
 
 		// Static properties
 		/// <summary>
