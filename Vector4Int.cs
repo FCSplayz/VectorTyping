@@ -821,6 +821,16 @@ namespace VectorTyping
 
 		// Additional methods
 		/// <summary>
+		///     Returns a new vector with all its x, y, z and w components set to the integer value of 'val'.
+		///     <para>It is not recommended to use this method if making a new vector of all 0s or 1s.
+		///     <br>In those cases, using the static properties, Vector4Int.zero and Vector4Int.one respectively, is recommended instead.</br></para>
+		/// </summary>
+		public static Vector4Int NewAllValue(int val)
+		{
+			return new Vector4Int(val, val, val, val);
+		}
+
+		/// <summary>
 		///     Sets all the x, y, z and w components of this vector to the integer value of 'val'.
 		/// </summary>
 		public void Set(int val)
