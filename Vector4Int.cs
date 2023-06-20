@@ -821,6 +821,16 @@ namespace VectorTyping
 
 		// Additional methods
 		/// <summary>
+		///     Sets all the x, y, z and w components of this vector to the integer value of 'val'.
+		/// </summary>
+		public void Set(int val)
+		{
+			m_X = val;
+			m_Y = val;
+			m_Z = val;
+			m_W = val;
+		}
+		/// <summary>
 		///     Sets the x, y, z and w components of this vector.
 		/// </summary>
 		public void Set(int x, int y, int z, int w)
@@ -2827,6 +2837,54 @@ namespace VectorTyping
 			}
 
 			return result + c;
+		}
+
+		/// <summary>
+		///     Returns a vector with the components of the given input vector around the integer values of min and max.
+		/// </summary>
+		public static Vector4Int Wrap(Vector4Int input, int min, int max)
+		{
+			Vector4Int minVec = new Vector4Int(min, min, min, min);
+			Vector4Int maxVec = new Vector4Int(max, max, max, max);
+
+			if (input < minVec)
+				return maxVec - (minVec - input) % (maxVec - minVec);
+			else return minVec + (input - minVec) % (maxVec - minVec);
+
+		}
+		/// <summary>
+		///     Wraps this vector's components around the integer values of min and max.
+		/// </summary>
+		public Vector4Int Wrap(int min, int max)
+		{
+			Vector4Int minVec = new Vector4Int(min, min, min, min);
+			Vector4Int maxVec = new Vector4Int(max, max, max, max);
+
+			if (this < minVec)
+				this = maxVec - (minVec - this) % (maxVec - minVec);
+			else this = minVec + (this - minVec) % (maxVec - minVec);
+
+			return this;
+		}
+		/// <summary>
+		///     Returns a vector with the components of the given input vector around the components of the min and max vectors.
+		/// </summary>
+		public static Vector4Int Wrap(Vector4Int input, Vector4Int min, Vector4Int max)
+		{
+			if (input < min)
+				return max - (min - input) % (max - min);
+			else return min + (input - min) % (max - min);
+		}
+		/// <summary>
+		///     Wraps this vector's components around the components of the min and max vectors.
+		/// </summary>
+		public Vector4Int Wrap(Vector4Int min, Vector4Int max)
+		{
+			if (this < min)
+				this = max - (min - this) % (max - min);
+			else this = min + (this - min) % (max - min);
+
+			return this;
 		}
 
 		/// <summary>
