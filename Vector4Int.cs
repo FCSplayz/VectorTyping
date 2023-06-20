@@ -813,6 +813,7 @@ namespace VectorTyping
 
 		/// <summary>
 		///     Returns a vector containing 1s and 0s depending on if a component of 'vec' was a zero or non-zero value.
+		///     <br>Can be doubled up to make !!vec, which returns a vector containing 0s and 1s depending on if a component of 'vec' was a zero or non-zero value.</br>
 		/// </summary>
 		public static Vector4Int operator !(Vector4Int vec)
 		{
