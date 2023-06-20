@@ -1495,6 +1495,48 @@ namespace VectorTyping
 		}
 
 		/// <summary>
+		///     Returns the inverse factorial of the given vector.
+		/// </summary>
+		public static Vector4Int InverseFact(Vector4Int vec)
+		{
+			if (vec.ContainsLessThanEqual(-1))
+				throw new InvalidOperationException("The given vector may not contain negative numbers.");
+			Vector4Int copyVec = vec;
+			for (int comp = 0; comp < 4; comp++)
+			{
+				int result = 1;
+				int i = 2;
+				while (result <= copyVec[comp])
+				{
+					result *= i;
+					i++;
+				}
+				copyVec[comp] = i - 2; // Subtract 2 to get the correct inverse factorial
+			}
+			return copyVec;
+		}
+		/// <summary>
+		///     Sets every component in this vector to its inverse factorial.
+		/// </summary>
+		public Vector4Int InverseFact()
+		{
+			if (ContainsLessThanEqual(-1))
+				throw new InvalidOperationException("This vector may not contain negative numbers.");
+			for (int comp = 0; comp < 4; comp++)
+			{
+				int result = 1;
+				int i = 2;
+				while (result <= this[comp])
+				{
+					result *= i;
+					i++;
+				}
+				this[comp] = i - 2; // Subtract 2 to get the correct inverse factorial
+			}
+			return this;
+		}
+
+		/// <summary>
 		///     Returns a vector that is made from the smallest components of the two given vectors.
 		/// </summary>
 		public static Vector4Int Min(Vector4Int lhs, Vector4Int rhs)
