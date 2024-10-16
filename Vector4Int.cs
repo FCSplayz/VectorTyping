@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -643,7 +644,7 @@ namespace VectorTyping
 		///     <br>Despite this, the value of 'rhs' may not be null, as it will throw an exception if it is.</br></para>
 		///     <para>Returns a vector containing 1s and 0s based on if a component of 'lhs' had the value of 'rhs' or not.</para>
 		/// </summary>
-		public static Vector4Int operator ==(Vector4Int lhs, int? rhs)
+		public static Vector4Int operator ==(Vector4Int lhs, [DisallowNull] int? rhs)
 		{
 			if (!rhs.HasValue)
 				throw new ArgumentNullException(nameof(rhs), "The given value of 'rhs' may not be null.");
@@ -694,7 +695,7 @@ namespace VectorTyping
 		///     <br>Despite this, the value of 'rhs' may not be null, as it will throw an exception if it is.</br></para>
 		///     <para>Returns a vector containing 0s and 1s based on if a component of 'lhs' had the value of 'rhs' or not.</para>
 		/// </summary>
-		public static Vector4Int operator !=(Vector4Int lhs, int? rhs)
+		public static Vector4Int operator !=(Vector4Int lhs, [DisallowNull] int? rhs)
 		{
 			if (!rhs.HasValue)
 				throw new ArgumentNullException(nameof(rhs), "The given value of 'rhs' may not be null.");
