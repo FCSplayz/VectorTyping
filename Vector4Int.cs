@@ -662,7 +662,7 @@ namespace VectorTyping
 		///     <br>Despite this, the value tuple of 'rhs' may not be null, as it will throw an exception if it is.</br></para>
 		///     <para>Returns a vector containing 1s and 0s based on if a component of 'lhs' had the value of 'rhs' for said component or not.</para>
 		/// </summary>
-		public static Vector4Int operator ==(Vector4Int lhs, (int x, int y, int z, int w)? rhs)
+		public static Vector4Int operator ==(Vector4Int lhs, [DisallowNull] (int x, int y, int z, int w)? rhs)
 		{
 			if (!rhs.HasValue)
 				throw new ArgumentNullException(nameof(rhs), "The given value tuple of 'rhs' may not be null.");
@@ -713,7 +713,7 @@ namespace VectorTyping
 		///     <br>Despite this, the value tuple of 'rhs' may not be null, as it will throw an exception if it is.</br></para>
 		///     <para>Returns a vector containing 0s and 1s based on if a component of 'lhs' had the value of 'rhs' for said component or not.</para>
 		/// </summary>
-		public static Vector4Int operator !=(Vector4Int lhs, (int x, int y, int z, int w)? rhs)
+		public static Vector4Int operator !=(Vector4Int lhs, [DisallowNull] (int x, int y, int z, int w)? rhs)
 		{
 			if (!rhs.HasValue)
 				throw new ArgumentNullException(nameof(rhs), "The given value tuple of 'rhs' may not be null.");
